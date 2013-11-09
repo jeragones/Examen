@@ -84,7 +84,9 @@ public class ingresar extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario =jComboUsuario.getSelectedItem().toString();
         if (usuario=="Estudiante"){
-            
+            frmPrincipal inicio = new frmPrincipal();
+            this.setVisible(false);
+            inicio.show();
         }
         else{
             

@@ -6,7 +6,10 @@ package GUI;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultDesktopManager;
 import javax.swing.DefaultListModel;
+import javax.swing.DesktopManager;
+import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
@@ -61,6 +64,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuIniciar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         lblBarraEstado.setText("jLabel1");
 
@@ -361,6 +369,31 @@ public class frmPrincipal extends javax.swing.JFrame {
         frame.setVisible(true);
         dskPanel.add(frame);
     }//GEN-LAST:event_mnuIniciarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        DesktopManager manager = new DefaultDesktopManager() {
+        /** This moves the <code>JComponent</code> and repaints the damaged areas. */
+        @Override
+        public void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight) {
+            boolean didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
+            if (!inBounds((JInternalFrame) f, newX, newY, newWidth, newHeight)) return;
+            f.setBounds(newX, newY, newWidth, newHeight);
+            if(didResize) {
+                f.validate();
+            } 
+        }
+
+        protected boolean inBounds(JInternalFrame f, int newX, int newY, int newWidth, int newHeight) {
+            if (newX < 0 || newY < 0) return false;
+            if (newX + newWidth > f.getDesktopPane().getWidth()) return false;
+            if (newY + newHeight > f.getDesktopPane().getHeight()) return false;
+            return true;
+        }
+
+    };
+        
+        dskPanel.setDesktopManager(manager);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments

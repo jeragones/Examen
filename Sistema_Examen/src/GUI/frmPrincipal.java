@@ -19,8 +19,14 @@ public class frmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form frmPrincipal
      */
-    public frmPrincipal() {
+    public frmPrincipal(String sUsuario) {
         initComponents();
+        if(sUsuario=="")
+            mnuSalir.setVisible(true);
+        else if (sUsuario=="Estudiante")
+            mnuCrear.setVisible(false);
+        else
+            mnuIniciar.setVisible(false);
     }
 
     /**
@@ -360,7 +366,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmPrincipal().setVisible(true);
+                new frmPrincipal("").setVisible(true);
             }
         });
     }

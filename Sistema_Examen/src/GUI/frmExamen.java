@@ -23,6 +23,9 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jLabelFecha.setText(exa.getdFecha());
         jLabelProfesor.setText(exa.getsProfesor());
         jLabelPuntos.setText("Total "+exa.getiTotalPuntos()+" Puntos");
+        jTextAreaDescripcion.setLineWrap(true);
+        jTextAreaDescripcion.setText(exa.getsDescripcion());
+        
     }
 
     /**
@@ -40,6 +43,8 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabelFecha = new javax.swing.JLabel();
         jLabelPuntos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDescripcion = new javax.swing.JTextArea();
 
         setClosable(true);
 
@@ -60,6 +65,11 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jLabelPuntos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabelPuntos.setText("Total de Puntos:");
 
+        jTextAreaDescripcion.setColumns(20);
+        jTextAreaDescripcion.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDescripcion);
+        jTextAreaDescripcion.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,17 +77,22 @@ public class frmExamen extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombreExamen)
-                    .addComponent(jLabelProfesor)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEstudiante)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFecha)
-                    .addComponent(jLabelPuntos))
-                .addGap(80, 80, 80))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNombreExamen)
+                            .addComponent(jLabelProfesor)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelEstudiante)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFecha)
+                            .addComponent(jLabelPuntos))
+                        .addGap(80, 80, 80))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +109,9 @@ public class frmExamen extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstudiante)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,6 +124,8 @@ public class frmExamen extends javax.swing.JInternalFrame {
     public javax.swing.JLabel jLabelNombreExamen;
     private javax.swing.JLabel jLabelProfesor;
     private javax.swing.JLabel jLabelPuntos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaDescripcion;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

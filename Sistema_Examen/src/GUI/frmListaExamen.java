@@ -28,14 +28,14 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         clsExamen exa2=new clsExamen();
         clsExamen exa3=new clsExamen();
         exa1.setsNombre("Investigacion de Operaciones");
-        exa2.setsNombre("ADP");
-        exa3.setsNombre("POO");
-        exa1.setsDescripcion("IO");
-        exa1.setiNumeroExamen(3);
+        
+        exa1.setsDescripcion("Realizar adlfjsnfdl");
         exa1.setdFecha("03/10/2013");
         exa1.setiTotalPuntos(60);
         exa1.setsProfesor("Oscar Viquez");
         
+        exa2.setsNombre("ADP");
+        exa3.setsNombre("POO");
         examenes.agregarExamen(exa1);
         examenes.agregarExamen(exa2);
         examenes.agregarExamen(exa3);

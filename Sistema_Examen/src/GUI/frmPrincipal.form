@@ -74,7 +74,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="dskPanel" alignment="0" pref="721" max="32767" attributes="0"/>
+          <Component id="dskPanel" alignment="0" pref="898" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblBarraEstado" max="32767" attributes="0"/>
@@ -86,7 +86,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="dskPanel" pref="504" max="32767" attributes="0"/>
+              <Component id="dskPanel" pref="654" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblBarraEstado" min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
@@ -320,7 +320,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="420" width="140" height="50"/>
+              <AbsoluteConstraints x="620" y="490" width="140" height="50"/>
             </Constraint>
           </Constraints>
         </Component>

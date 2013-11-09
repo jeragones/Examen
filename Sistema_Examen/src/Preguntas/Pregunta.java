@@ -8,9 +8,10 @@ package Preguntas;
  *
  * @author GeOrge
  */
-public interface pregunta {
+public interface Pregunta {
     public void insertarInfo();
     public void eliminarInfo();
-    public void evaluarPregunta();	
+    public void evaluarPregunta(); 	
     public void desplegarPregunta();
+    public double getNota();  
 }

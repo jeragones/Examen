@@ -14,5 +14,5 @@ public class clsExamen {
     
     String sNombre;
     String sDescripcion;
-    ArrayList<clsSeccion> alSecciones = new ArrayList<clsSeccion>();
+    //ArrayList<> alSecciones = new ArrayList<Seccion>();
 }

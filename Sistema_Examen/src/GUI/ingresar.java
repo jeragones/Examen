@@ -6,6 +6,8 @@
 
 package GUI;
 
+import Estructuras_de_Datos.*;
+
 /**
  *
  * @author jdbr
@@ -84,6 +86,7 @@ public class ingresar extends javax.swing.JFrame {
         frmPrincipal inicio = new frmPrincipal(usuario);
         inicio.show();
         this.setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

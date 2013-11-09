@@ -19,7 +19,7 @@ public class clsExamenes {
         Examenes.add(examen);
     }
     
-    public ArrayList getExamenes(){
+    public ArrayList<clsExamen> getExamenes(){
         return Examenes;
     }
     

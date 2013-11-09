@@ -12,7 +12,34 @@ import java.util.ArrayList;
  */
 public class clsExamen {
     
-    String sNombre;
-    String sDescripcion;
-    //ArrayList<> alSecciones = new ArrayList<Seccion>();
+    private String sNombre;
+    private String sDescripcion;
+    private ArrayList<clsSeccion> alSecciones = new ArrayList();
+
+    public String getsNombre() {
+        return sNombre;
+    }
+
+    public void setsNombre(String sNombre) {
+        this.sNombre = sNombre;
+    }
+
+    public String getsDescripcion() {
+        return sDescripcion;
+    }
+
+    public void setsDescripcion(String sDescripcion) {
+        this.sDescripcion = sDescripcion;
+    }
+
+    public ArrayList<clsSeccion> getAlSecciones() {
+        return alSecciones;
+    }
+
+    public void addSeccion(clsSeccion seccion){
+        this.alSecciones.add(seccion);
+    }
+    
+    
+    
 }

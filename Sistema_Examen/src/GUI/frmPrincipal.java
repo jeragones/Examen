@@ -203,7 +203,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         dskPanel.add(jButton1);
-        jButton1.setBounds(70, 70, 140, 50);
+        jButton1.setBounds(560, 420, 140, 50);
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {

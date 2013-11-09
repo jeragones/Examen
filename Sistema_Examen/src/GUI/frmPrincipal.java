@@ -98,7 +98,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtDescripcionCrear.setRows(3);
         pnlDescScrollCrear.setViewportView(txtDescripcionCrear);
 
-        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", 0, 0, null, new java.awt.Color(0, 102, 255)));
+        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
         pnlListaCrear.setPreferredSize(new java.awt.Dimension(270, 184));
 
         jScrollPane2.setViewportView(lstListaCrear);
@@ -280,25 +280,28 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_dskPanelMouseEntered
 
     private void mnuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearActionPerformed
-        clsVentana ventana = new clsVentana("Crear Examen", new int[]{400, 450}, new int[]{150, 10});
-        clsPanel panel = new clsPanel(new int[]{0, 0}, new int[]{0, 0});
-        
-        clsPanel pnlSeccion = new clsPanel(new int[]{350, 200}, new int[]{20, 20});
-        pnlSeccion.setBorde("Sección");
-        
-        clsLista lstLista = new clsLista(new int[]{290, 120}, new int[]{0, 0});
-        JScrollPane pnlScroll = new JScrollPane(lstLista);
-        clsBoton btnSeccion = new clsBoton("Agregar", new int[]{60, 30}, new int[]{50, 100});
-        
-        pnlSeccion.add(pnlScroll);
-        pnlSeccion.add(btnSeccion);
-        
-        ventana.add(panel);
-        ventana.add(pnlSeccion);
-        
-        dskPanel.add(ventana);
-        
-        ventana.setVisible(true);
+//        clsVentana ventana = new clsVentana("Crear Examen", new int[]{400, 450}, new int[]{150, 10});
+//        clsPanel panel = new clsPanel(new int[]{0, 0}, new int[]{0, 0});
+//        
+//        clsPanel pnlSeccion = new clsPanel(new int[]{350, 200}, new int[]{20, 20});
+//        pnlSeccion.setBorde("Sección");
+//        
+//        clsLista lstLista = new clsLista(new int[]{290, 120}, new int[]{0, 0});
+//        JScrollPane pnlScroll = new JScrollPane(lstLista);
+//        clsBoton btnSeccion = new clsBoton("Agregar", new int[]{60, 30}, new int[]{50, 100});
+//        
+//        pnlSeccion.add(pnlScroll);
+//        pnlSeccion.add(btnSeccion);
+//        
+//        ventana.add(panel);
+//        ventana.add(pnlSeccion);
+//        
+//        dskPanel.add(ventana);
+//        
+//        ventana.setVisible(true);
+        JInternalFrame frame = new frmCrearExamen(dskPanel);
+        dskPanel.add(frame);
+        frame.show();
     }//GEN-LAST:event_mnuCrearActionPerformed
 
     private void btnAgregarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCrearMouseEntered

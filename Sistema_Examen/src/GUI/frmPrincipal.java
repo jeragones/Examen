@@ -91,7 +91,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtDescripcionCrear.setRows(3);
         pnlDescScrollCrear.setViewportView(txtDescripcionCrear);
 
-        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
+        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", 0, 0, null, new java.awt.Color(0, 102, 255)));
         pnlListaCrear.setPreferredSize(new java.awt.Dimension(270, 184));
 
         jScrollPane2.setViewportView(lstListaCrear);
@@ -150,7 +150,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         frmCrearExamenLayout.setHorizontalGroup(
             frmCrearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmCrearExamenLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addGroup(frmCrearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnGuardarCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombreCrear, javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +163,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         frmCrearExamenLayout.setVerticalGroup(
             frmCrearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmCrearExamenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(lblNombreCrear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombreCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,8 +178,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        frmCrearExamen.setBounds(0, 0, 326, 488);
-        dskPanel.add(frmCrearExamen, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPanel.add(frmCrearExamen);
+        frmCrearExamen.setBounds(0, 0, 384, 488);
         frmCrearExamen.getAccessibleContext().setAccessibleParent(dskPanel);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,8 +195,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jButton1.setBounds(483, 323, 140, 50);
-        dskPanel.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dskPanel.add(jButton1);
+        jButton1.setBounds(70, 70, 140, 50);
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {

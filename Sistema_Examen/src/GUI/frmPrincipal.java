@@ -287,9 +287,27 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnAgregarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCrearMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCrearMouseEntered
+
+    private void algo(){
+        pnlDescScrollCrear.setVisible(false);
+        lblNombreCrear.setVisible(false);
+        lblDescripcionCrear.setVisible(false);
+        txtNombreCrear.setVisible(false);
+        lblNombreCrear.setText("Pregunta");
+        pnlListaCrear.setLocation(10, 10);
+        
+        TitledBorder titledBorder = BorderFactory.createTitledBorder("Preguntas");
+        titledBorder.setTitleColor(new Color(26367));
+        pnlListaCrear.setBorder(titledBorder);
+        repaint();
+    }
     
     private void btnAgregarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCrearActionPerformed
-
+        algo();
+        algo();
+        
+        //txtDescripcionCrear.setVisible(false);
+        //repaint();
     }//GEN-LAST:event_btnAgregarCrearActionPerformed
 
     private void btnGuardarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCrearMouseEntered

@@ -7,6 +7,7 @@ package GUI;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
@@ -213,6 +214,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         mnuSalir.setText("Salir");
+        mnuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSalirActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuSalir);
 
         jMenuBar1.add(jMenu1);
@@ -227,7 +233,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mnuCrear);
 
-        mnuIniciar.setText("Iniciar");
+        mnuIniciar.setText("Elegir ");
+        mnuIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIniciarActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuIniciar);
 
         jMenuBar1.add(jMenu2);
@@ -335,6 +346,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void jMenuBar1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentShown
         //dskPanel.add(frmCrearExamen);
     }//GEN-LAST:event_jMenuBar1ComponentShown
+
+    private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_mnuSalirActionPerformed
+
+    private void mnuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIniciarActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame frame = new frmListaExamen();
+        frame.setVisible(true);
+        dskPanel.add(frame);
+    }//GEN-LAST:event_mnuIniciarActionPerformed
 
     /**
      * @param args the command line arguments

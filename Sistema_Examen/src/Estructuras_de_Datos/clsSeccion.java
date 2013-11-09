@@ -13,9 +13,18 @@ import java.util.ArrayList;
  */
 public class clsSeccion {
     
-    String sNombre;
-    String sDescripcion;
-    ArrayList<Pregunta> alPreguntas = new ArrayList<Pregunta>();
+    private String sNombre;
+    private String sDescripcion;
+    private ArrayList<Pregunta> alPreguntas = new ArrayList<Pregunta>();
+    private int iTotalPuntos;
+
+    public int getiTotalPuntos() {
+        return iTotalPuntos;
+    }
+
+    public void setiTotalPuntos(int iTotalPuntos) {
+        this.iTotalPuntos = iTotalPuntos;
+    }
 
     public void setsNombre(String sNombre) {
         this.sNombre = sNombre;

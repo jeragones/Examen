@@ -396,7 +396,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCrear;
     private javax.swing.JButton btnGuardarCrear;
-    private javax.swing.JDesktopPane dskPanel;
+    public static javax.swing.JDesktopPane dskPanel;
     private javax.swing.JInternalFrame frmCrearExamen;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;

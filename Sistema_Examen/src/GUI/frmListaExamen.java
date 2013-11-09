@@ -7,6 +7,8 @@
 package GUI;
 import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JInternalFrame;
+import GUI.frmPrincipal;
 
 /**
  *
@@ -28,6 +30,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.setsNombre("Investigacion de Operaciones");
         exa2.setsNombre("ADP");
         exa3.setsNombre("POO");
+        exa1.setsDescripcion("IO");
         
         examenes.agregarExamen(exa1);
         examenes.agregarExamen(exa2);
@@ -100,7 +103,11 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        JInternalFrame frame = new frmExamen();
+        frame.setVisible(true);
+        frame.setTitle(examenes.getExamenes().get(jListExamenes.getSelectedIndex()).getsNombre());
+        frmPrincipal.dskPanel.add(frame);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

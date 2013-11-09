@@ -6,6 +6,8 @@
 
 package GUI;
 
+import Estructuras_de_Datos.clsExamen;
+
 /**
  *
  * @author jdbr
@@ -15,8 +17,12 @@ public class frmExamen extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmExamen
      */
-    public frmExamen() {
+    public frmExamen(clsExamen exa) {
         initComponents();
+        jLabelNombreExamen.setText(exa.getsNombre());
+        jLabelFecha.setText(exa.getdFecha());
+        jLabelProfesor.setText(exa.getsProfesor());
+        jLabelPuntos.setText("Total "+exa.getiTotalPuntos()+" Puntos");
     }
 
     /**
@@ -28,12 +34,31 @@ public class frmExamen extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelNombreExamen = new javax.swing.JLabel();
+        jLabelProfesor = new javax.swing.JLabel();
+        jLabelEstudiante = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabelFecha = new javax.swing.JLabel();
+        jLabelPuntos = new javax.swing.JLabel();
 
         setClosable(true);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabelNombreExamen.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelNombreExamen.setText("Nombre Examen");
+
+        jLabelProfesor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelProfesor.setText("Profesor: ");
+
+        jLabelEstudiante.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelEstudiante.setText("Estudiante: ");
+
+        jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        jLabelFecha.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelFecha.setText("Fecha:");
+
+        jLabelPuntos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelPuntos.setText("Total de Puntos:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -41,15 +66,35 @@ public class frmExamen extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombreExamen)
+                    .addComponent(jLabelProfesor)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelEstudiante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelFecha)
+                    .addComponent(jLabelPuntos))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombreExamen)
+                    .addComponent(jLabelFecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProfesor)
+                    .addComponent(jLabelPuntos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEstudiante)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         pack();
@@ -57,6 +102,11 @@ public class frmExamen extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelEstudiante;
+    private javax.swing.JLabel jLabelFecha;
+    public javax.swing.JLabel jLabelNombreExamen;
+    private javax.swing.JLabel jLabelProfesor;
+    private javax.swing.JLabel jLabelPuntos;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

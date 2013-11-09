@@ -8,7 +8,7 @@ package GUI;
 import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JInternalFrame;
-import GUI.frmPrincipal;
+import GUI.*;
 
 /**
  *
@@ -31,6 +31,10 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa2.setsNombre("ADP");
         exa3.setsNombre("POO");
         exa1.setsDescripcion("IO");
+        exa1.setiNumeroExamen(3);
+        exa1.setdFecha("03/10/2013");
+        exa1.setiTotalPuntos(60);
+        exa1.setsProfesor("Oscar Viquez");
         
         examenes.agregarExamen(exa1);
         examenes.agregarExamen(exa2);
@@ -103,9 +107,11 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame frame = new frmExamen();
+        JInternalFrame frame = new frmExamen(examenes.getExamenes().get(jListExamenes.getSelectedIndex()));
         frame.setVisible(true);
-        frame.setTitle(examenes.getExamenes().get(jListExamenes.getSelectedIndex()).getsNombre());
+        
+        frame.setTitle(examenes.getExamenes().get(jListExamenes.getSelectedIndex()).getiNumeroExamen()+"° Examen");
+ 
         frmPrincipal.dskPanel.add(frame);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

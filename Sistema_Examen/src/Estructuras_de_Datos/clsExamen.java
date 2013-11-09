@@ -16,7 +16,7 @@ public class clsExamen {
     private String sNombre;
     private String sDescripcion;
     private String sProfesor;
-    private Date dfecha;
+    private String sFecha;
     private int iTotalPuntos;
     private int iNumeroExamen;
     private ArrayList<clsSeccion> alSecciones = new ArrayList();
@@ -33,12 +33,12 @@ public class clsExamen {
         this.sProfesor = sProfesor;
     }
 
-    public Date getDfecha() {
-        return dfecha;
+    public String getdFecha() {
+        return sFecha;
     }
 
-    public void setDfecha(Date dfecha) {
-        this.dfecha = dfecha;
+    public void setdFecha(String dfecha) {
+        this.sFecha = dfecha;
     }
 
     public int getiTotalPuntos() {

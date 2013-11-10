@@ -63,8 +63,8 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jListSecciones = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelNumeroPreguntas = new javax.swing.JLabel();
+        jLabelPuntosSeccion = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaDescripSeccion = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -170,11 +170,11 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel1.setText("Descripcion");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Numero de Preguntas: ");
+        jLabelNumeroPreguntas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelNumeroPreguntas.setText("Numero de Preguntas: ");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Puntos: ");
+        jLabelPuntosSeccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelPuntosSeccion.setText("Puntos: ");
 
         jTextAreaDescripSeccion.setColumns(20);
         jTextAreaDescripSeccion.setRows(5);
@@ -202,8 +202,8 @@ public class frmExamen extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLabelNumeroPreguntas)
+                                    .addComponent(jLabelPuntosSeccion)
                                     .addComponent(jButton1))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
@@ -215,9 +215,9 @@ public class frmExamen extends javax.swing.JInternalFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelNumeroPreguntas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabelPuntosSeccion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -260,19 +260,21 @@ public class frmExamen extends javax.swing.JInternalFrame {
     private void jListSeccionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListSeccionesValueChanged
         // TODO add your handling code here:
         jTextAreaDescripSeccion.setText(exa.getAlSecciones().get(jListSecciones.getSelectedIndex()).getsDescripcion());
+        jLabelNumeroPreguntas.setText("Numero de Preguntas: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getAlPreguntas().size()));
+        jLabelPuntosSeccion.setText("Puntos: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getiTotalPuntos()));
     }//GEN-LAST:event_jListSeccionesValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelEstudiante;
     private javax.swing.JLabel jLabelFecha;
     public javax.swing.JLabel jLabelNombreExamen;
+    private javax.swing.JLabel jLabelNumeroPreguntas;
     private javax.swing.JLabel jLabelProfesor;
     private javax.swing.JLabel jLabelPuntos;
+    private javax.swing.JLabel jLabelPuntosSeccion;
     private javax.swing.JList jListSecciones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

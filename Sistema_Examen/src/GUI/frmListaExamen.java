@@ -29,13 +29,19 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         clsExamen exa3=new clsExamen();
         exa1.setsNombre("Investigacion de Operaciones");
         
-        exa1.setsDescripcion("Realizar adlfjsnfdl");
+        exa1.setsDescripcion("Todas estas preguntas tienen sus respuestas en el manual entregado de ejercicios. Lo mínimo que deben hacer es buscar en dicho documento la respuesta adecuada. Simplemente marquen en el mismo texto la respuesta y me envían el archivo en formato PDF al correo gerardo.brenes@gbsys.com con el asunto: Examen 2 y su nombre. O me envían un correo con solo las respuestas. Es INDIVIDUAL. Fecha/hora límite para el correo: Viernes 8/11/2013:12MD");
         exa1.setdFecha("03/10/2013");
         exa1.setiTotalPuntos(60);
         exa1.setsProfesor("Oscar Viquez");
-        exa1.addSeccion(new clsSeccion("Seleccion Unica","Selecione la respuesta correcta"));
-        exa1.addSeccion(new clsSeccion("Desarrollo","Debe presentar todos los pasos necesarios para llegar a la respuesta"));
-        
+        clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
+        sec1.setiTotalPuntos(10);
+        clsSeccion sec2= new clsSeccion("Seleccion Multiple","Selecione la/s respuesta correcta/s");
+        sec2.setiTotalPuntos(25);
+        clsSeccion sec3= new clsSeccion("Complete","Complete la frase");
+        sec3.setiTotalPuntos(30);
+        exa1.addSeccion(sec1);
+        exa1.addSeccion(sec2);
+        exa1.addSeccion(sec3);
         exa2.setsNombre("ADP");
         exa3.setsNombre("POO");
         examenes.agregarExamen(exa1);

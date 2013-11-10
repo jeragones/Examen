@@ -6,8 +6,10 @@
 
 package GUI;
 
+import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,11 +21,13 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
      * Creates new form frmCrearExamen
      */
     
-    JDesktopPane dskPanel = new JDesktopPane();
+    JDesktopPane dskPanel;
+    JLabel lblBarraEstado;
     
-    public frmCrearExamen(JDesktopPane panel) {
+    public frmCrearExamen(Object[] args) {
         initComponents();
-        dskPanel = panel;
+        dskPanel = (JDesktopPane)args[0];
+        lblBarraEstado = (JLabel)args[1];
     }
 
     /**
@@ -59,6 +63,11 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Nuevo Examen");
         setToolTipText("");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(3);
@@ -89,6 +98,11 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
 
         lstSecciones.setComponentPopupMenu(jPopupMenu1);
+        lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lstSeccionesMouseEntered(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstSecciones);
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
@@ -177,16 +191,25 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        JInternalFrame frame = new frmCrearSeccion();
+        JInternalFrame frame = new frmCrearSeccion(new Object[]{lblBarraEstado});
         dskPanel.add(frame);
         frame.show();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        JInternalFrame frame = new frmCrearSeccion();
+        JInternalFrame frame = new frmCrearSeccion(new Object[]{lblBarraEstado});
         dskPanel.add(frame);
         frame.show();
     }//GEN-LAST:event_mnuAgregarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        this.setLocation(550, 20);
+        txtDescripcion.setLineWrap(true);
+    }//GEN-LAST:event_formComponentShown
+
+    private void lstSeccionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstSeccionesMouseEntered
+        lblBarraEstado.setText("Click derecho para agregar una sección");
+    }//GEN-LAST:event_lstSeccionesMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

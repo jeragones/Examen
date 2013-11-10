@@ -5,11 +5,14 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.DefaultListModel;
 import javax.swing.DesktopManager;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
@@ -56,14 +59,16 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnAgregarCrear = new javax.swing.JButton();
         btnGuardarCrear = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnbMenu = new javax.swing.JMenuBar();
+        mnuInicio = new javax.swing.JMenu();
+        mnuUsuario = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuCrear = new javax.swing.JMenuItem();
         mnuIniciar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Examen");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -213,13 +218,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         dskPanel.add(jButton1);
         jButton1.setBounds(620, 490, 140, 50);
 
-        jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        mnbMenu.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jMenuBar1ComponentShown(evt);
+                mnbMenuComponentShown(evt);
             }
         });
 
-        jMenu1.setText("Archivo");
+        mnuInicio.setText("Inicio");
+
+        mnuUsuario.setText("Cambiar Usuario");
+        mnuUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuUsuarioActionPerformed(evt);
+            }
+        });
+        mnuInicio.add(mnuUsuario);
 
         mnuSalir.setText("Salir");
         mnuSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -227,9 +240,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuSalir);
+        mnuInicio.add(mnuSalir);
 
-        jMenuBar1.add(jMenu1);
+        mnbMenu.add(mnuInicio);
 
         jMenu2.setText("Examen");
 
@@ -249,9 +262,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mnuIniciar);
 
-        jMenuBar1.add(jMenu2);
+        mnbMenu.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mnbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -307,7 +320,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 //        dskPanel.add(ventana);
 //        
 //        ventana.setVisible(true);
-        JInternalFrame frame = new frmCrearExamen(dskPanel);
+        JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado});
         dskPanel.add(frame);
         frame.show();
     }//GEN-LAST:event_mnuCrearActionPerformed
@@ -354,13 +367,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_frmCrearExamenComponentShown
 
-    private void jMenuBar1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentShown
+    private void mnbMenuComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mnbMenuComponentShown
         //dskPanel.add(frmCrearExamen);
-    }//GEN-LAST:event_jMenuBar1ComponentShown
+    }//GEN-LAST:event_mnbMenuComponentShown
 
     private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_mnuSalirActionPerformed
 
     private void mnuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIniciarActionPerformed
@@ -371,29 +383,35 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuIniciarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setBounds(0,0,screenSize.width, screenSize.height);
+        
         DesktopManager manager = new DefaultDesktopManager() {
-        /** This moves the <code>JComponent</code> and repaints the damaged areas. */
-        @Override
-        public void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight) {
-            boolean didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
-            if (!inBounds((JInternalFrame) f, newX, newY, newWidth, newHeight)) return;
-            f.setBounds(newX, newY, newWidth, newHeight);
-            if(didResize) {
-                f.validate();
-            } 
-        }
+            /** This moves the <code>JComponent</code> and repaints the damaged areas. */
+            @Override
+            public void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight) {
+                boolean didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
+                if (!inBounds((JInternalFrame) f, newX, newY, newWidth, newHeight)) return;
+                f.setBounds(newX, newY, newWidth, newHeight);
+                if(didResize)
+                    f.validate();
+            }
 
-        protected boolean inBounds(JInternalFrame f, int newX, int newY, int newWidth, int newHeight) {
-            if (newX < 0 || newY < 0) return false;
-            if (newX + newWidth > f.getDesktopPane().getWidth()) return false;
-            if (newY + newHeight > f.getDesktopPane().getHeight()) return false;
-            return true;
-        }
-
-    };
+            protected boolean inBounds(JInternalFrame f, int newX, int newY, int newWidth, int newHeight) {
+                if (newX < 0 || newY < 0) return false;
+                if (newX + newWidth > f.getDesktopPane().getWidth()) return false;
+                if (newY + newHeight > f.getDesktopPane().getHeight()) return false;
+                return true;
+            }
+        };
         
         dskPanel.setDesktopManager(manager);
     }//GEN-LAST:event_formComponentShown
+
+    private void mnuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuarioActionPerformed
+        this.dispose();
+        new ingresar().show();
+    }//GEN-LAST:event_mnuUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,17 +453,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane dskPanel;
     private javax.swing.JInternalFrame frmCrearExamen;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBarraEstado;
     private javax.swing.JLabel lblDescripcionCrear;
     private javax.swing.JLabel lblNombreCrear;
     private javax.swing.JList lstListaCrear;
+    private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mnuCrear;
     private javax.swing.JMenuItem mnuIniciar;
+    private javax.swing.JMenu mnuInicio;
     private javax.swing.JMenuItem mnuSalir;
+    private javax.swing.JMenuItem mnuUsuario;
     private javax.swing.JScrollPane pnlDescScrollCrear;
     private javax.swing.JPanel pnlListaCrear;
     private javax.swing.JTextArea txtDescripcionCrear;

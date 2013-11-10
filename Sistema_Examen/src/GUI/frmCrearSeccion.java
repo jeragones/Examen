@@ -6,6 +6,8 @@
 
 package GUI;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author GeOrge
@@ -15,8 +17,12 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmCrearSeccion
      */
-    public frmCrearSeccion() {
+    
+    JLabel lblBarraEstado;
+    
+    public frmCrearSeccion(Object[] args) {
         initComponents();
+        lblBarraEstado = (JLabel)args[0];
     }
 
     /**
@@ -51,6 +57,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Nueva Sección");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         lblNombre.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblNombre.setText("Nombre:");
@@ -67,6 +78,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
 
         lstPreguntas.setComponentPopupMenu(jPopupMenu1);
+        lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lstPreguntasMouseEntered(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstPreguntas);
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
@@ -175,6 +191,15 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
         
     }//GEN-LAST:event_mnuAgregarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        this.setLocation(600, 40);
+        txtDescripcion.setLineWrap(true);
+    }//GEN-LAST:event_formComponentShown
+
+    private void lstPreguntasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseEntered
+        lblBarraEstado.setText("Click derecho para agregar una pregunta");
+    }//GEN-LAST:event_lstPreguntasMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

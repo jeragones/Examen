@@ -18,22 +18,12 @@ public class clsSeccion {
     private static ArrayList<Pregunta> alPreguntas = new ArrayList<>();
     private int iTotalPuntos;
 
-<<<<<<< HEAD
-    public clsSeccion(String nombre, String descripcion) {
-        sNombre = nombre;
-        sDescripcion = descripcion;
-    }
-    
-=======
     public clsSeccion(String sNombre, String sDescripcion) {
         this.sNombre = sNombre;
         this.sDescripcion = sDescripcion;
         
     }
-    
-    
 
->>>>>>> e463cf45b3f483ee4e5bd582d7c3f5655c3fb4b4
     public int getiTotalPuntos() {
         return iTotalPuntos;
     }

@@ -18,6 +18,14 @@ public class clsSeccion {
     private ArrayList<Pregunta> alPreguntas = new ArrayList<Pregunta>();
     private int iTotalPuntos;
 
+    public clsSeccion(String sNombre, String sDescripcion) {
+        this.sNombre = sNombre;
+        this.sDescripcion = sDescripcion;
+        
+    }
+    
+    
+
     public int getiTotalPuntos() {
         return iTotalPuntos;
     }

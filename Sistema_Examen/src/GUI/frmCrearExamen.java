@@ -7,8 +7,7 @@
 package GUI;
 
 import Estructuras_de_Datos.clsExamen;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import Estructuras_de_Datos.clsExamenes;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -25,12 +24,14 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     
     JDesktopPane dskPanel;
     JLabel lblBarraEstado;
+    clsExamenes insExamenes;
     clsExamen insExamen = new clsExamen();
     
     public frmCrearExamen(Object[] args) {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         lblBarraEstado = (JLabel)args[1];
+        insExamenes = (clsExamenes)args[2];
     }
 
     /**
@@ -120,6 +121,11 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
         pnlListaCrear.setMaximumSize(new java.awt.Dimension(270, 184));
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
+        pnlListaCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlListaCrearMouseEntered(evt);
+            }
+        });
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -139,6 +145,12 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             String[] strings = { "", "" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        lstSecciones.setComponentPopupMenu(jPopupMenu1);
+        lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lstSeccionesMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(lstSecciones);
 
@@ -244,7 +256,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        insExamenes.agregarExamen(insExamen);
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -256,12 +268,6 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         JInternalFrame insFrame = new frmCrearSeccion(new Object[]{lblBarraEstado, lstSecciones, insExamen});
         dskPanel.add(insFrame);
         insFrame.show();
-        
-        
-        
-        
-//        ((DefaultListModel)lstSecciones.getModel()).addElement("mijo");
-        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
@@ -307,6 +313,14 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         else
             btnGuardar.setEnabled(false);
     }//GEN-LAST:event_txtDescripcionKeyReleased
+
+    private void lstSeccionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstSeccionesMouseEntered
+        lblBarraEstado.setText("Click derecho para agregar una sección");
+    }//GEN-LAST:event_lstSeccionesMouseEntered
+
+    private void pnlListaCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlListaCrearMouseEntered
+        lblBarraEstado.setText("");
+    }//GEN-LAST:event_pnlListaCrearMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

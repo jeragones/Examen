@@ -186,6 +186,9 @@
           <Dimension value="[270, 184]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlListaCrearMouseEntered"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -245,7 +248,13 @@
                     <StringItem index="1" value=""/>
                   </StringArray>
                 </Property>
+                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="jPopupMenu1"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lstSeccionesMouseEntered"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

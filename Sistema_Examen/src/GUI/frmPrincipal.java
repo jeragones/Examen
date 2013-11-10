@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import Estructuras_de_Datos.clsExamen;
+import Estructuras_de_Datos.clsExamenes;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -26,14 +28,19 @@ public class frmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form frmPrincipal
      */
-    public frmPrincipal(String sUsuario) {
+    
+    private clsExamenes insExamenes;
+    
+    public frmPrincipal(Object[] args) {
         initComponents();
-        if(sUsuario=="")
+        if((String)args[0]=="")
             mnuSalir.setVisible(true);
-        else if (sUsuario=="Estudiante")
+        else if ((String)args[0]=="Estudiante") {
             mnuCrear.setVisible(false);
-        else
+            mnuModificar.setVisible(false);
+        } else
             mnuIniciar.setVisible(false);
+        insExamenes = (clsExamenes)args[1];
     }
 
     /**
@@ -65,7 +72,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuCrear = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnuModificar = new javax.swing.JMenuItem();
         mnuIniciar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -255,8 +262,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mnuCrear);
 
-        jMenuItem1.setText("Modificar");
-        jMenu2.add(jMenuItem1);
+        mnuModificar.setText("Modificar");
+        jMenu2.add(mnuModificar);
 
         mnuIniciar.setText("Elegir ");
         mnuIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,26 +312,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_dskPanelMouseEntered
 
     private void mnuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearActionPerformed
-//        clsVentana ventana = new clsVentana("Crear Examen", new int[]{400, 450}, new int[]{150, 10});
-//        clsPanel panel = new clsPanel(new int[]{0, 0}, new int[]{0, 0});
-//        
-//        clsPanel pnlSeccion = new clsPanel(new int[]{350, 200}, new int[]{20, 20});
-//        pnlSeccion.setBorde("Sección");
-//        
-//        clsLista lstLista = new clsLista(new int[]{290, 120}, new int[]{0, 0});
-//        JScrollPane pnlScroll = new JScrollPane(lstLista);
-//        clsBoton btnSeccion = new clsBoton("Agregar", new int[]{60, 30}, new int[]{50, 100});
-//        
-//        pnlSeccion.add(pnlScroll);
-//        pnlSeccion.add(btnSeccion);
-//        
-//        ventana.add(panel);
-//        ventana.add(pnlSeccion);
-//        
-//        dskPanel.add(ventana);
-//        
-//        ventana.setVisible(true);
-        JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado});
+        JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado, insExamenes});
         dskPanel.add(frame);
         frame.show();
     }//GEN-LAST:event_mnuCrearActionPerformed
@@ -348,11 +336,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
     
     private void btnAgregarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCrearActionPerformed
-        algo();
-        algo();
-        
-        //txtDescripcionCrear.setVisible(false);
-        //repaint();
+
     }//GEN-LAST:event_btnAgregarCrearActionPerformed
 
     private void btnGuardarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCrearMouseEntered
@@ -380,7 +364,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuSalirActionPerformed
 
     private void mnuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIniciarActionPerformed
-        // TODO add your handling code here:
         JInternalFrame frame = new frmListaExamen();
         frame.setVisible(true);
         dskPanel.add(frame);
@@ -447,10 +430,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmPrincipal("").setVisible(true);
+                
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCrear;
     private javax.swing.JButton btnGuardarCrear;
@@ -458,7 +442,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmCrearExamen;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBarraEstado;
     private javax.swing.JLabel lblDescripcionCrear;
@@ -468,6 +451,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCrear;
     private javax.swing.JMenuItem mnuIniciar;
     private javax.swing.JMenu mnuInicio;
+    private javax.swing.JMenuItem mnuModificar;
     private javax.swing.JMenuItem mnuSalir;
     private javax.swing.JMenuItem mnuUsuario;
     private javax.swing.JScrollPane pnlDescScrollCrear;

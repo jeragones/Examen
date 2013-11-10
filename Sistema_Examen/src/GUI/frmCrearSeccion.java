@@ -94,6 +94,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preguntas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
         pnlListaCrear.setMaximumSize(new java.awt.Dimension(270, 184));
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
+        pnlListaCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlListaCrearMouseEntered(evt);
+            }
+        });
 
         lstPreguntas.setComponentPopupMenu(jPopupMenu1);
         lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -238,6 +243,10 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         else
             btnGuardar.setEnabled(false);
     }//GEN-LAST:event_txtDescripcionKeyReleased
+
+    private void pnlListaCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlListaCrearMouseEntered
+        lblBarraEstado.setText("");
+    }//GEN-LAST:event_pnlListaCrearMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

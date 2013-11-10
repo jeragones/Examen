@@ -6,6 +6,8 @@
 
 package GUI;
 
+import Estructuras_de_Datos.clsExamenes;
+
 /**
  *
  * @author jdbr
@@ -15,6 +17,9 @@ public class ingresar extends javax.swing.JFrame {
     /**
      * Creates new form ingresar
      */
+    
+    clsExamenes insExamen = new clsExamenes();
+    
     public ingresar() {
         initComponents();
     }
@@ -89,7 +94,7 @@ public class ingresar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario =jComboUsuario.getSelectedItem().toString();
-        frmPrincipal inicio = new frmPrincipal(usuario);
+        frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen});
         inicio.show();
         this.setVisible(false);
         

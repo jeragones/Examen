@@ -21,7 +21,6 @@ public class clsSeccion {
     public clsSeccion(String sNombre, String sDescripcion) {
         this.sNombre = sNombre;
         this.sDescripcion = sDescripcion;
-        
     }
 
     public int getiTotalPuntos() {

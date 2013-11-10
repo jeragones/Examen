@@ -100,6 +100,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        this.setLocation(500, 50);
         for (clsExamen exa : examenes.getExamenes()){
             modelo.addElement(exa.getsNombre());            
         }

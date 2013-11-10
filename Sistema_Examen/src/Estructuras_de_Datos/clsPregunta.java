@@ -11,35 +11,42 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class clsPregunta implements Pregunta {
+public abstract class clsPregunta implements Pregunta {
     
     String sPregunta;
-    Object oRespuesta;
     int iValor;
-    ArrayList<String> alOpciones = new ArrayList<String>();
 
-    @Override
-    public void insertarInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public clsPregunta(String pregunta, int valor) {
+        sPregunta = pregunta;
+        iValor = valor;
+    }
+
+    public void setsPregunta(String sPregunta) {
+        this.sPregunta = sPregunta;
+    }
+
+    public void setiValor(int iValor) {
+        this.iValor = iValor;
+    }
+
+    public String getsPregunta() {
+        return sPregunta;
     }
 
     @Override
-    public void eliminarInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getValor() {
+        return iValor;
     }
+    
+    @Override
+    public abstract void insertarInfo();
 
     @Override
-    public void evaluarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void eliminarInfo();
 
     @Override
-    public void desplegarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void evaluarPregunta();
 
     @Override
-    public double getNota() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void desplegarPregunta();
 }

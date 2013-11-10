@@ -13,5 +13,5 @@ public interface Pregunta {
     public void eliminarInfo();
     public void evaluarPregunta(); 	
     public void desplegarPregunta();
-    public double getNota();  
+    public int getValor();
 }

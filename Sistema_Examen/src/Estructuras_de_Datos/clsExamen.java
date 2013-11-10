@@ -4,6 +4,7 @@
  */
 package Estructuras_de_Datos;
 
+import Preguntas.Pregunta;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -47,6 +48,20 @@ public class clsExamen {
     
     public int getiNumeroExamen() {
         return iNumeroExamen;
+    }
+    
+    public int getNota() {
+        int iNota = 0;
+        
+        for(int i=0; i < alSecciones.size(); i++) {
+            ArrayList<Pregunta> alPreguntas = alSecciones.get(i).getAlPreguntas();
+            for(int j=0; j < alPreguntas.size(); j++) {
+                iTotalPuntos += alPreguntas.get(j).getValor();
+//                if(alPreguntas.get(j).)
+            }
+        }
+        
+        return iNota;
     }
     
     public void setsProfesor(String sProfesor) {

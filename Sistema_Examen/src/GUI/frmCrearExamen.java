@@ -6,7 +6,9 @@
 
 package GUI;
 
-import java.awt.Dimension;
+import Estructuras_de_Datos.clsExamen;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -23,6 +25,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     
     JDesktopPane dskPanel;
     JLabel lblBarraEstado;
+    clsExamen insExamen = new clsExamen();
     
     public frmCrearExamen(Object[] args) {
         initComponents();
@@ -48,9 +51,13 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         lblNombre = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         pnlListaCrear = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstSecciones = new javax.swing.JList();
         btnAgregar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstSecciones = new javax.swing.JList();
+        lblNombre1 = new javax.swing.JLabel();
+        txtProfesor = new javax.swing.JTextField();
+        lblNombre2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         mnuAgregar.setText("Agregar");
         mnuAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +78,23 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(3);
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyReleased(evt);
+            }
+        });
         pnlDescScrollCrear.setViewportView(txtDescripcion);
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
 
         lblDescripcionCrear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblDescripcionCrear.setText("Descripción:");
@@ -82,6 +105,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseEntered(evt);
@@ -97,14 +121,6 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         pnlListaCrear.setMaximumSize(new java.awt.Dimension(270, 184));
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
 
-        lstSecciones.setComponentPopupMenu(jPopupMenu1);
-        lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lstSeccionesMouseEntered(evt);
-            }
-        });
-        jScrollPane2.setViewportView(lstSecciones);
-
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -119,60 +135,105 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             }
         });
 
+        lstSecciones.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "", "" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstSecciones);
+
         javax.swing.GroupLayout pnlListaCrearLayout = new javax.swing.GroupLayout(pnlListaCrear);
         pnlListaCrear.setLayout(pnlListaCrearLayout);
         pnlListaCrearLayout.setHorizontalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
+                .addContainerGap(174, Short.MAX_VALUE)
+                .addComponent(btnAgregar)
+                .addGap(5, 5, 5))
+            .addGroup(pnlListaCrearLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListaCrearLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAgregar)))
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         pnlListaCrearLayout.setVerticalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(btnAgregar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
+
+        lblNombre1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblNombre1.setText("Profesor:");
+
+        txtProfesor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtProfesorKeyReleased(evt);
+            }
+        });
+
+        lblNombre2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblNombre2.setText("Parcial:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I", "II", "III", "IV" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDescripcionCrear, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlDescScrollCrear, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlListaCrear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblNombre1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtProfesor))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlDescScrollCrear)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblDescripcionCrear)
+                                .addComponent(pnlListaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNombre2)
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombre)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre1)
+                    .addComponent(txtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addComponent(lblDescripcionCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(pnlDescScrollCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlListaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(pnlListaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(btnGuardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -183,7 +244,8 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
@@ -191,39 +253,78 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        JInternalFrame frame = new frmCrearSeccion(new Object[]{lblBarraEstado});
-        dskPanel.add(frame);
-        frame.show();
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{lblBarraEstado, lstSecciones, insExamen});
+        dskPanel.add(insFrame);
+        insFrame.show();
+        
+        
+        
+        
+//        ((DefaultListModel)lstSecciones.getModel()).addElement("mijo");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        JInternalFrame frame = new frmCrearSeccion(new Object[]{lblBarraEstado});
-        dskPanel.add(frame);
-        frame.show();
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{lblBarraEstado, lstSecciones, insExamen});
+        dskPanel.add(insFrame);
+        insFrame.show();
     }//GEN-LAST:event_mnuAgregarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        clsVentana insVentana = new clsVentana();
+        
         this.setLocation(550, 20);
         txtDescripcion.setLineWrap(true);
+        
+        //lstSecciones.setModel(insVentana.addItem(insExamen.getAlSecciones().toArray(), lstSecciones.getModel()));
+        
     }//GEN-LAST:event_formComponentShown
 
-    private void lstSeccionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstSeccionesMouseEntered
-        lblBarraEstado.setText("Click derecho para agregar una sección");
-    }//GEN-LAST:event_lstSeccionesMouseEntered
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        clsVentana insVentana = new clsVentana();
+        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+            btnGuardar.setEnabled(true);
+        else
+            btnGuardar.setEnabled(false);
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtProfesorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProfesorKeyReleased
+        clsVentana insVentana = new clsVentana();
+        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+            btnGuardar.setEnabled(true);
+        else
+            btnGuardar.setEnabled(false);
+    }//GEN-LAST:event_txtProfesorKeyReleased
+
+    private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
+        clsVentana insVentana = new clsVentana();
+        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+            btnGuardar.setEnabled(true);
+        else
+            btnGuardar.setEnabled(false);
+    }//GEN-LAST:event_txtDescripcionKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescripcionCrear;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre2;
     private javax.swing.JList lstSecciones;
     private javax.swing.JMenuItem mnuAgregar;
     private javax.swing.JScrollPane pnlDescScrollCrear;
     private javax.swing.JPanel pnlListaCrear;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtProfesor;
     // End of variables declaration//GEN-END:variables
 }

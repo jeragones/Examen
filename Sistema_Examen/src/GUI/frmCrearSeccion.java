@@ -6,7 +6,10 @@
 
 package GUI;
 
+import Estructuras_de_Datos.clsExamen;
+import Estructuras_de_Datos.clsSeccion;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 /**
  *
@@ -19,10 +22,14 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
      */
     
     JLabel lblBarraEstado;
+    JList lstSecciones;
+    clsExamen insExamen;
     
     public frmCrearSeccion(Object[] args) {
         initComponents();
         lblBarraEstado = (JLabel)args[0];
+        lstSecciones = (JList)args[1];
+        insExamen = (clsExamen)args[2];
     }
 
     /**
@@ -63,6 +70,12 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
+
         lblNombre.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblNombre.setText("Nombre:");
 
@@ -71,6 +84,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(3);
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyReleased(evt);
+            }
+        });
         pnlDescScrollCrear.setViewportView(txtDescripcion);
 
         pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preguntas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
@@ -125,6 +143,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseEntered(evt);
@@ -185,7 +204,10 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        insExamen.addSeccion(new clsSeccion(txtNombre.getText(), txtDescripcion.getText()));
+        clsVentana insVentana = new clsVentana();
+        lstSecciones.setModel(insVentana.setItems(insExamen.getAlSecciones().toArray()));
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
@@ -200,6 +222,22 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private void lstPreguntasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseEntered
         lblBarraEstado.setText("Click derecho para agregar una pregunta");
     }//GEN-LAST:event_lstPreguntasMouseEntered
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        clsVentana ventana = new clsVentana();
+        if(ventana.activarBoton(new String[]{txtNombre.getText(), txtDescripcion.getText()}))
+            btnGuardar.setEnabled(true);
+        else
+            btnGuardar.setEnabled(false);
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
+        clsVentana ventana = new clsVentana();
+        if(ventana.activarBoton(new String[]{txtNombre.getText(), txtDescripcion.getText()}))
+            btnGuardar.setEnabled(true);
+        else
+            btnGuardar.setEnabled(false);
+    }//GEN-LAST:event_txtDescripcionKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

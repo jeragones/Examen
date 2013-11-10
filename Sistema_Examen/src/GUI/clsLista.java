@@ -20,14 +20,4 @@ public class clsLista extends JList{
         this.setLocation(aiPosicion[0], aiPosicion[1]);
         this.setPreferredSize(dimension);
     }
-    
-    public void addItem(String sItem) {
-        DefaultListModel dlmModelo = new DefaultListModel();
-        
-        for(int i=0; i < this.getModel().getSize(); i++)
-            dlmModelo.addElement(this.getModel().getElementAt(i));
-        
-        dlmModelo.addElement(sItem);
-        this.setModel(dlmModelo);
-    }
 }

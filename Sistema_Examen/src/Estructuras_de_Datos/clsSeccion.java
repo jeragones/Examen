@@ -15,9 +15,14 @@ public class clsSeccion {
     
     private String sNombre;
     private String sDescripcion;
-    private ArrayList<Pregunta> alPreguntas = new ArrayList<Pregunta>();
+    private static ArrayList<Pregunta> alPreguntas = new ArrayList<>();
     private int iTotalPuntos;
 
+    public clsSeccion(String nombre, String descripcion) {
+        sNombre = nombre;
+        sDescripcion = descripcion;
+    }
+    
     public int getiTotalPuntos() {
         return iTotalPuntos;
     }

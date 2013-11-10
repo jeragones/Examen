@@ -6,8 +6,6 @@
 
 package GUI;
 
-import Estructuras_de_Datos.*;
-
 /**
  *
  * @author jdbr

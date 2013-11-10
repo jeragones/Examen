@@ -65,6 +65,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuCrear = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuIniciar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,7 +112,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtDescripcionCrear.setRows(3);
         pnlDescScrollCrear.setViewportView(txtDescripcionCrear);
 
-        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", 0, 0, null, new java.awt.Color(0, 102, 255)));
+        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
         pnlListaCrear.setPreferredSize(new java.awt.Dimension(270, 184));
 
         jScrollPane2.setViewportView(lstListaCrear);
@@ -253,6 +254,9 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(mnuCrear);
+
+        jMenuItem1.setText("Modificar");
+        jMenu2.add(jMenuItem1);
 
         mnuIniciar.setText("Elegir ");
         mnuIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -454,6 +458,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmCrearExamen;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBarraEstado;
     private javax.swing.JLabel lblDescripcionCrear;

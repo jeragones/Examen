@@ -29,20 +29,32 @@ public class clsExamen {
         return sProfesor;
     }
 
+    public String getdFecha() {
+        return sFecha;
+    }
+    
+    public int getiTotalPuntos() {
+        return iTotalPuntos;
+    }
+    
+    public String getsDescripcion() {
+        return sDescripcion;
+    }
+    
+    public ArrayList<clsSeccion> getAlSecciones() {
+        return alSecciones;
+    }
+    
+    public int getiNumeroExamen() {
+        return iNumeroExamen;
+    }
+    
     public void setsProfesor(String sProfesor) {
         this.sProfesor = sProfesor;
     }
 
-    public String getdFecha() {
-        return sFecha;
-    }
-
     public void setdFecha(String dfecha) {
         this.sFecha = dfecha;
-    }
-
-    public int getiTotalPuntos() {
-        return iTotalPuntos;
     }
 
     public void setiTotalPuntos(int iTotalPuntos) {
@@ -53,24 +65,12 @@ public class clsExamen {
         this.sNombre = sNombre;
     }
 
-    public String getsDescripcion() {
-        return sDescripcion;
-    }
-
     public void setsDescripcion(String sDescripcion) {
         this.sDescripcion = sDescripcion;
     }
 
-    public ArrayList<clsSeccion> getAlSecciones() {
-        return alSecciones;
-    }
-
     public void addSeccion(clsSeccion seccion){
         this.alSecciones.add(seccion);
-    }
-    
-   public int getiNumeroExamen() {
-        return iNumeroExamen;
     }
 
     public void setiNumeroExamen(int iNumeroExamen) {

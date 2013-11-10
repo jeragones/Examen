@@ -4,19 +4,31 @@
  */
 package GUI;
 
-import javax.swing.JInternalFrame;
+import Estructuras_de_Datos.clsSeccion;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
 
 /**
  *
  * @author GeOrge
  */
-public class clsVentana extends JInternalFrame {
+public class clsVentana {
     
-    public clsVentana(String sTitulo, int[] aiTamano, int[] aiPosicion) {        
-        this.setTitle(sTitulo);
-        this.setLocation(aiPosicion[0], aiPosicion[1]);
-        this.setSize(aiTamano[0],aiTamano[1]);
-        this.setResizable(false);
-        this.setClosable(true);
+    public boolean activarBoton(String[] asValores) {
+        for(int i=0; i < asValores.length; i++) {
+            if(asValores[i].isEmpty())
+                return false;
+        }
+        return true;
+    }
+    
+    public DefaultListModel setItems(Object[] alLista) {
+        DefaultListModel dlmModelo = new DefaultListModel();
+        
+        for(int i=0; i < alLista.length; i++)
+            dlmModelo.addElement(((clsSeccion)alLista[i]).getsNombre());
+        
+        return dlmModelo;
     }
 }

@@ -33,6 +33,8 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.setdFecha("03/10/2013");
         exa1.setiTotalPuntos(60);
         exa1.setsProfesor("Oscar Viquez");
+        exa1.addSeccion(new clsSeccion("Seleccion Unica","Selecione la respuesta correcta"));
+        exa1.addSeccion(new clsSeccion("Desarrollo","Debe presentar todos los pasos necesarios para llegar a la respuesta"));
         
         exa2.setsNombre("ADP");
         exa3.setsNombre("POO");
@@ -98,6 +100,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        this.setLocation(500, 50);
         for (clsExamen exa : examenes.getExamenes()){
             modelo.addElement(exa.getsNombre());            
         }

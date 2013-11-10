@@ -9,6 +9,7 @@ package GUI;
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsSeccion;
 import javax.swing.DefaultListModel;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -184,6 +185,11 @@ public class frmExamen extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setText("Iniciar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -263,6 +269,19 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jLabelNumeroPreguntas.setText("Numero de Preguntas: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getAlPreguntas().size()));
         jLabelPuntosSeccion.setText("Puntos: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getiTotalPuntos()));
     }//GEN-LAST:event_jListSeccionesValueChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        clsSeccion sec =exa.getAlSecciones().get(jListSecciones.getSelectedIndex());
+        System.err.println(sec.getsNombre()+" "+sec.getsDescripcion());
+        
+        JInternalFrame frame = new frmPregunta(sec);
+        frame.show();
+        frmPrincipal.dskPanel.add(frame);
+        this.hide();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -42,11 +42,9 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.addSeccion(sec1);
         exa1.addSeccion(sec2);
         exa1.addSeccion(sec3);
-        exa2.setsNombre("ADP");
-        exa3.setsNombre("POO");
+        
         examenes.agregarExamen(exa1);
-        examenes.agregarExamen(exa2);
-        examenes.agregarExamen(exa3);
+        
     }
 
     /**

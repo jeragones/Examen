@@ -15,6 +15,7 @@ public class clsSeccion {
     
     private String sNombre;
     private String sDescripcion;
+    private String tipo;
     private static ArrayList<Pregunta> alPreguntas = new ArrayList<>();
     private int iTotalPuntos;
 

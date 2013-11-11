@@ -11,7 +11,7 @@ package Preguntas;
 public interface Pregunta {
     public void insertarInfo();
     public void eliminarInfo();
-    public void evaluarPregunta(); 	
+    public boolean evaluarPregunta(); 	
     public void desplegarPregunta();
     public int getValor();
 }

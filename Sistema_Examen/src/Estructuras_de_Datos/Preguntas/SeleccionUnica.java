@@ -6,19 +6,26 @@
 
 package Estructuras_de_Datos.Preguntas;
 
-import Estructuras_de_Datos.clsPregunta;
+import Preguntas.Pregunta;
+import java.util.ArrayList;
+import javax.swing.JInternalFrame;
 
 /**
  *
  * @author GeOrge
  */
-public class clsDobleAlternativa extends clsPregunta {
+public class SeleccionUnica extends JInternalFrame implements Pregunta {
 
-    boolean bRespuesta;
+    String sRespuesta;
+    ArrayList<String> alOpciones = new ArrayList<String>();
+
+    public SeleccionUnica(String pregunta, int valor, String respuesta) {
+        
+        sRespuesta = respuesta;
+    }
     
-    public clsDobleAlternativa(String pregunta, int valor, boolean respuesta) {
-        super(pregunta, valor);
-        bRespuesta = respuesta;
+    public void addOpcion(String opcion) {
+        alOpciones.add(opcion);
     }
     
     @Override
@@ -32,12 +39,17 @@ public class clsDobleAlternativa extends clsPregunta {
     }
 
     @Override
-    public void evaluarPregunta() {
+    public boolean evaluarPregunta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void desplegarPregunta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getValor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

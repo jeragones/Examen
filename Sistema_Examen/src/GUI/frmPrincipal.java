@@ -263,6 +263,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu2.add(mnuCrear);
 
         mnuModificar.setText("Modificar");
+        mnuModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModificarActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuModificar);
 
         mnuIniciar.setText("Elegir ");
@@ -399,6 +404,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         this.dispose();
         new ingresar().show();
     }//GEN-LAST:event_mnuUsuarioActionPerformed
+
+    private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
+        
+    }//GEN-LAST:event_mnuModificarActionPerformed
 
     /**
      * @param args the command line arguments

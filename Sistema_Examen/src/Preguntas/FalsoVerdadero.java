@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Estructuras_de_Datos.Preguntas;
+package Preguntas;
 
 import Preguntas.Pregunta;
 import javax.swing.JInternalFrame;
@@ -13,12 +13,12 @@ import javax.swing.JInternalFrame;
  *
  * @author GeOrge
  */
-public class DobleAlternativa extends JInternalFrame implements Pregunta{
+public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     /**
      * Creates new form DobleAlternativa
      */
-    public DobleAlternativa() {
+    public FalsoVerdadero() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class DobleAlternativa extends JInternalFrame implements Pregunta{
         btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Doble Alternativa - ");
+        setTitle("Falso o Verdadero - ");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pregunta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 

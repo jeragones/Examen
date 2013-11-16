@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Estructuras_de_Datos.Preguntas;
+package Preguntas;
 
 import Preguntas.Pregunta;
 import javax.swing.JInternalFrame;

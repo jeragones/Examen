@@ -8,9 +8,11 @@ package GUI;
 
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsSeccion;
+import Preguntas.Pregunta;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -26,15 +28,17 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
      * Creates new form frmCrearSeccion
      */
     
+    JDesktopPane dskPanel;
     JLabel lblBarraEstado;
     JList lstSecciones;
     clsExamen insExamen;
     
     public frmCrearSeccion(Object[] args) {
         initComponents();
-        lblBarraEstado = (JLabel)args[0];
-        lstSecciones = (JList)args[1];
-        insExamen = (clsExamen)args[2];
+        dskPanel = (JDesktopPane)args[0];
+        lblBarraEstado = (JLabel)args[1];
+        lstSecciones = (JList)args[2];
+        insExamen = (clsExamen)args[3];
     }
 
     /**
@@ -69,6 +73,8 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
         jPopupMenu1.add(mnuAgregar);
+
+        fcArchivo.setMultiSelectionEnabled(true);
 
         setClosable(true);
         setTitle("Nueva Sección");
@@ -266,7 +272,16 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                      Class c = null;
                      File[] files = fcArchivo.getSelectedFiles();
                      for (int i=0; i<files.length; i++)
-                         c = loader.loadClass(files[i],true);
+                         c = loader.loadClass(files[i], true);
+                     try {
+                         JInternalFrame pregunta = (JInternalFrame)c.newInstance(); 
+                         dskPanel.add(pregunta);
+                         ((Pregunta) pregunta).insertarInfo();
+                    } catch (InstantiationException ex) {
+                        Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IllegalAccessException ex) {
+                        Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             } catch (ClassNotFoundException ex) { }
         }

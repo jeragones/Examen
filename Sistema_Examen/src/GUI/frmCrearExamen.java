@@ -265,13 +265,13 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{lblBarraEstado, lstSecciones, insExamen});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen});
         dskPanel.add(insFrame);
         insFrame.show();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{lblBarraEstado, lstSecciones, insExamen});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen});
         dskPanel.add(insFrame);
         insFrame.show();
     }//GEN-LAST:event_mnuAgregarActionPerformed

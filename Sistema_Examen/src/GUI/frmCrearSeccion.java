@@ -269,11 +269,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             FileClassLoader loader = new FileClassLoader(".");
             try{ 
                 if (fcArchivo.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ){
-                     Class c = null;
-                     File[] files = fcArchivo.getSelectedFiles();
-                     for (int i=0; i<files.length; i++)
-                         c = loader.loadClass(files[i], true);
-                     try {
+                    Class c = null;
+                    File[] files = fcArchivo.getSelectedFiles();
+                    for (int i=0; i<files.length; i++)
+                        c = loader.loadClass(files[i], true);
+                    try {     
                          JInternalFrame pregunta = (JInternalFrame)c.newInstance(); 
                          dskPanel.add(pregunta);
                          ((Pregunta) pregunta).insertarInfo();

@@ -1,11 +1,16 @@
+
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+
 
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
+import GUI.frmCrearExamen;
+import GUI.frmListaExamen;
+import examen.Main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -17,6 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 /**
@@ -207,7 +213,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         dskPanel.add(frmCrearExamen);
-        frmCrearExamen.setBounds(0, 0, 384, 488);
+        frmCrearExamen.setBounds(0, 0, 68, 488);
         frmCrearExamen.getAccessibleContext().setAccessibleParent(dskPanel);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -369,7 +375,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuSalirActionPerformed
 
     private void mnuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIniciarActionPerformed
-        JInternalFrame frame = new frmListaExamen();
+        JInternalFrame frame = new frmListaExamen(dskPanel);
         frame.setVisible(true);
         dskPanel.add(frame);
     }//GEN-LAST:event_mnuIniciarActionPerformed
@@ -436,6 +442,18 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        try {
+            UIManager.setLookAndFeel( "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -447,7 +465,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCrear;
     private javax.swing.JButton btnGuardarCrear;
-    public static javax.swing.JDesktopPane dskPanel;
+    public javax.swing.JDesktopPane dskPanel;
     private javax.swing.JInternalFrame frmCrearExamen;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;

@@ -9,6 +9,7 @@ import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JInternalFrame;
 import GUI.*;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -18,33 +19,14 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     clsExamenes examenes = new clsExamenes();
     DefaultListModel modelo = new DefaultListModel();
-        
+    JDesktopPane dskPanel;
+    
     /**
      * Creates new form frmListaExamen
      */
-    public frmListaExamen() {
+    public frmListaExamen(Object arg) {
         initComponents();
-        clsExamen exa1=new clsExamen();
-        clsExamen exa2=new clsExamen();
-        clsExamen exa3=new clsExamen();
-        exa1.setsNombre("Investigacion de Operaciones");
-        
-        exa1.setsDescripcion("Todas estas preguntas tienen sus respuestas en el manual entregado de ejercicios. Lo mínimo que deben hacer es buscar en dicho documento la respuesta adecuada. Simplemente marquen en el mismo texto la respuesta y me envían el archivo en formato PDF al correo gerardo.brenes@gbsys.com con el asunto: Examen 2 y su nombre. O me envían un correo con solo las respuestas. Es INDIVIDUAL. Fecha/hora límite para el correo: Viernes 8/11/2013:12MD");
-        exa1.setdFecha("03/10/2013");
-        exa1.setiTotalPuntos(60);
-        exa1.setsProfesor("Oscar Viquez");
-        clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
-        sec1.setiTotalPuntos(10);
-        clsSeccion sec2= new clsSeccion("Seleccion Multiple","Selecione la/s respuesta correcta/s");
-        sec2.setiTotalPuntos(25);
-        clsSeccion sec3= new clsSeccion("Complete","Complete la frase");
-        sec3.setiTotalPuntos(30);
-        exa1.addSeccion(sec1);
-        exa1.addSeccion(sec2);
-        exa1.addSeccion(sec3);
-        
-        examenes.agregarExamen(exa1);
-        
+        dskPanel = (JDesktopPane)arg;
     }
 
     /**
@@ -103,8 +85,29 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
         this.setLocation(500, 50);
+        
+        clsExamen exa1=new clsExamen();
+        clsExamen exa2=new clsExamen();
+        clsExamen exa3=new clsExamen();
+        exa1.setsNombre("Investigacion de Operaciones");
+        
+        exa1.setsDescripcion("Todas estas preguntas tienen sus respuestas en el manual entregado de ejercicios. Lo mínimo que deben hacer es buscar en dicho documento la respuesta adecuada. Simplemente marquen en el mismo texto la respuesta y me envían el archivo en formato PDF al correo gerardo.brenes@gbsys.com con el asunto: Examen 2 y su nombre. O me envían un correo con solo las respuestas. Es INDIVIDUAL. Fecha/hora límite para el correo: Viernes 8/11/2013:12MD");
+        exa1.setdFecha("03/10/2013");
+        exa1.setiTotalPuntos(60);
+        exa1.setsProfesor("Oscar Viquez");
+        clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
+        sec1.setiTotalPuntos(10);
+        clsSeccion sec2= new clsSeccion("Seleccion Multiple","Selecione la/s respuesta correcta/s");
+        sec2.setiTotalPuntos(25);
+        clsSeccion sec3= new clsSeccion("Complete","Complete la frase");
+        sec3.setiTotalPuntos(30);
+        exa1.addSeccion(sec1);
+        exa1.addSeccion(sec2);
+        exa1.addSeccion(sec3);
+        
+        examenes.agregarExamen(exa1);
+        
         for (clsExamen exa : examenes.getExamenes()){
             modelo.addElement(exa.getsNombre());            
         }
@@ -114,12 +117,13 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame frame = new frmExamen(examenes.getExamenes().get(jListExamenes.getSelectedIndex()));
+        clsExamen insExamen = examenes.getExamenes().get(jListExamenes.getSelectedIndex());
+        JInternalFrame frame = new frmExamen(new Object[]{insExamen, dskPanel});
         frame.setVisible(true);
         
         frame.setTitle(examenes.getExamenes().get(jListExamenes.getSelectedIndex()).getiNumeroExamen()+"° Examen");
  
-        frmPrincipal.dskPanel.add(frame);
+        dskPanel.add(frame);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

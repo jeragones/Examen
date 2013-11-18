@@ -1,4 +1,4 @@
-package GUI;
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -9,13 +9,13 @@ package GUI;
  *
  * @author pc
  */
-public class Tester extends javax.swing.JInternalFrame implements Pregunta {
+public class SeleccionUnica extends javax.swing.JInternalFrame implements Pregunta {
 
     private String valor;
     /**
      * Creates new form Tester
      */
-    public Tester() {
+    public SeleccionUnica() {
         initComponents();
     }
 

@@ -9,6 +9,7 @@ package GUI;
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsSeccion;
 import javax.swing.DefaultListModel;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
 /**
@@ -19,26 +20,15 @@ public class frmExamen extends javax.swing.JInternalFrame {
 
     DefaultListModel modelo = new DefaultListModel();
     clsExamen exa = new clsExamen();
+    JDesktopPane dskPanel;
+    
     /**
      * Creates new form frmExamen
      */
-    public frmExamen(clsExamen exa) {
+    public frmExamen(Object[] args/*clsExamen exa*/) {
         initComponents();
-        this.exa=exa;
-        jLabelNombreExamen.setText(exa.getsNombre());
-        jLabelFecha.setText(jLabelFecha.getText()+" "+exa.getdFecha());
-        jLabelProfesor.setText("Profesor: "+exa.getsProfesor());
-        jLabelPuntos.setText(jLabelPuntos.getText()+" " +exa.getiTotalPuntos());
-        
-        jTextAreaDescripcion.setText(exa.getsDescripcion());
-        for(clsSeccion sec:exa.getAlSecciones()){
-            modelo.addElement(sec.getsNombre());
-            
-        }
-        jListSecciones.setModel(modelo);
-        
-        
-       
+        exa = (clsExamen)args[0];
+        dskPanel = (JDesktopPane)args[1];
     }
 
     /**
@@ -258,9 +248,19 @@ public class frmExamen extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
-        this.setLocation(500, 20);
         
+        this.setLocation(500, 20);
+        jLabelNombreExamen.setText(exa.getsNombre());
+        jLabelFecha.setText(jLabelFecha.getText()+" "+exa.getdFecha());
+        jLabelProfesor.setText("Profesor: "+exa.getsProfesor());
+        jLabelPuntos.setText(jLabelPuntos.getText()+" " +exa.getiTotalPuntos());
+        
+        jTextAreaDescripcion.setText(exa.getsDescripcion());
+        for(clsSeccion sec:exa.getAlSecciones()){
+            modelo.addElement(sec.getsNombre());
+            
+        }
+        jListSecciones.setModel(modelo);
     }//GEN-LAST:event_formComponentShown
 
     private void jListSeccionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListSeccionesValueChanged
@@ -277,7 +277,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
         
         JInternalFrame frame = new frmPregunta(sec);
         frame.show();
-        frmPrincipal.dskPanel.add(frame);
+        dskPanel.add(frame);
         this.hide();
         
         

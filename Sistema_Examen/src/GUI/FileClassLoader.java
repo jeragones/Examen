@@ -34,28 +34,30 @@ public class FileClassLoader extends ClassLoader {
 
     // Since all support classes of loaded class use same class loader
     // must check subclass cache of classes for things like Object
-
+      String h = name.getName().substring(0, name.getName().length()-6);
     Class c = findLoadedClass (name.getName().substring(0, name.getName().length()-6));
+
     if (c == null) {
       try {
         c = findSystemClass (name.getName().substring(0, name.getName().length()-6));
       } catch (Exception e) {
       }
     }
-
+    
     if (c == null) {
       // Convert class name argument to filename
       // Convert package names into subdirectories
-      /*String*/File filename = name;//.replace ('.', File.separatorChar) + ".class";
+//      /*String*/File filename = name;//.replace ('.', File.separatorChar) + ".class";
 
       try {
-        byte data[] = loadClassData(filename);
-        c = defineClass (name.getName().substring(0, name.getName().length()-6), data, 0, data.length);
+        byte data[] = loadClassData(name);
+        String yy = name.getName();
+        c = defineClass (h/*name.getName().substring(0, name.getName().length()-6)*/, data, 0, data.length);
         if (c == null) {
               throw new ClassNotFoundException (name.getName().substring(0, name.getName().length()-6));
           }
       } catch (IOException e) {
-        throw new ClassNotFoundException ("Error reading file: " + filename);
+        throw new ClassNotFoundException ("Error reading file: " + /*filename*/name);
       }
     }
     if (resolve) {
@@ -63,6 +65,7 @@ public class FileClassLoader extends ClassLoader {
         }
     return c;
   }
+  
   private byte[] loadClassData (/*Strin*/File filename) 
       throws IOException {
 

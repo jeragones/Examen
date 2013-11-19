@@ -9,6 +9,7 @@ import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JInternalFrame;
 import GUI.*;
+import Preguntas.SeleccionUnica;
 import javax.swing.JDesktopPane;
 
 /**
@@ -98,6 +99,8 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.setsProfesor("Oscar Viquez");
         clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
         sec1.setiTotalPuntos(10);
+        SeleccionUnica preg1 =new SeleccionUnica();
+        preg1.insertarInfo();
         clsSeccion sec2= new clsSeccion("Seleccion Multiple","Selecione la/s respuesta correcta/s");
         sec2.setiTotalPuntos(25);
         clsSeccion sec3= new clsSeccion("Complete","Complete la frase");

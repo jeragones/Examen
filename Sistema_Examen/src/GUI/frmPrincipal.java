@@ -12,6 +12,7 @@ import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
 import GUI.frmCrearExamen;
 import GUI.frmListaExamen;
+import Preguntas.Complete;
 import examen.Main;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -414,7 +415,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuUsuarioActionPerformed
 
     private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
-        
+        JInternalFrame temp = new Complete();
+        dskPanel.add(temp);
+        temp.show();
     }//GEN-LAST:event_mnuModificarActionPerformed
 
     /**

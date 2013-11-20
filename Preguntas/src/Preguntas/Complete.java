@@ -6,6 +6,9 @@
 
 package Preguntas;
 
+import java.awt.Dimension;
+import javax.swing.JTextField;
+
 /**
  *
  * @author GeOrge
@@ -28,33 +31,128 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        pnlInsertar = new javax.swing.JPanel();
+        pnlPregunta = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cmbEstructura = new javax.swing.JComboBox();
+        jPanel2 = new javax.swing.JPanel();
 
-        jButton1.setText("miko");
+        setTitle("Complete -");
+
+        pnlPregunta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pregunta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        pnlPregunta.setPreferredSize(new java.awt.Dimension(290, 95));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setText("Estructura:");
+
+        cmbEstructura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Respuesta - Pregunta", "Pregunta - Respuesta - Pregunta", "Pregunta - Respuesta" }));
+        cmbEstructura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbEstructuraMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlPreguntaLayout = new javax.swing.GroupLayout(pnlPregunta);
+        pnlPregunta.setLayout(pnlPreguntaLayout);
+        pnlPreguntaLayout.setHorizontalGroup(
+            pnlPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPreguntaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(cmbEstructura, 0, 177, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlPreguntaLayout.setVerticalGroup(
+            pnlPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPreguntaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cmbEstructura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Respuesta Correcta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel2.setPreferredSize(new java.awt.Dimension(290, 95));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pnlInsertarLayout = new javax.swing.GroupLayout(pnlInsertar);
+        pnlInsertar.setLayout(pnlInsertarLayout);
+        pnlInsertarLayout.setHorizontalGroup(
+            pnlInsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInsertarLayout.createSequentialGroup()
+                .addGroup(pnlInsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlInsertarLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(pnlPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlInsertarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlInsertarLayout.setVerticalGroup(
+            pnlInsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInsertarLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(pnlPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jButton1)
-                .addContainerGap(223, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(pnlInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jButton1)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addComponent(pnlInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void cmbEstructuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbEstructuraMouseClicked
+        JTextField txtPregunta1 = null;
+        JTextField txtRespuesta = null;
+        switch(cmbEstructura.getSelectedIndex()) {
+            case 0:
+                txtRespuesta =  texto(new Dimension(50, 13), 20, 40);
+                txtPregunta1 = texto(new Dimension(100, 13), 20, 10);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        pnlPregunta.add(txtRespuesta);
+        pnlPregunta.add(txtPregunta1);
+    }//GEN-LAST:event_cmbEstructuraMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox cmbEstructura;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pnlInsertar;
+    private javax.swing.JPanel pnlPregunta;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -80,5 +178,12 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     @Override
     public int getValor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private JTextField texto(Dimension dtamano, int x, int y) {
+        JTextField txtTexto = new JTextField();
+        txtTexto.setSize(dtamano);
+        txtTexto.setLocation(x, y);
+        return txtTexto;
     }
 }

@@ -71,7 +71,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(5, 5, 5)
                         .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -90,7 +90,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Respuesta Correcta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
-        cmbRespuesta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cmbRespuesta.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         cmbRespuesta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Verdadero", "Falso" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -158,7 +158,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                 .addGap(10, 10, 10))
         );
 
-        lblPregunta.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblPregunta.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         lblPregunta.setText("Pregunta");
 
         btnSiguiente.setBackground(new java.awt.Color(255, 255, 255));
@@ -172,8 +172,10 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
         pnlOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
+        rdbVerdadero.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         rdbVerdadero.setText("Verdadero");
 
+        rdbFalso.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         rdbFalso.setText("Falso");
 
         javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);

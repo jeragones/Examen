@@ -48,9 +48,18 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         jPanel5 = new javax.swing.JPanel();
         txtOpcion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        txtPuntos = new javax.swing.JTextField();
+        txtPuntos = new javax.swing.JSpinner();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        panelMostrar = new javax.swing.JPanel();
+        labelEnunciado = new javax.swing.JLabel();
+        labelPuntos = new javax.swing.JLabel();
+        op1 = new javax.swing.JRadioButton();
+        op2 = new javax.swing.JRadioButton();
+        op4 = new javax.swing.JRadioButton();
+        op3 = new javax.swing.JRadioButton();
+        siguiente = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Selección Ùnica - ");
@@ -74,7 +83,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
                 .addComponent(txtPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,17 +150,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
                 .addContainerGap())
         );
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
-
-        txtPuntos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -159,16 +158,29 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCrearLayout = new javax.swing.GroupLayout(PanelCrear);
         PanelCrear.setLayout(PanelCrearLayout);
@@ -180,11 +192,12 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(34, 34, 34))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         PanelCrearLayout.setVerticalGroup(
@@ -198,8 +211,79 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        labelEnunciado.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelEnunciado.setText("Pregunta");
+
+        labelPuntos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        labelPuntos.setText("Puntos");
+
+        op1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        op1.setText("jRadioButton1");
+
+        op2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        op2.setText("jRadioButton1");
+
+        op4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        op4.setText("jRadioButton1");
+
+        op3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        op3.setText("jRadioButton1");
+
+        siguiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        siguiente.setText("Siguiente");
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMostrarLayout = new javax.swing.GroupLayout(panelMostrar);
+        panelMostrar.setLayout(panelMostrarLayout);
+        panelMostrarLayout.setHorizontalGroup(
+            panelMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMostrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMostrarLayout.createSequentialGroup()
+                        .addComponent(op4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(siguiente))
+                    .addGroup(panelMostrarLayout.createSequentialGroup()
+                        .addGroup(panelMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(op2)
+                            .addComponent(op1)
+                            .addComponent(labelEnunciado)
+                            .addComponent(labelPuntos)
+                            .addComponent(op3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelMostrarLayout.setVerticalGroup(
+            panelMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMostrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelEnunciado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelPuntos)
+                .addGap(18, 18, 18)
+                .addComponent(op1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(op2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(op3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(op4)
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMostrarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(siguiente)
                 .addContainerGap())
         );
 
@@ -209,14 +293,18 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -230,48 +318,79 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-      
+        this.enunciado=txtPregunta.getText();
+        this.respuesta=txtRespuesta.getText();
+        this.puntos=(int)txtPuntos.getValue();
                 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_siguienteActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        eliminarInfo();
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelCrear;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel labelEnunciado;
+    private javax.swing.JLabel labelPuntos;
+    private javax.swing.JRadioButton op1;
+    private javax.swing.JRadioButton op2;
+    private javax.swing.JRadioButton op3;
+    private javax.swing.JRadioButton op4;
+    private javax.swing.JPanel panelMostrar;
+    private javax.swing.JButton siguiente;
     private javax.swing.JTextField txtOpcion;
     private javax.swing.JTextField txtPregunta;
-    private javax.swing.JTextField txtPuntos;
+    private javax.swing.JSpinner txtPuntos;
     private javax.swing.JTextField txtRespuesta;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void insertarInfo() {
-        this.enunciado=txtPregunta.getText();
-        this.respuesta=txtRespuesta.getText();
-        this.puntos=Integer.parseInt(txtPuntos.getText());
+        this.PanelCrear.setVisible(true);
+        this.panelMostrar.setVisible(false);
+        this.show();
         
     }
 
     @Override
     public void eliminarInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.enunciado="";
+        this.respuesta="";
+        this.opciones=null;
+        this.puntos=0;
     }
 
     @Override
     public boolean evaluarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        if(this.respuestaUsuario.equals(this.respuesta)){
+            return true;
+        }
+        else {
+            return false;
+        }
+        }
 
     @Override
     public void desplegarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.PanelCrear.setVisible(false);
+        this.panelMostrar.setVisible(true);
+        this.show();
     }
 
     @Override

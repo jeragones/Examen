@@ -266,13 +266,16 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
         if(cmbTipo.getSelectedItem().toString().equals("Cargar...")) {
-            FileClassLoader loader = new FileClassLoader(".");
+            
             try{ 
+//                File(".").getAbsolutePath()
                 if (fcArchivo.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ){
+                    FileClassLoader loader = new FileClassLoader(fcArchivo.getSelectedFile().getPath());
                     Class c = null;
                     File[] files = fcArchivo.getSelectedFiles();
+                    c = loader.loadClass(files[0].getName());
                     for (int i=0; i<files.length; i++)
-                        c = loader.loadClass(files[i], true);
+//                        c = loader.loadClass(files[i], true);
                     try {     
                          JInternalFrame pregunta = (JInternalFrame)c.newInstance(); 
                          dskPanel.add(pregunta);

@@ -43,8 +43,10 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        popMenu = new javax.swing.JPopupMenu();
         mnuAgregar = new javax.swing.JMenuItem();
+        mnuModificar = new javax.swing.JMenuItem();
+        mnuEliminar = new javax.swing.JMenuItem();
         pnlDescScrollCrear = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         txtNombre = new javax.swing.JTextField();
@@ -58,7 +60,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         lblNombre1 = new javax.swing.JLabel();
         txtProfesor = new javax.swing.JTextField();
         lblNombre2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbExamen = new javax.swing.JComboBox();
 
         mnuAgregar.setText("Agregar");
         mnuAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +68,14 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
                 mnuAgregarActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(mnuAgregar);
+        popMenu.add(mnuAgregar);
+
+        mnuModificar.setText("Modificar");
+        popMenu.add(mnuModificar);
+        mnuModificar.getAccessibleContext().setAccessibleParent(popMenu);
+
+        mnuEliminar.setText("Eliminar");
+        popMenu.add(mnuEliminar);
 
         setClosable(true);
         setTitle("Nuevo Examen");
@@ -146,7 +155,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        lstSecciones.setComponentPopupMenu(jPopupMenu1);
+        lstSecciones.setComponentPopupMenu(popMenu);
         lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lstSeccionesMouseEntered(evt);
@@ -159,9 +168,9 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         pnlListaCrearLayout.setHorizontalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
-                .addGap(5, 5, 5))
+                .addGap(10, 10, 10))
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -171,10 +180,10 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(btnAgregar)
-                .addGap(5, 5, 5))
+                .addGap(10, 10, 10))
         );
 
         lblNombre1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -189,7 +198,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         lblNombre2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblNombre2.setText("Parcial:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I", "II", "III", "IV" }));
+        cmbExamen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I", "II", "III", "IV" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,24 +207,23 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblNombre1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtProfesor))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(pnlDescScrollCrear)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblDescripcionCrear)
-                                .addComponent(pnlListaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNombre2)
-                                    .addGap(14, 14, 14)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNombre1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProfesor))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlDescScrollCrear)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescripcionCrear)
+                            .addComponent(pnlListaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombre2)
+                                .addGap(14, 14, 14)
+                                .addComponent(cmbExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -236,7 +244,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(lblDescripcionCrear)
                 .addGap(5, 5, 5)
@@ -277,13 +285,8 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_mnuAgregarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        clsVentana insVentana = new clsVentana();
-        
         this.setLocation(550, 20);
         txtDescripcion.setLineWrap(true);
-        
-        //lstSecciones.setModel(insVentana.addItem(insExamen.getAlSecciones().toArray(), lstSecciones.getModel()));
-        
     }//GEN-LAST:event_formComponentShown
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -326,8 +329,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JComboBox cmbExamen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescripcionCrear;
     private javax.swing.JLabel lblNombre;
@@ -335,8 +337,11 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNombre2;
     private javax.swing.JList lstSecciones;
     private javax.swing.JMenuItem mnuAgregar;
+    private javax.swing.JMenuItem mnuEliminar;
+    private javax.swing.JMenuItem mnuModificar;
     private javax.swing.JScrollPane pnlDescScrollCrear;
     private javax.swing.JPanel pnlListaCrear;
+    private javax.swing.JPopupMenu popMenu;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtProfesor;

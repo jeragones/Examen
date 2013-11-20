@@ -50,9 +50,8 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        mnuAgregar = new javax.swing.JMenuItem();
         fcArchivo = new javax.swing.JFileChooser();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         txtNombre = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         lblDescripcionCrear = new javax.swing.JLabel();
@@ -66,15 +65,10 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         lblNombre1 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox();
 
-        mnuAgregar.setText("Agregar");
-        mnuAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuAgregarActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(mnuAgregar);
-
         fcArchivo.setMultiSelectionEnabled(true);
+
+        jPopupMenu1.setInheritsPopupMenu(true);
+        jPopupMenu1.setLabel("Agregar");
 
         setClosable(true);
         setTitle("Nueva Sección");
@@ -116,6 +110,9 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
         lstPreguntas.setComponentPopupMenu(jPopupMenu1);
         lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstPreguntasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lstPreguntasMouseEntered(evt);
             }
@@ -231,10 +228,6 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        
-    }//GEN-LAST:event_mnuAgregarActionPerformed
-
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         this.setLocation(600, 40);
         txtDescripcion.setLineWrap(true);
@@ -278,6 +271,8 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                         JInternalFrame j = (JInternalFrame) c.newInstance();
                         dskPanel.add(j);
                         ((Pregunta) j).insertarInfo();
+                        j.setTitle(j.getTitle()+" Nueva Pregunta");
+                        j.pack();
                     } catch (InstantiationException ex) {
                         Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IllegalAccessException ex) {
@@ -289,6 +284,10 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_cmbTipoActionPerformed
+
+    private void lstPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseClicked
+        
+    }//GEN-LAST:event_lstPreguntasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -302,7 +301,6 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JList lstPreguntas;
-    private javax.swing.JMenuItem mnuAgregar;
     private javax.swing.JScrollPane pnlDescScrollCrear;
     private javax.swing.JPanel pnlListaCrear;
     private javax.swing.JTextArea txtDescripcion;

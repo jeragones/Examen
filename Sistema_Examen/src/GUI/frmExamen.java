@@ -11,6 +11,7 @@ import Estructuras_de_Datos.clsSeccion;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+import javax.swing.ListModel;
 
 /**
  *
@@ -275,10 +276,16 @@ public class frmExamen extends javax.swing.JInternalFrame {
         clsSeccion sec =exa.getAlSecciones().get(jListSecciones.getSelectedIndex());
         System.err.println(sec.getsNombre()+" "+sec.getsDescripcion());
         
-        JInternalFrame frame = new frmPregunta(sec);
+        /*
+        ListModel model = jListSecciones.getModel();
+        String seccion=model.getElementAt(jListSecciones.getSelectedIndex()).toString();
+        System.err.println(seccion);
+        */
+        
+        JInternalFrame frame = new frmPreguntas(sec);
         frame.show();
         dskPanel.add(frame);
-        this.hide();
+        //this.hide();
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

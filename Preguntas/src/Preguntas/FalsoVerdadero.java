@@ -265,7 +265,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         sPregunta = txtPregunta.getText();
-        iValor = (int)spnValor.getValue();
+        iValor = (Integer)spnValor.getValue();
         if(cmbRespuesta.getSelectedIndex() == 0)
             bRespuesta = true;
         else 

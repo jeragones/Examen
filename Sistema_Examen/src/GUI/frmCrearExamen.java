@@ -8,6 +8,7 @@ package GUI;
 
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
+import Estructuras_de_Datos.clsPreguntas;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -26,12 +27,14 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     JLabel lblBarraEstado;
     clsExamenes insExamenes;
     clsExamen insExamen = new clsExamen();
+    clsPreguntas insPregunta;
     
     public frmCrearExamen(Object[] args) {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         lblBarraEstado = (JLabel)args[1];
         insExamenes = (clsExamenes)args[2];
+        insPregunta = (clsPreguntas)args[3];
     }
 
     /**
@@ -273,13 +276,13 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, /*lstSecciones, insExamen,*/ insPregunta});
         dskPanel.add(insFrame);
         insFrame.show();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, /*lstSecciones, insExamen,*/ insPregunta});
         dskPanel.add(insFrame);
         insFrame.show();
     }//GEN-LAST:event_mnuAgregarActionPerformed

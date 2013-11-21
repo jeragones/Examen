@@ -12,8 +12,7 @@ import Estructuras_de_Datos.clsSeccion;
 import Preguntas.Pregunta;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
@@ -30,18 +29,21 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
      * Creates new form frmCrearSeccion
      */
     
-    JDesktopPane dskPanel;
-    JLabel lblBarraEstado;
-    JList lstSecciones;
-    clsExamen insExamen;
-    clsPreguntas insPregunta = new clsPreguntas();
+    private JDesktopPane dskPanel;
+    private JLabel lblBarraEstado;
+    //JList lstSecciones;
+//    private clsExamen insExamen;
+    private clsPreguntas insPregunta;
+    private clsSeccion insSeccion;
+    private ArrayList<Pregunta> preguntas = new ArrayList<>();
     
     public frmCrearSeccion(Object[] args) {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         lblBarraEstado = (JLabel)args[1];
-        lstSecciones = (JList)args[2];
-        insExamen = (clsExamen)args[3];
+//        lstSecciones = (JList)args[2];
+//        insExamen = (clsExamen)args[3];
+        insPregunta = (clsPreguntas)args[2]; //(clsPreguntas)args[4];
     }
 
     /**
@@ -64,9 +66,9 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         pnlDescScrollCrear = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         pnlListaCrear = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstPreguntas = new javax.swing.JList();
         btnAgregar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstPreguntas = new javax.swing.JList();
         btnGuardar = new javax.swing.JButton();
         lblNombre1 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox();
@@ -77,15 +79,26 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         popMenu.setLabel("Agregar");
 
         mnuAgregar.setText("Agregar");
+        mnuAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAgregarActionPerformed(evt);
+            }
+        });
         popMenu.add(mnuAgregar);
 
-        mnuModificar.setText("jMenuItem1");
+        mnuModificar.setText("Modificar");
+        mnuModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModificarActionPerformed(evt);
+            }
+        });
         popMenu.add(mnuModificar);
 
-        mnuEliminar.setText("jMenuItem2");
+        mnuEliminar.setText("Eliminar");
         popMenu.add(mnuEliminar);
 
         setClosable(true);
+        setResizable(true);
         setTitle("Nueva Sección");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -123,17 +136,6 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
 
-        lstPreguntas.setComponentPopupMenu(popMenu);
-        lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstPreguntasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lstPreguntasMouseEntered(evt);
-            }
-        });
-        jScrollPane2.setViewportView(lstPreguntas);
-
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -143,24 +145,37 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
 
+        lstPreguntas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "", "" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        lstPreguntas.setComponentPopupMenu(popMenu);
+        lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lstPreguntasMouseEntered(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstPreguntas);
+
         javax.swing.GroupLayout pnlListaCrearLayout = new javax.swing.GroupLayout(pnlListaCrear);
         pnlListaCrear.setLayout(pnlListaCrearLayout);
         pnlListaCrearLayout.setHorizontalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListaCrearLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAgregar)))
+                    .addGroup(pnlListaCrearLayout.createSequentialGroup()
+                        .addGap(0, 159, Short.MAX_VALUE)
+                        .addComponent(btnAgregar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         pnlListaCrearLayout.setVerticalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(btnAgregar)
                 .addGap(10, 10, 10))
@@ -222,7 +237,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre1)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(pnlListaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnGuardar)
@@ -233,24 +248,43 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+        try {
+            Class cClase = insPregunta.getPreguntas().get(cmbTipo.getSelectedIndex());
+            JInternalFrame frame = (JInternalFrame) cClase.newInstance();
+            dskPanel.add(frame);
+            ((Pregunta) frame).insertarInfo();
+            frame.setTitle(frame.getTitle() + " Nueva Pregunta");
+            frame.pack();
+            preguntas.add((Pregunta)frame);
+            
+            DefaultListModel model = new DefaultListModel();
+            for(int i=0; i < lstPreguntas.getModel().getSize() ; i++)
+                model.addElement(lstPreguntas.getModel().getElementAt(i));
+            model.addElement("Pregunta");
+            lstPreguntas.setModel(model);
+        } catch (InstantiationException ex) {
+        } catch (IllegalAccessException ex) {
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        insExamen.addSeccion(new clsSeccion(txtNombre.getText(), txtDescripcion.getText()));
-        clsVentana insVentana = new clsVentana();
-        lstSecciones.setModel(insVentana.setItems(insExamen.getAlSecciones().toArray()));
+        insSeccion = new clsSeccion(txtNombre.getText(), txtDescripcion.getText());
+        insSeccion.setAlPreguntas(preguntas);
+//        insExamen.addSeccion();
+//        clsVentana insVentana = new clsVentana();
+//        lstSecciones.setModel(insVentana.setItems(insExamen.getAlSecciones().toArray()));
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         this.setLocation(600, 40);
         txtDescripcion.setLineWrap(true);
+        ArrayList<Class> lcLista = insPregunta.getPreguntas();
+        if(lcLista.size() != 0) {
+            for(int i=lcLista.size()-1; i >= 0; i--) 
+                cmbTipo.insertItemAt(lcLista.get(i).getName().substring(10), 0);
+        }
     }//GEN-LAST:event_formComponentShown
-
-    private void lstPreguntasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseEntered
-        lblBarraEstado.setText("Click derecho para agregar una pregunta");
-    }//GEN-LAST:event_lstPreguntasMouseEntered
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
         clsVentana ventana = new clsVentana();
@@ -282,33 +316,54 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                     for (int i = 0; i < fArchivos.length; i++)
                         cClase = fcCargar.loadClass1(fArchivos[i], true);
                     
-                    
                     ArrayList<Class> lcLista = insPregunta.getPreguntas();
                     boolean bTemp = true;
                     for(int i=0; i < lcLista.size(); i++) {
-                        if(lcLista.get(i).equals(cClase))
+                        if(lcLista.get(i).getName().equals(cClase.getName()))
                             bTemp = false;
                     }
                     if(bTemp) {
                         insPregunta.addPregunta(cClase);
                         cmbTipo.insertItemAt(cClase.getName().substring(10), 0);
-//                        try {
-//                            JInternalFrame frame = (JInternalFrame) cClase.newInstance();
-//                            dskPanel.add(frame);
-//                            ((Pregunta) frame).insertarInfo();
-//                            frame.setTitle(frame.getTitle()+" Nueva Pregunta");
-//                            frame.pack();
-//                        } catch (InstantiationException ex) {
-//                        } catch (IllegalAccessException ex) { }
                     }
                 }
             } catch (ClassNotFoundException ex) { }
         }
     }//GEN-LAST:event_cmbTipoActionPerformed
 
-    private void lstPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseClicked
-        
-    }//GEN-LAST:event_lstPreguntasMouseClicked
+    private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
+        try {
+            Class cClase = insPregunta.getPreguntas().get(cmbTipo.getSelectedIndex());
+            JInternalFrame frame = (JInternalFrame) cClase.newInstance();
+            dskPanel.add(frame);
+            ((Pregunta) frame).insertarInfo();
+            frame.setTitle(frame.getTitle() + " Nueva Pregunta");
+            frame.pack();
+            preguntas.add((Pregunta)frame);
+            
+            DefaultListModel model = new DefaultListModel();
+            for(int i=0; i < lstPreguntas.getModel().getSize() ; i++)
+                model.addElement(lstPreguntas.getModel().getElementAt(i));
+            model.addElement("Pregunta");
+            lstPreguntas.setModel(model);
+        } catch (InstantiationException ex) {
+        } catch (IllegalAccessException ex) {
+        }
+    }//GEN-LAST:event_mnuAgregarActionPerformed
+
+    private void lstPreguntasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseEntered
+        lblBarraEstado.setText("Click derecho para agregar una sección");
+    }//GEN-LAST:event_lstPreguntasMouseEntered
+
+    private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
+        int y = lstPreguntas.getSelectedIndex()-1;
+        JInternalFrame frame = (JInternalFrame)preguntas.get(lstPreguntas.getSelectedIndex()-1);
+        ((Pregunta) frame).insertarInfo();
+    }//GEN-LAST:event_mnuModificarActionPerformed
+
+    public clsSeccion getInsSeccion() {
+        return insSeccion;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,7 +371,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JFileChooser fcArchivo;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescripcionCrear;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;

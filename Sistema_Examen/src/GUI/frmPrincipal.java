@@ -7,11 +7,8 @@ package GUI;
  * and open the template in the editor.
  */
 
-
-import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
-import GUI.frmCrearExamen;
-import GUI.frmListaExamen;
+import Estructuras_de_Datos.clsPreguntas;
 import Preguntas.Complete;
 import examen.Main;
 import java.awt.Color;
@@ -19,12 +16,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultDesktopManager;
-import javax.swing.DefaultListModel;
 import javax.swing.DesktopManager;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
@@ -39,12 +33,13 @@ public class frmPrincipal extends javax.swing.JFrame {
      */
     
     private clsExamenes insExamenes;
+    private clsPreguntas insPregunta = new clsPreguntas();
     
     public frmPrincipal(Object[] args) {
         initComponents();
-        if((String)args[0]=="")
+        if(((String)args[0]).equals(""))
             mnuSalir.setVisible(true);
-        else if ((String)args[0]=="Estudiante") {
+        else if (((String)args[0]).equals("Estudiante")) {
             mnuCrear.setVisible(false);
             mnuModificar.setVisible(false);
         } else
@@ -326,7 +321,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_dskPanelMouseEntered
 
     private void mnuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearActionPerformed
-        JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado, insExamenes});
+        JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado, insExamenes, insPregunta});
         dskPanel.add(frame);
         frame.show();
     }//GEN-LAST:event_mnuCrearActionPerformed
@@ -334,20 +329,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnAgregarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCrearMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCrearMouseEntered
-
-    private void algo(){
-        pnlDescScrollCrear.setVisible(false);
-        lblNombreCrear.setVisible(false);
-        lblDescripcionCrear.setVisible(false);
-        txtNombreCrear.setVisible(false);
-        lblNombreCrear.setText("Pregunta");
-        pnlListaCrear.setLocation(10, 10);
-        
-        TitledBorder titledBorder = BorderFactory.createTitledBorder("Preguntas");
-        titledBorder.setTitleColor(new Color(26367));
-        pnlListaCrear.setBorder(titledBorder);
-        repaint();
-    }
     
     private void btnAgregarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCrearActionPerformed
 

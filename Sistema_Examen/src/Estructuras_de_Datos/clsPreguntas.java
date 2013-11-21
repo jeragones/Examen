@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class clsPreguntas {
     
-    private ArrayList<Class> preguntas = new ArrayList();
+    private static ArrayList<Class> preguntas = new ArrayList();
 
     public void addPregunta(Class pregunta) {
         preguntas.add(pregunta);

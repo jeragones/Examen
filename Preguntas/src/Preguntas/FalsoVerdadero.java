@@ -254,6 +254,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
             bRespuesta = true;
         else 
             bRespuesta = false;
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

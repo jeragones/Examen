@@ -237,7 +237,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         op3.setText("jRadioButton1");
 
         siguiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        siguiente.setText("Siguiente");
+        siguiente.setText("Responder");
         siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 siguienteActionPerformed(evt);
@@ -326,6 +326,15 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         // TODO add your handling code here:
+        if (op1.isSelected())
+            respuestaUsuario=op1.getText();
+        else if (op2.isSelected())
+            respuestaUsuario=op2.getText();
+        else if (op3.isSelected())
+            respuestaUsuario=op3.getText();
+        else
+            respuestaUsuario=op4.getText();
+        this.dispose();
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -390,6 +399,12 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
     public void desplegarPregunta() {
         this.PanelCrear.setVisible(false);
         this.panelMostrar.setVisible(true);
+        labelEnunciado.setText("¿"+this.enunciado+"?");
+        labelPuntos.setText(this.puntos+" Puntos");
+        op1.setText(opciones.get(0));
+        op2.setText(opciones.get(1));
+        op3.setText(opciones.get(2));
+        op4.setText(opciones.get(4));
         this.show();
     }
 

@@ -95,6 +95,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         popMenu.add(mnuModificar);
 
         mnuEliminar.setText("Eliminar");
+        mnuEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEliminarActionPerformed(evt);
+            }
+        });
         popMenu.add(mnuEliminar);
 
         setClosable(true);
@@ -145,13 +150,11 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
 
-        lstPreguntas.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "", "" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         lstPreguntas.setComponentPopupMenu(popMenu);
         lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstPreguntasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lstPreguntasMouseEntered(evt);
             }
@@ -166,7 +169,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListaCrearLayout.createSequentialGroup()
-                        .addGap(0, 159, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -210,7 +213,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDescripcionCrear)
-                    .addComponent(pnlDescScrollCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                    .addComponent(pnlDescScrollCrear)
                     .addComponent(pnlListaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNombre)
@@ -356,10 +359,30 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lstPreguntasMouseEntered
 
     private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
-        int y = lstPreguntas.getSelectedIndex()-1;
-        JInternalFrame frame = (JInternalFrame)preguntas.get(lstPreguntas.getSelectedIndex()-1);
+        JInternalFrame frame = (JInternalFrame)preguntas.get(lstPreguntas.getSelectedIndex());
+        dskPanel.add(frame);
         ((Pregunta) frame).insertarInfo();
+        frame.pack();
     }//GEN-LAST:event_mnuModificarActionPerformed
+
+    private void lstPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lstPreguntasMouseClicked
+
+    private void mnuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarActionPerformed
+        DefaultListModel model = (DefaultListModel) lstPreguntas.getModel();
+        int selectedIndex = lstPreguntas.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < model.getSize()) 
+            model.remove(selectedIndex);
+        preguntas.remove(selectedIndex);
+        
+//        if(lstPreguntas.getSelectedIndex()-2 > -1)
+//            lstPreguntas.remove(lstPreguntas.getSelectedIndex()-2);
+//        
+//        DefaultListModel model = (DefaultListModel)lstPreguntas.getModel();
+//        model.removeElementAt(lstPreguntas.getSelectedIndex()-2);
+//        lstPreguntas.setModel(model);  
+    }//GEN-LAST:event_mnuEliminarActionPerformed
 
     public clsSeccion getInsSeccion() {
         return insSeccion;

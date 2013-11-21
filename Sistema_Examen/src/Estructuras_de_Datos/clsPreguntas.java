@@ -10,18 +10,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jdbr
+ * @author GeOrge
  */
-public class clsExamenes {
-    private ArrayList<clsExamen> Examenes = new ArrayList();
- 
-    public void addExamen(clsExamen examen){
-        Examenes.add(examen);
+public class clsPreguntas {
+    
+    private ArrayList<Class> preguntas = new ArrayList();
+
+    public void addPregunta(Class pregunta) {
+        preguntas.add(pregunta);
     }
     
-    public ArrayList<clsExamen> getExamenes(){
-        return Examenes;
+    public ArrayList<Class> getPreguntas() {
+        return preguntas;
     }
-    
-    
 }

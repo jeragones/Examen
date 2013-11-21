@@ -259,29 +259,25 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
         if(cmbTipo.getSelectedItem().toString().equals("Cargar...")) {
-            FileClassLoader loader = new FileClassLoader(".");
+            FileClassLoader cargar = new FileClassLoader(".");
             try{ 
                 if (fcArchivo.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                    Class c = null;
-                    File[] files = fcArchivo.getSelectedFiles();
-                    for (int i = 0; i < files.length; i++) {
-                        c = loader.loadClass1(files[i], true);
+                    Class clase = null;
+                    File[] archivos = fcArchivo.getSelectedFiles();
+                    for (int i = 0; i < archivos.length; i++) {
+                        clase = cargar.loadClass1(archivos[i], true);
                     }
                     try {
-                        JInternalFrame j = (JInternalFrame) c.newInstance();
-                        dskPanel.add(j);
-                        ((Pregunta) j).insertarInfo();
-                        j.setTitle(j.getTitle()+" Nueva Pregunta");
-                        j.pack();
+                        
+                        JInternalFrame frame = (JInternalFrame) clase.newInstance();
+                        dskPanel.add(frame);
+                        ((Pregunta) frame).insertarInfo();
+                        frame.setTitle(frame.getTitle()+" Nueva Pregunta");
+                        frame.pack();
                     } catch (InstantiationException ex) {
-                        Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IllegalAccessException ex) {
-                        Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } catch (IllegalAccessException ex) { }
                 }
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(frmCrearSeccion.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (ClassNotFoundException ex) { }
         }
     }//GEN-LAST:event_cmbTipoActionPerformed
 

@@ -109,7 +109,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.addSeccion(sec2);
         exa1.addSeccion(sec3);
         
-        examenes.agregarExamen(exa1);
+        examenes.addExamen(exa1);
         
         for (clsExamen exa : examenes.getExamenes()){
             modelo.addElement(exa.getsNombre());            

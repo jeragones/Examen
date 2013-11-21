@@ -299,7 +299,7 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
         switch(iTipo) {
             case 0:
                 rvRespuesta = texto("Escriba la palabra faltante de la oración", new Dimension(70, 27), 10, 33);
-                lblPregunta = label(asPregunta[0], rvRespuesta.getSize().width + 20, 35, 100);
+                lblPregunta = label(asPregunta[0], rvRespuesta.getSize().width + 20, 35, 30);
                 break;
             case 1:
                 lblPregunta = label(asPregunta[0], 10, 35, 100);
@@ -405,10 +405,14 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     }
     
     private JLabel label(String texto, int x, int y, int limite) {
+        JLabel label;
         if(texto.length() > limite) {
+            String cadena1 = texto.substring(0, limite-1);
+            String cadena2 = texto.substring(limite);
+            texto = "<html>" + cadena1 + "<br>" + cadena2 + "</html>";
         }
+        label = new JLabel(texto);
         
-        JLabel label = new JLabel(texto);
         label.setToolTipText("Respuesta que completa la oración");
         label.setSize(new Dimension(texto.length() * 7, 25));
         label.setLocation(x, y);

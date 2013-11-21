@@ -31,8 +31,6 @@ public class FileClassLoader extends ClassLoader {
 
     public Class loadClass1(File name, boolean resolve)
             throws ClassNotFoundException {
- // Since all support classes of loaded class use same class loader 
-        // must check subclass cache of classes for things like Object 
         Class c = findLoadedClass("Preguntas." + name.getName().substring(0,
                 name.getName().length() - 6));
         if (c == null) {

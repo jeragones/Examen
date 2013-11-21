@@ -264,7 +264,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        insExamenes.agregarExamen(insExamen);
+        insExamenes.addExamen(insExamen);
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 

@@ -6,7 +6,6 @@ package Estructuras_de_Datos;
 
 import Preguntas.Pregunta;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *

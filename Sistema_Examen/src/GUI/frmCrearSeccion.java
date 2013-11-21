@@ -7,9 +7,11 @@
 package GUI;
 
 import Estructuras_de_Datos.clsExamen;
+import Estructuras_de_Datos.clsPreguntas;
 import Estructuras_de_Datos.clsSeccion;
 import Preguntas.Pregunta;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -32,6 +34,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     JLabel lblBarraEstado;
     JList lstSecciones;
     clsExamen insExamen;
+    clsPreguntas insPregunta = new clsPreguntas();
     
     public frmCrearSeccion(Object[] args) {
         initComponents();
@@ -51,7 +54,10 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         fcArchivo = new javax.swing.JFileChooser();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        popMenu = new javax.swing.JPopupMenu();
+        mnuAgregar = new javax.swing.JMenuItem();
+        mnuModificar = new javax.swing.JMenuItem();
+        mnuEliminar = new javax.swing.JMenuItem();
         txtNombre = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         lblDescripcionCrear = new javax.swing.JLabel();
@@ -67,8 +73,17 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
         fcArchivo.setMultiSelectionEnabled(true);
 
-        jPopupMenu1.setInheritsPopupMenu(true);
-        jPopupMenu1.setLabel("Agregar");
+        popMenu.setInheritsPopupMenu(true);
+        popMenu.setLabel("Agregar");
+
+        mnuAgregar.setText("Agregar");
+        popMenu.add(mnuAgregar);
+
+        mnuModificar.setText("jMenuItem1");
+        popMenu.add(mnuModificar);
+
+        mnuEliminar.setText("jMenuItem2");
+        popMenu.add(mnuEliminar);
 
         setClosable(true);
         setTitle("Nueva Sección");
@@ -108,7 +123,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             }
         });
 
-        lstPreguntas.setComponentPopupMenu(jPopupMenu1);
+        lstPreguntas.setComponentPopupMenu(popMenu);
         lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstPreguntasMouseClicked(evt);
@@ -148,7 +163,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnAgregar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,7 +179,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         lblNombre1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblNombre1.setText("Tipo:");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selección Unica", "Doble Alternativa", "Cargar..." }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargar..." }));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoActionPerformed(evt);
@@ -176,7 +191,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDescripcionCrear)
@@ -190,28 +205,28 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
                         .addComponent(lblNombre1)
                         .addGap(10, 10, 10)
                         .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(lblDescripcionCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(pnlDescScrollCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre1)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(pnlListaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(btnGuardar)
-                .addGap(20, 20, 20))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -259,23 +274,33 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
         if(cmbTipo.getSelectedItem().toString().equals("Cargar...")) {
-            FileClassLoader cargar = new FileClassLoader(".");
+            FileClassLoader fcCargar = new FileClassLoader(".");
             try{ 
                 if (fcArchivo.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                    Class clase = null;
-                    File[] archivos = fcArchivo.getSelectedFiles();
-                    for (int i = 0; i < archivos.length; i++) {
-                        clase = cargar.loadClass1(archivos[i], true);
+                    Class cClase = null;
+                    File[] fArchivos = fcArchivo.getSelectedFiles();
+                    for (int i = 0; i < fArchivos.length; i++)
+                        cClase = fcCargar.loadClass1(fArchivos[i], true);
+                    
+                    
+                    ArrayList<Class> lcLista = insPregunta.getPreguntas();
+                    boolean bTemp = true;
+                    for(int i=0; i < lcLista.size(); i++) {
+                        if(lcLista.get(i).equals(cClase))
+                            bTemp = false;
                     }
-                    try {
-                        
-                        JInternalFrame frame = (JInternalFrame) clase.newInstance();
-                        dskPanel.add(frame);
-                        ((Pregunta) frame).insertarInfo();
-                        frame.setTitle(frame.getTitle()+" Nueva Pregunta");
-                        frame.pack();
-                    } catch (InstantiationException ex) {
-                    } catch (IllegalAccessException ex) { }
+                    if(bTemp) {
+                        insPregunta.addPregunta(cClase);
+                        cmbTipo.insertItemAt(cClase.getName().substring(10), 0);
+//                        try {
+//                            JInternalFrame frame = (JInternalFrame) cClase.newInstance();
+//                            dskPanel.add(frame);
+//                            ((Pregunta) frame).insertarInfo();
+//                            frame.setTitle(frame.getTitle()+" Nueva Pregunta");
+//                            frame.pack();
+//                        } catch (InstantiationException ex) {
+//                        } catch (IllegalAccessException ex) { }
+                    }
                 }
             } catch (ClassNotFoundException ex) { }
         }
@@ -291,14 +316,17 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JFileChooser fcArchivo;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDescripcionCrear;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JList lstPreguntas;
+    private javax.swing.JMenuItem mnuAgregar;
+    private javax.swing.JMenuItem mnuEliminar;
+    private javax.swing.JMenuItem mnuModificar;
     private javax.swing.JScrollPane pnlDescScrollCrear;
     private javax.swing.JPanel pnlListaCrear;
+    private javax.swing.JPopupMenu popMenu;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

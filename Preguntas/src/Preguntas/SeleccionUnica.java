@@ -332,9 +332,10 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    ArrayList<String> temp = new ArrayList<String>();
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        this.opciones.add(txtOpcion.getText());
+        temp.add(txtOpcion.getText());
         txtOpcion.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -343,10 +344,20 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         this.enunciado=txtPregunta.getText();
         this.respuesta=txtRespuesta.getText();
         this.puntos=(Integer)txtPuntos.getValue();
+        this.opciones=temp;
+        this.dispose();
                 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnContestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContestarActionPerformed
+        if (op1.isSelected())
+            this.respuestaUsuario=op1.getText();
+        else if (op2.isSelected())
+            this.respuestaUsuario=op2.getText();
+        else if (op3.isSelected())
+            this.respuestaUsuario=op3.getText();
+        else if (op4.isSelected())
+            this.respuestaUsuario=op4.getText();
         this.dispose();
     }//GEN-LAST:event_btnContestarActionPerformed
 

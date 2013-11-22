@@ -42,6 +42,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private int iPregunta;
     private int iSeccion;
     private boolean bContestar;
+    private frmPrincipal ventana;
     
     public frmPrincipal(Object[] args) {
         initComponents();
@@ -451,7 +452,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         bContestar = contestar;
         insExamen = examen;
     }
-    private frmPrincipal ventana;
+    
     public void setFrame(frmPrincipal frame) {
         ventana = frame;
     }

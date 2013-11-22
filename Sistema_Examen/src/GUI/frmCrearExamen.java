@@ -306,8 +306,8 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         insExamen.setiNumeroExamen(cmbExamen.getSelectedIndex());
         insExamen.setsDescripcion(txtDescripcion.getText());
         
-        for(int i=0; i < secciones.size(); i++)
-            insExamen.addSeccion(secciones.get(i));
+//        for(int i=0; i < secciones.size(); i++)
+//            insExamen.addSeccion(secciones.get(i));
 
 //        insExamen.addSeccion(null);
         if(bBandera)

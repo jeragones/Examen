@@ -69,7 +69,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         lstListaCrear = new javax.swing.JList();
         btnAgregarCrear = new javax.swing.JButton();
         btnGuardarCrear = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         mnbMenu = new javax.swing.JMenuBar();
         mnuInicio = new javax.swing.JMenu();
         mnuUsuario = new javax.swing.JMenuItem();
@@ -211,24 +210,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         dskPanel.add(frmCrearExamen);
-        frmCrearExamen.setBounds(0, 0, 68, 488);
+        frmCrearExamen.setBounds(0, 0, 384, 488);
         frmCrearExamen.getAccessibleContext().setAccessibleParent(dskPanel);
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton1.setText("Aceptar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        dskPanel.add(jButton1);
-        jButton1.setBounds(620, 490, 140, 50);
 
         mnbMenu.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -307,14 +290,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        lblBarraEstado.setText("Presione a ver que pasa");
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dskPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dskPanelMouseEntered
         lblBarraEstado.setText("");
@@ -453,7 +428,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarCrear;
     public javax.swing.JDesktopPane dskPanel;
     private javax.swing.JInternalFrame frmCrearExamen;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBarraEstado;

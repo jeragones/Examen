@@ -56,14 +56,11 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         insPregunta = (clsPreguntas)args[2];
         bBandera = false;
         
-//        if(secciones != null) {
-            DefaultListModel model = new DefaultListModel();
-            for(int i=0; i < secciones.size(); i++)
-                model.addElement(secciones.get(i).getsNombre());
-            lstSecciones.setModel(model);
-            btnGuardar.setEnabled(true);
-//        }
-        
+        DefaultListModel model = new DefaultListModel();
+        lstSecciones.setModel(model);
+        for(int i=0; i < secciones.size(); i++)
+            model.addElement(secciones.get(i).getsNombre());
+        btnGuardar.setEnabled(true);
     }
 
     /**
@@ -193,6 +190,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         });
 
         lstSecciones.setComponentPopupMenu(popMenu);
+        lstSecciones.setInheritsPopupMenu(true);
         lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lstSeccionesMouseEntered(evt);
@@ -305,11 +303,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         insExamen.setsProfesor(txtProfesor.getText());
         insExamen.setiNumeroExamen(cmbExamen.getSelectedIndex());
         insExamen.setsDescripcion(txtDescripcion.getText());
-        
-//        for(int i=0; i < secciones.size(); i++)
-//            insExamen.addSeccion(secciones.get(i));
 
-//        insExamen.addSeccion(null);
         if(bBandera)
             insExamenes.addExamen(insExamen);
         this.dispose();
@@ -326,7 +320,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, /*lstSecciones, insExamen,*/ insPregunta});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen, insPregunta});
         dskPanel.add(insFrame);
         insFrame.show();
     }//GEN-LAST:event_mnuAgregarActionPerformed
@@ -334,6 +328,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         this.setLocation(550, 20);
         txtDescripcion.setLineWrap(true);
+        lstSecciones.setSelectedIndex(0);
     }//GEN-LAST:event_formComponentShown
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

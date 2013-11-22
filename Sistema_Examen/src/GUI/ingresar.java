@@ -11,6 +11,7 @@ package GUI;
 
 
 import Estructuras_de_Datos.clsExamenes;
+import Estructuras_de_Datos.clsPreguntas;
 import javax.swing.JFrame;
 
 /**
@@ -24,6 +25,7 @@ public class ingresar extends JFrame {
      */
     
     clsExamenes insExamen = new clsExamenes();
+    clsPreguntas insPregunta = new clsPreguntas();
     
     public ingresar() {
         initComponents();
@@ -99,7 +101,7 @@ public class ingresar extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario =jComboUsuario.getSelectedItem().toString();
-        frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen, this});
+        frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen, insPregunta, this});
         inicio.show();
         this.setVisible(false);
         

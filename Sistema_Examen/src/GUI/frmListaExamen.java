@@ -30,7 +30,9 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         insExamenes = (clsExamenes)args[1];
-        bBandera = (boolean)args[2];
+        lblBarraEstado = (JLabel)args[2];
+        insPregunta = (clsPreguntas)args[3];
+        bBandera = (boolean)args[4];
     }
 
     /**

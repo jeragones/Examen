@@ -31,7 +31,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     
     private String sUsuario;
     private clsExamenes insExamenes;
-    private clsPreguntas insPregunta = new clsPreguntas();
+    private clsPreguntas insPregunta;
     private JFrame inicio;
     
     public frmPrincipal(Object[] args) {
@@ -45,7 +45,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         } else 
             mnuLista.setText("Modificar");
         insExamenes = (clsExamenes)args[1];
-        inicio = (JFrame)args[2];
+        insPregunta = (clsPreguntas)args[2];
+        inicio = (JFrame)args[3];
     }
 
     /**
@@ -329,7 +330,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         boolean bTemp = true;
         if(mnuLista.getText().equals("Modificar"))
             bTemp = false;
-        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes, bTemp});
+        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes, lblBarraEstado, insPregunta, bTemp});
         frame.setVisible(true);
         dskPanel.add(frame);
     }//GEN-LAST:event_mnuListaActionPerformed

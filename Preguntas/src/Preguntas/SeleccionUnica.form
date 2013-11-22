@@ -286,6 +286,9 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JSpinner" name="txtPuntos">
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtPuntosMouseReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

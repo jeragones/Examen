@@ -160,6 +160,12 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
+        txtPuntos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txtPuntosMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -315,9 +321,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(panelMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -367,6 +371,11 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         btnGroup.add(op3);
         btnGroup.add(op4);
     }//GEN-LAST:event_formComponentShown
+
+    private void txtPuntosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPuntosMouseReleased
+        if((Integer)txtPuntos.getValue() < 0)
+            txtPuntos.setValue(0);
+    }//GEN-LAST:event_txtPuntosMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

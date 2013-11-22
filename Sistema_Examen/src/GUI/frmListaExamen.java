@@ -21,8 +21,8 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private clsExamenes insExamenes;
     private JDesktopPane dskPanel;
-    JLabel lblBarraEstado;
-    clsPreguntas insPregunta;
+    private JLabel lblBarraEstado;
+    private clsPreguntas insPregunta;
     private boolean bBandera;
     private frmPrincipal principal;
     

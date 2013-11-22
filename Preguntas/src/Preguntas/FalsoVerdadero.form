@@ -132,6 +132,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spnValor">
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="spnValorMouseReleased"/>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="spnValorStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

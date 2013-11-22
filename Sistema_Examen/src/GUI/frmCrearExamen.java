@@ -26,13 +26,13 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
      * Creates new form frmCrearExamen
      */
     
-    JDesktopPane dskPanel;
-    JLabel lblBarraEstado;
-    clsExamenes insExamenes;
-    clsExamen insExamen;
-    clsPreguntas insPregunta;
-    boolean bBandera;
-    ArrayList<clsSeccion> secciones = new ArrayList<>();
+    private JDesktopPane dskPanel;
+    private JLabel lblBarraEstado;
+    private clsExamenes insExamenes;
+    private clsExamen insExamen;
+    private clsPreguntas insPregunta;
+    private boolean bBandera;
+    private ArrayList<clsSeccion> secciones = new ArrayList<>();
     
     public frmCrearExamen(Object[] args) {
         initComponents();

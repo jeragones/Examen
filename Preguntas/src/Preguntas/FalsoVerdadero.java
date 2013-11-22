@@ -61,6 +61,17 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setText("Puntos:");
 
+        spnValor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                spnValorMouseReleased(evt);
+            }
+        });
+        spnValor.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnValorStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -246,6 +257,15 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void spnValorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spnValorMouseReleased
+        
+    }//GEN-LAST:event_spnValorMouseReleased
+
+    private void spnValorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValorStateChanged
+        if((Integer)spnValor.getValue() < 0)
+            spnValor.setValue(0);
+    }//GEN-LAST:event_spnValorStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -21,7 +21,7 @@ public class clsSeccion {
     private String sNombre;
     private String sDescripcion;
     private String tipo;
-    private static ArrayList<Pregunta> alPreguntas = new ArrayList<>();
+    private ArrayList<Pregunta> alPreguntas = new ArrayList<>();
 
     public clsSeccion(String sNombre, String sDescripcion) {
         this.sNombre = sNombre;

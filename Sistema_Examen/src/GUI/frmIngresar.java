@@ -24,8 +24,8 @@ public class frmIngresar extends JFrame {
      * Creates new form frmIngresar
      */
     
-    clsExamenes insExamen = new clsExamenes();
-    clsPreguntas insPregunta = new clsPreguntas();
+    private clsExamenes insExamen = new clsExamenes();
+    private clsPreguntas insPregunta = new clsPreguntas();
     
     public frmIngresar() {
         initComponents();

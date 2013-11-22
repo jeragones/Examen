@@ -11,7 +11,6 @@ import Estructuras_de_Datos.clsSeccion;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
-import javax.swing.ListModel;
 
 /**
  *
@@ -26,7 +25,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmExamen
      */
-    public frmExamen(Object[] args/*clsExamen exa*/) {
+    public frmExamen(Object[] args) {
         initComponents();
         exa = (clsExamen)args[0];
         dskPanel = (JDesktopPane)args[1];
@@ -42,24 +41,23 @@ public class frmExamen extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabelEstudiante = new javax.swing.JLabel();
         jLabelProfesor = new javax.swing.JLabel();
-        jLabelNombreExamen = new javax.swing.JLabel();
-        jLabelPuntos = new javax.swing.JLabel();
-        jLabelFecha = new javax.swing.JLabel();
+        lblExamen = new javax.swing.JLabel();
+        lblProfesor = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescripcion = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListSecciones = new javax.swing.JList();
+        lstSecciones = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         jLabelNumeroPreguntas = new javax.swing.JLabel();
-        jLabelPuntosSeccion = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextAreaDescripSeccion = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        txtDescripSeccion = new javax.swing.JTextArea();
+        btnIniciar = new javax.swing.JButton();
+        lblPreguntas = new javax.swing.JLabel();
 
         setClosable(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -70,22 +68,24 @@ public class frmExamen extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtNombreMouseEntered(evt);
+            }
+        });
 
-        jLabelEstudiante.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelEstudiante.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabelEstudiante.setText("Estudiante: ");
 
-        jLabelProfesor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelProfesor.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabelProfesor.setText("Profesor: ");
 
-        jLabelNombreExamen.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabelNombreExamen.setText("Nombre Examen");
+        lblExamen.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblExamen.setText("Nombre Examen");
 
-        jLabelPuntos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabelPuntos.setText("Total de Puntos:");
-
-        jLabelFecha.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabelFecha.setText("Fecha:");
+        lblProfesor.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        lblProfesor.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,90 +97,91 @@ public class frmExamen extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelEstudiante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(txtNombre)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNombreExamen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelFecha))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelProfesor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelPuntos)))
-                        .addGap(44, 44, 44))))
+                        .addComponent(jLabelProfesor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblProfesor)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblExamen)
+                        .addGap(10, 325, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombreExamen)
-                    .addComponent(jLabelFecha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(lblExamen)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelProfesor)
-                    .addComponent(jLabelPuntos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblProfesor))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstudiante)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
-        jTextAreaDescripcion.setColumns(20);
-        jTextAreaDescripcion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextAreaDescripcion.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaDescripcion);
-        jTextAreaDescripcion.setEditable(false);
-        jTextAreaDescripcion.setLineWrap(true);
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtDescripcion.setRows(4);
+        jScrollPane1.setViewportView(txtDescripcion);
+        txtDescripcion.setEditable(false);
+        txtDescripcion.setLineWrap(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
-        jListSecciones.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jListSecciones.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstSecciones.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lstSecciones.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListSeccionesValueChanged(evt);
+                lstSeccionesValueChanged(evt);
             }
         });
-        jScrollPane2.setViewportView(jListSecciones);
+        jScrollPane2.setViewportView(lstSecciones);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel1.setText("Descripcion");
 
-        jLabelNumeroPreguntas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelNumeroPreguntas.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabelNumeroPreguntas.setText("Numero de Preguntas: ");
 
-        jLabelPuntosSeccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabelPuntosSeccion.setText("Puntos: ");
+        txtDescripSeccion.setColumns(20);
+        txtDescripSeccion.setRows(4);
+        jScrollPane3.setViewportView(txtDescripSeccion);
+        txtDescripSeccion.setEditable(false);
+        txtDescripSeccion.setLineWrap(true);
 
-        jTextAreaDescripSeccion.setColumns(20);
-        jTextAreaDescripSeccion.setRows(5);
-        jScrollPane3.setViewportView(jTextAreaDescripSeccion);
-        jTextAreaDescripSeccion.setEditable(false);
-        jTextAreaDescripSeccion.setLineWrap(true);
-
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Iniciar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciar.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        btnIniciar.setText("Iniciar");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIniciarActionPerformed(evt);
             }
         });
+
+        lblPreguntas.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        lblPreguntas.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -189,36 +190,42 @@ public class frmExamen extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelNumeroPreguntas)
-                                    .addComponent(jLabelPuntosSeccion)
-                                    .addComponent(jButton1))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabelNumeroPreguntas)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblPreguntas))
+                                    .addComponent(btnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelNumeroPreguntas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPuntosSeccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelNumeroPreguntas)
+                            .addComponent(lblPreguntas))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnIniciar)
+                        .addGap(0, 4, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,7 +243,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,67 +256,53 @@ public class frmExamen extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        
+        this.setTitle(exa.getsNombre());
         this.setLocation(500, 20);
-        jLabelNombreExamen.setText(exa.getsNombre());
-//        jLabelFecha.setText(jLabelFecha.getText()+" "+exa.getdFecha());
-        jLabelProfesor.setText("Profesor: "+exa.getsProfesor());
-//        jLabelPuntos.setText(jLabelPuntos.getText()+" " +exa.getiTotalPuntos());
         
-        jTextAreaDescripcion.setText(exa.getsDescripcion());
-        for(clsSeccion sec:exa.getAlSecciones()){
-            modelo.addElement(sec.getsNombre());
-            
-        }
-        jListSecciones.setModel(modelo);
+        lblExamen.setText(exa.getsNombre());
+        lblProfesor.setText(exa.getsProfesor());
+        txtDescripcion.setText(exa.getsDescripcion());
+        
+        for(clsSeccion sec:exa.getAlSecciones())
+            modelo.addElement(sec.getsNombre());    
+        lstSecciones.setModel(modelo);
     }//GEN-LAST:event_formComponentShown
 
-    private void jListSeccionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListSeccionesValueChanged
-        // TODO add your handling code here:
-        jTextAreaDescripSeccion.setText(exa.getAlSecciones().get(jListSecciones.getSelectedIndex()).getsDescripcion());
-        jLabelNumeroPreguntas.setText("Numero de Preguntas: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getAlPreguntas().size()));
-        jLabelPuntosSeccion.setText("Puntos: "+String.valueOf(exa.getAlSecciones().get(jListSecciones.getAnchorSelectionIndex()).getiTotalPuntos()));
-    }//GEN-LAST:event_jListSeccionesValueChanged
+    private void lstSeccionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstSeccionesValueChanged
+        clsSeccion seccion = exa.getAlSecciones().get(lstSecciones.getSelectedIndex());
+        txtDescripSeccion.setText(seccion.getsDescripcion());
+        lblPreguntas.setText(String.valueOf(seccion.getPreguntas()));
+    }//GEN-LAST:event_lstSeccionesValueChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        clsSeccion sec =exa.getAlSecciones().get(jListSecciones.getSelectedIndex());
-        System.err.println(sec.getsNombre()+" "+sec.getsDescripcion());
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        this.dispose();
+        int o = dskPanel.getComponentCount();
+        int m=0;
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void txtNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseEntered
         
-        /*
-        ListModel model = jListSecciones.getModel();
-        String seccion=model.getElementAt(jListSecciones.getSelectedIndex()).toString();
-        System.err.println(seccion);
-        */
-        
-        JInternalFrame frame = new frmPreguntas(sec);
-        frame.show();
-        dskPanel.add(frame);
-        //this.hide();
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtNombreMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelEstudiante;
-    private javax.swing.JLabel jLabelFecha;
-    public javax.swing.JLabel jLabelNombreExamen;
     private javax.swing.JLabel jLabelNumeroPreguntas;
     private javax.swing.JLabel jLabelProfesor;
-    private javax.swing.JLabel jLabelPuntos;
-    private javax.swing.JLabel jLabelPuntosSeccion;
-    private javax.swing.JList jListSecciones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextAreaDescripSeccion;
-    private javax.swing.JTextArea jTextAreaDescripcion;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel lblExamen;
+    private javax.swing.JLabel lblPreguntas;
+    private javax.swing.JLabel lblProfesor;
+    private javax.swing.JList lstSecciones;
+    private javax.swing.JTextArea txtDescripSeccion;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

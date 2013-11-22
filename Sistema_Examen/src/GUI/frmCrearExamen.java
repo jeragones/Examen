@@ -336,24 +336,29 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
-        clsVentana insVentana = new clsVentana();
-        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+        
+        if(!txtNombre.getText().equals("") && 
+           !txtProfesor.getText().equals("") && 
+           !txtDescripcion.getText().equals(""))
             btnGuardar.setEnabled(true);
         else
             btnGuardar.setEnabled(false);
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txtProfesorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProfesorKeyReleased
-        clsVentana insVentana = new clsVentana();
-        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+        
+        if(!txtNombre.getText().equals("") && 
+           !txtProfesor.getText().equals("") && 
+           !txtDescripcion.getText().equals(""))
             btnGuardar.setEnabled(true);
         else
             btnGuardar.setEnabled(false);
     }//GEN-LAST:event_txtProfesorKeyReleased
 
     private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
-        clsVentana insVentana = new clsVentana();
-        if(insVentana.activarBoton(new String[]{txtNombre.getText(), txtProfesor.getText(), txtDescripcion.getText()}))
+        if(!txtNombre.getText().equals("") && 
+           !txtProfesor.getText().equals("") && 
+           !txtDescripcion.getText().equals(""))
             btnGuardar.setEnabled(true);
         else
             btnGuardar.setEnabled(false);

@@ -337,7 +337,7 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     }
 
     @Override
-    public boolean evaluarPregunta() {
+    public void evaluarPregunta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -374,7 +374,7 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     }
 
     @Override
-    public int getScore() {
+    public double getScore() {
         return iValor;
     }
     

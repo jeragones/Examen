@@ -405,11 +405,11 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     }
 
     @Override
-    public boolean evaluarPregunta() {
-        if(sRespuesta.equalsIgnoreCase(sTexto))
-            return true;
-        else
-            return false;
+    public void evaluarPregunta() {
+//        if(sRespuesta.equalsIgnoreCase(sTexto))
+//            return true;
+//        else
+//            return false;
     }
 
     @Override
@@ -419,7 +419,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     }
 
     @Override
-    public int getScore() {
+    public double getScore() {
         return iValor;
     }
 }

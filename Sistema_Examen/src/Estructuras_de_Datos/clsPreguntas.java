@@ -9,8 +9,9 @@ package Estructuras_de_Datos;
 import java.util.ArrayList;
 
 /**
- *
- * @author GeOrge
+ * Clase para almacenar las clases cargadas dinamicamente (las estructuras de las preguntas)
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class clsPreguntas {
     

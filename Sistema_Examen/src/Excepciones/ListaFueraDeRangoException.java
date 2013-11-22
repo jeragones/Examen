@@ -9,8 +9,9 @@ package Excepciones;
 import java.io.IOException;
 
 /**
- *
- * @author jdbr
+ * Excepcion para validar cuando una lista esta fuera de rango.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class ListaFueraDeRangoException extends ArrayIndexOutOfBoundsException{
     public ListaFueraDeRangoException(String mensaje){

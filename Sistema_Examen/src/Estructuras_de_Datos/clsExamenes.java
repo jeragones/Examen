@@ -9,8 +9,9 @@ package Estructuras_de_Datos;
 import java.util.ArrayList;
 
 /**
- *
- * @author jdbr
+ * Clase que maneja la lista de examenes creados
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class clsExamenes {
     private ArrayList<clsExamen> Examenes = new ArrayList();

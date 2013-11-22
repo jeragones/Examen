@@ -395,6 +395,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     @Override
     public void insertarInfo() {
+        pnlInsertar.setVisible(true);
         pnlEvaluar.setVisible(false);
         this.show();
     }
@@ -418,6 +419,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     @Override
     public void desplegarPregunta() {
         pnlInsertar.setVisible(false);
+        pnlEvaluar.setVisible(true);
         this.show();
     }
 

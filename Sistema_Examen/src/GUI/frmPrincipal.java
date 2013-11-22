@@ -310,7 +310,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         iSeccion++;
                 } else {
                     mnbMenu.setEnabled(true);
-                    double[] nota = insExamen.getNota();
+                    double nota = insExamen.getNota();
                     JInternalFrame frame = new frmNota(nota);
                     dskPanel.add(frame);
                     frame.show();

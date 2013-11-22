@@ -268,6 +268,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void insertarInfo() {
+        pnlInsertar.setVisible(true);
         pnlEvaluar.setVisible(false);
         this.show();
     }
@@ -290,6 +291,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
     @Override
     public void desplegarPregunta() {
         lblPregunta.setText(sPregunta);
+        pnlEvaluar.setVisible(true);
         pnlInsertar.setVisible(false);
         this.show();
     }

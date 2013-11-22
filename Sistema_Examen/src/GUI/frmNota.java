@@ -15,9 +15,9 @@ public class frmNota extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmNota
      */
-    public frmNota(double[] nota) {
+    public frmNota(double nota) {
         initComponents();
-        lblNota.setText(String.valueOf(nota[1]));
+        lblNota.setText(String.valueOf(nota));
     }
 
     /**

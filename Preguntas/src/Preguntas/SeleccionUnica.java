@@ -6,7 +6,6 @@
 
 package Preguntas;
 
-import Preguntas.Pregunta;
 import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 
@@ -342,7 +341,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         // TODO add your handling code here:
         this.enunciado=txtPregunta.getText();
         this.respuesta=txtRespuesta.getText();
-        this.puntos=(int)txtPuntos.getValue();
+        this.puntos=(Integer)txtPuntos.getValue();
                 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

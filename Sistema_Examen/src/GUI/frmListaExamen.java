@@ -7,8 +7,6 @@
 package GUI;
 import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
-import javax.swing.JInternalFrame;
-import Preguntas.SeleccionUnica;
 import javax.swing.JDesktopPane;
 
 /**

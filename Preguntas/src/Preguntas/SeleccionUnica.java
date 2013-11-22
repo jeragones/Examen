@@ -335,6 +335,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         this.opciones.add(txtOpcion.getText());
+        txtOpcion.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

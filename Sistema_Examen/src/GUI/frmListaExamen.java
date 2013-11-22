@@ -8,6 +8,8 @@ package GUI;
 import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,8 +17,11 @@ import javax.swing.JDesktopPane;
  */
 public class frmListaExamen extends javax.swing.JInternalFrame {
 
-    clsExamenes insExamenes;
-    JDesktopPane dskPanel;
+    private clsExamenes insExamenes;
+    private JDesktopPane dskPanel;
+    JLabel lblBarraEstado;
+    clsPreguntas insPregunta;
+    private boolean bBandera;
     
     /**
      * Creates new form frmListaExamen
@@ -25,6 +30,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         insExamenes = (clsExamenes)args[1];
+        bBandera = (boolean)args[2];
     }
 
     /**
@@ -38,7 +44,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lstExamenes = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Lista de Examenes");
@@ -50,11 +56,11 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(lstExamenes);
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Inicio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnInicio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInicioActionPerformed(evt);
             }
         });
 
@@ -65,7 +71,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnInicio)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -75,7 +81,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnInicio)
                 .addContainerGap())
         );
 
@@ -115,8 +121,19 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formComponentShown
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        JInternalFrame frame = null;
+        clsExamen insExamen = insExamenes.getExamenes().get(lstExamenes.getSelectedIndex());
+        if(bBandera){
+            frame = new frmExamen(new Object[]{insExamen, dskPanel});
+            frame.setTitle(insExamen.getiNumeroExamen()+"° Examen de "+insExamen.getsNombre());
+        } else {
+            frame = new frmCrearExamen(insExamen, new Object[]{dskPanel, lblBarraEstado, insPregunta});
+            frame.setTitle("Modificar Examen");
+        }
+        dskPanel.add(frame);
+        frame.show();
+// TODO add your handling code here:
 //        clsExamen insExamen = examenes.getExamenes().get(lstExamenes.getSelectedIndex());
 //        JInternalFrame frame = new frmExamen(new Object[]{insExamen, dskPanel});
 //        frame.setVisible(true);
@@ -125,11 +142,11 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 // 
 //        dskPanel.add(frame);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnInicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnInicio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lstExamenes;
     // End of variables declaration//GEN-END:variables

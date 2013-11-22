@@ -326,7 +326,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuSalirActionPerformed
 
     private void mnuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaActionPerformed
-        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes});
+        boolean bTemp = true;
+        if(mnuLista.getText().equals("Modificar"))
+            bTemp = false;
+        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes, bTemp});
         frame.setVisible(true);
         dskPanel.add(frame);
     }//GEN-LAST:event_mnuListaActionPerformed

@@ -56,11 +56,14 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         lblBarraEstado = (JLabel)args[1];
         insPregunta = (clsPreguntas)args[2];
         
-        DefaultListModel model = new DefaultListModel();
-        for(int i=0; i < preguntas.size(); i++)
-            model.addElement("Pregunta");
-        lstPreguntas.setModel(model);
-        btnGuardar.setEnabled(true);
+        if(preguntas != null) {
+            DefaultListModel model = new DefaultListModel();
+            for(int i=0; i < preguntas.size(); i++)
+                model.addElement("Pregunta");
+            lstPreguntas.setModel(model);
+            btnGuardar.setEnabled(true);
+        }
+        
     }
     
     public clsSeccion getSeccion() {

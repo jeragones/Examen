@@ -6,12 +6,21 @@
 
 package Preguntas;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author GeOrge
  */
 public class DobleAlternativa extends javax.swing.JInternalFrame implements Pregunta {
 
+    private String sEnunciado;
+    private String sRespuesta;
+    private String sTexto;
+    private int iValor;
+    private ArrayList<String[]> lsPalabras = new ArrayList<>();
+    
     /**
      * Creates new form DobleAlternativa
      */
@@ -28,6 +37,8 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popMenu = new javax.swing.JPopupMenu();
+        mnuEliminar = new javax.swing.JMenuItem();
         pnlInsertar = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txtEnunciado = new javax.swing.JTextField();
@@ -37,21 +48,36 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
         txtPalabra = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstRespuestas = new javax.swing.JList();
-        jLabel2 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        spnValor = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         pnlEvaluar = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblEnunciado = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         pnlScroll = new javax.swing.JScrollPane();
         txtRespuesta = new javax.swing.JTextArea();
-        btnSiguiente = new javax.swing.JButton();
+        btnContestar = new javax.swing.JButton();
+
+        mnuEliminar.setText("jMenuItem1");
+        mnuEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEliminarActionPerformed(evt);
+            }
+        });
+        popMenu.add(mnuEliminar);
 
         setClosable(true);
         setTitle("Doble Alternativa - ");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enunciado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+
+        txtEnunciado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEnunciadoKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,10 +101,26 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel1.setText("por");
 
+        lstRespuestas.setComponentPopupMenu(popMenu);
         jScrollPane1.setViewportView(lstRespuestas);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel2.setText("Respuestas:");
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        spnValor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                spnValorMouseReleased(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel3.setText("Puntos:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,10 +130,15 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 48, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addComponent(cmbPalabras, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbPalabras, 0, 117, Short.MAX_VALUE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(5, 5, 5)
+                        .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -109,9 +156,14 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                     .addComponent(jLabel1)
                     .addComponent(txtPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10))
         );
 
@@ -121,15 +173,6 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -145,8 +188,6 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
@@ -158,17 +199,15 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(pnlInsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
+                .addComponent(btnGuardar)
                 .addGap(10, 10, 10))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enunciado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel3.setText("enunciado");
-        jLabel3.setToolTipText("");
+        lblEnunciado.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblEnunciado.setText("enunciado");
+        lblEnunciado.setToolTipText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -176,14 +215,14 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(lblEnunciado, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(lblEnunciado, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -219,12 +258,12 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                 .addGap(10, 10, 10))
         );
 
-        btnSiguiente.setBackground(new java.awt.Color(255, 255, 255));
-        btnSiguiente.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnSiguiente.setText("Siguiente");
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        btnContestar.setBackground(new java.awt.Color(255, 255, 255));
+        btnContestar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnContestar.setText("Contestar");
+        btnContestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
+                btnContestarActionPerformed(evt);
             }
         });
 
@@ -239,18 +278,18 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEvaluarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente)))
+                        .addComponent(btnContestar)))
                 .addContainerGap())
         );
         pnlEvaluarLayout.setVerticalGroup(
             pnlEvaluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEvaluarLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(btnSiguiente)
+                .addComponent(btnContestar)
                 .addGap(10, 10, 10))
         );
 
@@ -273,36 +312,81 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        sEnunciado = txtEnunciado.getText();
+        iValor = (int)spnValor.getValue();
+        String[] asPalabras = txtEnunciado.getText().split(" ");
+        for(int i=0; i < asPalabras.length; i++) {
+            for(int j=0; j < lsPalabras.size(); j++) {
+                if(asPalabras[i].equalsIgnoreCase(lsPalabras.get(j)[0]))
+                    asPalabras[i] = lsPalabras.get(j)[1];
+            }
+            if(i == 0)
+                sRespuesta = asPalabras[i];
+            else
+                sRespuesta += " "+asPalabras[i];
+        }
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        eliminarInfo();
+    private void btnContestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContestarActionPerformed
+        sTexto = txtRespuesta.getText();
         this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnContestarActionPerformed
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+    private void txtEnunciadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnunciadoKeyReleased
+        cmbPalabras.removeAllItems();
+        String[] asPalabras = txtEnunciado.getText().split(" ");
+        for(int i=0; i < asPalabras.length; i++)
+            cmbPalabras.addItem(asPalabras[i]);
+    }//GEN-LAST:event_txtEnunciadoKeyReleased
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if(!txtPalabra.getText().equals("") && 
+           !((String)cmbPalabras.getSelectedItem()).equals("")) {
+            DefaultListModel modelo = new DefaultListModel();
+            for(int i=0; i < lstRespuestas.getModel().getSize(); i++)
+                modelo.addElement(lstRespuestas.getModel().getElementAt(i));
+            modelo.addElement((String)cmbPalabras.getSelectedItem() + " / " + txtPalabra.getText());
+            lstRespuestas.setModel(modelo);
+            lsPalabras.add(new String[]{(String)cmbPalabras.getSelectedItem(), txtPalabra.getText()});
+            txtPalabra.setText("");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void spnValorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spnValorMouseReleased
+        if((int)spnValor.getValue() < 0)
+            spnValor.setValue(0);
+    }//GEN-LAST:event_spnValorMouseReleased
+
+    private void mnuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarActionPerformed
+        DefaultListModel model = (DefaultListModel) lstRespuestas.getModel();
+        int selectedIndex = lstRespuestas.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < model.getSize()) 
+            model.remove(selectedIndex);
+        lsPalabras.remove(selectedIndex);
+    }//GEN-LAST:event_mnuEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnContestar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cmbPalabras;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEnunciado;
     private javax.swing.JList lstRespuestas;
+    private javax.swing.JMenuItem mnuEliminar;
     private javax.swing.JPanel pnlEvaluar;
     private javax.swing.JPanel pnlInsertar;
     private javax.swing.JScrollPane pnlScroll;
+    private javax.swing.JPopupMenu popMenu;
+    private javax.swing.JSpinner spnValor;
     private javax.swing.JTextField txtEnunciado;
     private javax.swing.JTextField txtPalabra;
     private javax.swing.JTextArea txtRespuesta;
@@ -310,26 +394,31 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     @Override
     public void insertarInfo() {
+        pnlEvaluar.setVisible(false);
         this.show();
     }
 
     @Override
     public void eliminarInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public boolean evaluarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(sRespuesta.equalsIgnoreCase(sTexto))
+            return true;
+        else
+            return false;
     }
 
     @Override
     public void desplegarPregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        pnlInsertar.setVisible(false);
+        this.show();
     }
 
     @Override
-    public int getValor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getScore() {
+        return iValor;
     }
 }

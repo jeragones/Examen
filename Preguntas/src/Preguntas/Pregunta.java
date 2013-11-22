@@ -16,5 +16,5 @@ public interface Pregunta {
     public void eliminarInfo();
     public boolean evaluarPregunta(); 	
     public void desplegarPregunta();
-    public int getValor();
+    public int getScore();
 }

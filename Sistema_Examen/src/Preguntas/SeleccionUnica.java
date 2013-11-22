@@ -409,7 +409,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
     }
 
     @Override
-    public int getValor() {
+    public int getScore() {
         return this.puntos;
         }
 }

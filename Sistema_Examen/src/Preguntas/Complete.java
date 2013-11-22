@@ -392,7 +392,7 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
     }
 
     @Override
-    public int getValor() {
+    public int getScore() {
         return iValor;
     }
     

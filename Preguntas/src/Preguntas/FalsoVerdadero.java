@@ -294,8 +294,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void eliminarInfo() {
-        sPregunta = "";
-        iValor = 0;
+
     }
 
     @Override
@@ -303,10 +302,8 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         if((rdbVerdadero.isSelected() && bRespuesta) ||
            (rdbFalso.isSelected() && !bRespuesta))
             return true;
-        else {
-            iValor = 0;
+        else 
             return false;
-        }
     }
 
     @Override
@@ -317,7 +314,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
     }
 
     @Override
-    public int getValor() {
+    public int getScore() {
         return iValor;
     }
 }

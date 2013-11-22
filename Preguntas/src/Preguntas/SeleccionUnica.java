@@ -402,7 +402,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
     @Override
     public void evaluarPregunta() {
-<<<<<<< HEAD
+
         if(this.respuestaUsuario.equals(this.respuesta)){
             this.puntos=puntos;
         }
@@ -410,13 +410,10 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
             this.puntos=0;
         }
         }
-=======
-        if(this.respuestaUsuario.equals(this.respuesta))
-            puntos=0;
-        else 
-            puntos=0;
-    }
->>>>>>> 6f41d7b00b43a001c2ace0cc827197b5e946025d
+
+        
+    
+
 
     @Override
     public void desplegarPregunta() {

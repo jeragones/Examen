@@ -17,7 +17,7 @@ public interface Pregunta {
 
     public void eliminarInfo();
 
-    public void evaluarPregunta();
+    public void evaluarPregunta(); 	
 
     public void desplegarPregunta();
 

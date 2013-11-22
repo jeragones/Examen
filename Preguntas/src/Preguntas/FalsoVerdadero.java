@@ -279,11 +279,12 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void evaluarPregunta() {
-//        if((rdbVerdadero.isSelected() && bRespuesta) ||
-//           (rdbFalso.isSelected() && !bRespuesta))
-//            return true;
-//        else 
-//            return false;
+
+        if((rdbVerdadero.isSelected() && bRespuesta) ||
+           (rdbFalso.isSelected() && !bRespuesta))
+            this.iValor=iValor;
+        else 
+           this.iValor=0; 
     }
 
     @Override

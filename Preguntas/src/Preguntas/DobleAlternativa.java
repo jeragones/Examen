@@ -406,10 +406,13 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     @Override
     public void evaluarPregunta() {
-//        if(sRespuesta.equalsIgnoreCase(sTexto))
-//            return true;
-//        else
-//            return false;
+
+        if(sRespuesta.equalsIgnoreCase(sTexto))
+            this.iValor=iValor;
+        else
+            this.iValor=0;
+
+        
     }
 
     @Override

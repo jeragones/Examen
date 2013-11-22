@@ -11,12 +11,13 @@ package GUI;
 
 
 import Estructuras_de_Datos.clsExamenes;
+import javax.swing.JFrame;
 
 /**
  *
  * @author jdbr
  */
-public class ingresar extends javax.swing.JFrame {
+public class ingresar extends JFrame {
 
     /**
      * Creates new form ingresar
@@ -98,7 +99,7 @@ public class ingresar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario =jComboUsuario.getSelectedItem().toString();
-        frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen});
+        frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen, this});
         inicio.show();
         this.setVisible(false);
         

@@ -18,6 +18,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.DesktopManager;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
@@ -32,19 +33,23 @@ public class frmPrincipal extends javax.swing.JFrame {
      * Creates new form frmPrincipal
      */
     
+    private String sUsuario;
     private clsExamenes insExamenes;
     private clsPreguntas insPregunta = new clsPreguntas();
+    private JFrame inicio;
     
     public frmPrincipal(Object[] args) {
         initComponents();
-        if(((String)args[0]).equals(""))
+        sUsuario = (String)args[0];
+        if(sUsuario.equals(""))
             mnuSalir.setVisible(true);
-        else if (((String)args[0]).equals("Estudiante")) {
+        else if (sUsuario.equals("Estudiante")) {
             mnuCrear.setVisible(false);
-            mnuModificar.setVisible(false);
-        } else
-            mnuIniciar.setVisible(false);
+            mnuLista.setText("Elegir");
+        } else 
+            mnuLista.setText("Modificar");
         insExamenes = (clsExamenes)args[1];
+        inicio = (JFrame)args[2];
     }
 
     /**
@@ -75,8 +80,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuCrear = new javax.swing.JMenuItem();
-        mnuModificar = new javax.swing.JMenuItem();
-        mnuIniciar = new javax.swing.JMenuItem();
+        mnuLista = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Examen");
@@ -249,21 +253,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mnuCrear);
 
-        mnuModificar.setText("Modificar");
-        mnuModificar.addActionListener(new java.awt.event.ActionListener() {
+        mnuLista.setText("Elegir ");
+        mnuLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuModificarActionPerformed(evt);
+                mnuListaActionPerformed(evt);
             }
         });
-        jMenu2.add(mnuModificar);
-
-        mnuIniciar.setText("Elegir ");
-        mnuIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuIniciarActionPerformed(evt);
-            }
-        });
-        jMenu2.add(mnuIniciar);
+        jMenu2.add(mnuLista);
 
         mnbMenu.add(jMenu2);
 
@@ -333,11 +329,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mnuSalirActionPerformed
 
-    private void mnuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIniciarActionPerformed
-        JInternalFrame frame = new frmListaExamen(dskPanel);
+    private void mnuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaActionPerformed
+        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes});
         frame.setVisible(true);
         dskPanel.add(frame);
-    }//GEN-LAST:event_mnuIniciarActionPerformed
+    }//GEN-LAST:event_mnuListaActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -367,14 +363,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void mnuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuarioActionPerformed
         this.dispose();
-        new ingresar().show();
+        inicio.show();
+        //new ingresar().show();
     }//GEN-LAST:event_mnuUsuarioActionPerformed
-
-    private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
-        JInternalFrame temp = new Complete();
-        dskPanel.add(temp);
-        temp.show();
-    }//GEN-LAST:event_mnuModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,9 +427,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JList lstListaCrear;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mnuCrear;
-    private javax.swing.JMenuItem mnuIniciar;
     private javax.swing.JMenu mnuInicio;
-    private javax.swing.JMenuItem mnuModificar;
+    private javax.swing.JMenuItem mnuLista;
     private javax.swing.JMenuItem mnuSalir;
     private javax.swing.JMenuItem mnuUsuario;
     private javax.swing.JScrollPane pnlDescScrollCrear;

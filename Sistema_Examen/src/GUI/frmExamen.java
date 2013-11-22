@@ -278,11 +278,23 @@ public class frmExamen extends javax.swing.JInternalFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         this.dispose();
         
+<<<<<<< HEAD
+=======
+        
+//        Thread hilo = new Thread(runnable);
+        
+        
+>>>>>>> origin/temp
         for (int x = 0; x < exa.getAlSecciones().size(); x++) {
             clsSeccion sec = exa.getAlSecciones().get(x);
             int y = -1;
             while(y < sec.getPreguntas()) {
+<<<<<<< HEAD
                 if (dskPanel.getComponentCount() == 0)
+=======
+                int m = dskPanel.getComponentCount();
+                if (dskPanel.getComponentCount() <= 1)
+>>>>>>> origin/temp
                     y++;
                 JInternalFrame frame = (JInternalFrame)sec.getAlPreguntas().get(y);
                 dskPanel.add(frame);
@@ -290,7 +302,13 @@ public class frmExamen extends javax.swing.JInternalFrame {
             }
         }
         double[] nota = exa.getNota();
+<<<<<<< HEAD
         
+=======
+        JInternalFrame frame = new frmNota(nota);
+        dskPanel.add(frame);
+        frame.show();
+>>>>>>> origin/temp
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseEntered

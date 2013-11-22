@@ -17,11 +17,7 @@ public class frmNota extends javax.swing.JInternalFrame {
      */
     public frmNota(double[] nota) {
         initComponents();
-<<<<<<< HEAD
-        
-=======
         lblNota.setText(String.valueOf(nota[1]));
->>>>>>> origin/temp
     }
 
     /**
@@ -120,12 +116,6 @@ public class frmNota extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFinalizar;
-    private javax.swing.JLabel jLabel1;
-=======
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnFinalizarActionPerformed

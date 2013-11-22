@@ -4,7 +4,7 @@
  */
 package examen;
 
-import GUI.ingresar;
+import GUI.frmIngresar;
 import javax.swing.UIManager;
 
 /**
@@ -23,6 +23,6 @@ public class Main {
                  InstantiationException | 
                  IllegalAccessException | 
                  javax.swing.UnsupportedLookAndFeelException ex) { }
-        new ingresar().show();
+        new frmIngresar().show();
     }
 }

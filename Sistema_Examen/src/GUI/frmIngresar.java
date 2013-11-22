@@ -18,16 +18,16 @@ import javax.swing.JFrame;
  *
  * @author jdbr
  */
-public class ingresar extends JFrame {
+public class frmIngresar extends JFrame {
 
     /**
-     * Creates new form ingresar
+     * Creates new form frmIngresar
      */
     
     clsExamenes insExamen = new clsExamenes();
     clsPreguntas insPregunta = new clsPreguntas();
     
-    public ingresar() {
+    public frmIngresar() {
         initComponents();
     }
 
@@ -128,20 +128,20 @@ public class ingresar extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIngresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIngresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIngresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmIngresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ingresar().setVisible(true);
+                new frmIngresar().setVisible(true);
             }
         });
     }

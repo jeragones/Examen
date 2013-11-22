@@ -8,6 +8,7 @@ package GUI;
 
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsSeccion;
+import Preguntas.Pregunta;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
@@ -276,8 +277,20 @@ public class frmExamen extends javax.swing.JInternalFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         this.dispose();
-        int o = dskPanel.getComponentCount();
-        int m=0;
+        
+        for (int x = 0; x < exa.getAlSecciones().size(); x++) {
+            clsSeccion sec = exa.getAlSecciones().get(x);
+            int y = -1;
+            while(y < sec.getPreguntas()) {
+                if (dskPanel.getComponentCount() == 0)
+                    y++;
+                JInternalFrame frame = (JInternalFrame)sec.getAlPreguntas().get(y);
+                dskPanel.add(frame);
+                frame.show();
+            }
+        }
+        double[] nota = exa.getNota();
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseEntered

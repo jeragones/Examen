@@ -46,7 +46,6 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         jPanel2 = new javax.swing.JPanel();
         cmbRespuesta = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         pnlEvaluar = new javax.swing.JPanel();
         lblPregunta = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
@@ -119,15 +118,6 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlInsertarLayout = new javax.swing.GroupLayout(pnlInsertar);
         pnlInsertar.setLayout(pnlInsertarLayout);
         pnlInsertarLayout.setHorizontalGroup(
@@ -139,8 +129,6 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
@@ -152,9 +140,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                 .addGap(10, 10, 10)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(pnlInsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
+                .addComponent(btnGuardar)
                 .addGap(10, 10, 10))
         );
 
@@ -163,7 +149,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
         btnSiguiente.setBackground(new java.awt.Color(255, 255, 255));
         btnSiguiente.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnSiguiente.setText("Siguiente");
+        btnSiguiente.setText("Contestar");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -257,18 +243,12 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        eliminarInfo();
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.ButtonGroup btnGrupo;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSiguiente;

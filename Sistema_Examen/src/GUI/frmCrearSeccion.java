@@ -6,6 +6,7 @@
 
 package GUI;
 
+import Cargar_Clase.FileClassLoader;
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsPreguntas;
 import Estructuras_de_Datos.clsSeccion;

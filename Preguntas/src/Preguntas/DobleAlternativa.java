@@ -6,6 +6,7 @@
 
 package Preguntas;
 
+import Preguntas.Pregunta;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -19,7 +20,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     private String sRespuesta;
     private String sTexto;
     private int iValor;
-    private ArrayList<String[]> lsPalabras = new ArrayList<>();
+    private ArrayList<String[]> lsPalabras = new ArrayList<String[]>();
     
     /**
      * Creates new form DobleAlternativa
@@ -313,7 +314,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         sEnunciado = txtEnunciado.getText();
-        iValor = (int)spnValor.getValue();
+        iValor = (Integer)spnValor.getValue();
         String[] asPalabras = txtEnunciado.getText().split(" ");
         for(int i=0; i < asPalabras.length; i++) {
             for(int j=0; j < lsPalabras.size(); j++) {
@@ -354,7 +355,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void spnValorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spnValorMouseReleased
-        if((int)spnValor.getValue() < 0)
+        if((Integer)spnValor.getValue() < 0)
             spnValor.setValue(0);
     }//GEN-LAST:event_spnValorMouseReleased
 

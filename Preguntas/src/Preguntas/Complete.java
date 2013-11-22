@@ -6,6 +6,7 @@
 
 package Preguntas;
 
+import Preguntas.Pregunta;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JTextField;

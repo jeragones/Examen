@@ -9,7 +9,6 @@ package GUI;
 
 import Estructuras_de_Datos.clsExamenes;
 import Estructuras_de_Datos.clsPreguntas;
-import Preguntas.DobleAlternativa;
 import examen.Main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -292,10 +291,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         JInternalFrame frame = new frmCrearExamen(new Object[]{dskPanel, lblBarraEstado, insExamenes, insPregunta});
         dskPanel.add(frame);
         frame.show();
-        
-        JInternalFrame frame1 = new DobleAlternativa();
-        dskPanel.add(frame1);
-        frame1.show();
     }//GEN-LAST:event_mnuCrearActionPerformed
 
     private void btnAgregarCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCrearMouseEntered

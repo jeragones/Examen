@@ -17,8 +17,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 /**
- *
- * @author GeOrge
+ * Interfaz que permite al usuario profesor crear nuevos examenes
+ * @author Daniel Berrocal
+ * @author Jorge Rojas 
  */
 public class frmCrearExamen extends javax.swing.JInternalFrame {
 

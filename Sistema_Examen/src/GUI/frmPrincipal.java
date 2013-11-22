@@ -24,8 +24,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
 
 /**
- *
- * @author GeOrge
+ * Interfaz principal de la aplicacion, sobre ella se muestran todas las ventanas internas donde se ejecutan todas las acciones.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmPrincipal extends javax.swing.JFrame {
 

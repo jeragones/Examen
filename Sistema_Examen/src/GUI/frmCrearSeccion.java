@@ -21,8 +21,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 /**
- *
- * @author GeOrge
+ * Interfaz que le permite al usuario agregar, modificar o eliminar secciones de un examen
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmCrearSeccion extends javax.swing.JInternalFrame {
 

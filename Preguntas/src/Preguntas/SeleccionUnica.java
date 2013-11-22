@@ -401,12 +401,12 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
     }
 
     @Override
-    public boolean evaluarPregunta() {
+    public void evaluarPregunta() {
         if(this.respuestaUsuario.equals(this.respuesta)){
-            return true;
+            this.puntos=puntos;
         }
         else {
-            return false;
+            this.puntos=0;
         }
         }
 

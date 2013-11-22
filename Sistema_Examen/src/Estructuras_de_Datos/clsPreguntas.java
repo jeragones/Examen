@@ -17,7 +17,7 @@ public class clsPreguntas {
     private static ArrayList<Class> preguntas = new ArrayList();
 
     public void addPregunta(Class pregunta) {
-        preguntas.add(pregunta);
+        preguntas.add(0, pregunta);
     }
     
     public ArrayList<Class> getPreguntas() {

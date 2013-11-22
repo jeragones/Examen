@@ -6,6 +6,7 @@
 
 package GUI;
 import Estructuras_de_Datos.*;
+import Excepciones.ListaFueraDeRangoException;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -95,35 +96,19 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         this.setLocation(500, 50);
-//        
-//        clsExamen exa1=new clsExamen();
-//        clsExamen exa2=new clsExamen();
-//        clsExamen exa3=new clsExamen();
-//        exa1.setsNombre("Investigacion de Operaciones");
-//        
-//        exa1.setsDescripcion("Todas estas preguntas tienen sus respuestas en el manual entregado de ejercicios. Lo mínimo que deben hacer es buscar en dicho documento la respuesta adecuada. Simplemente marquen en el mismo texto la respuesta y me envían el archivo en formato PDF al correo gerardo.brenes@gbsys.com con el asunto: Examen 2 y su nombre. O me envían un correo con solo las respuestas. Es INDIVIDUAL. Fecha/hora límite para el correo: Viernes 8/11/2013:12MD");
-////        exa1.setdFecha("03/10/2013");
-////        exa1.setiTotalPuntos(60);
-//        exa1.setsProfesor("Oscar Viquez");
-//        clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
-//        sec1.setiTotalPuntos(10);
-//        SeleccionUnica preg1 =new SeleccionUnica();
-//        preg1.insertarInfo();
-//        clsSeccion sec2= new clsSeccion("Seleccion Multiple","Selecione la/s respuesta correcta/s");
-//        sec2.setiTotalPuntos(25);
-//        clsSeccion sec3= new clsSeccion("Complete","Complete la frase");
-//        sec3.setiTotalPuntos(30);
-//        exa1.addSeccion(sec1);
-//        exa1.addSeccion(sec2);
-//        exa1.addSeccion(sec3);
-//        
-//        examenes.addExamen(exa1);
+
         DefaultListModel modelo = new DefaultListModel();
-        for (clsExamen exa : insExamenes.getExamenes()){
-            modelo.addElement(exa.getsNombre());            
+        try{
+            for (clsExamen exa : insExamenes.getExamenes()){
+                modelo.addElement(exa.getsNombre());            
+            }
         }
+        catch(ListaFueraDeRangoException e){
+            new ListaFueraDeRangoException("Lista Fuera de Rango");
+        }
+        finally{
         lstExamenes.setModel(modelo);
-        
+        }
     }//GEN-LAST:event_formComponentShown
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed

@@ -8,8 +8,13 @@ import Preguntas.Pregunta;
 import java.util.ArrayList;
 
 /**
- *
- * @author GeOrge
+ * Clase Seccion, la cual cuenta con toda la informacion correspondiente a una seccion de un examen.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
+ * @param sNombre Nombre de la seccion.
+ * @param sDescripcion Descripcion general o indicaciones de la seccion.
+ * @param tipo Tipo de preguntas que contiene la seccion.
+ * @param alPreguntas Lista de preguntas de la seccion.
  */
 public class clsSeccion {
     

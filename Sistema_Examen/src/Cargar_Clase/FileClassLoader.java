@@ -14,14 +14,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- *
- * @author GeOrge
+ * Por medio de esta clase se logran cargar dinamicamente las clases externas al proyecto
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
  
 public class FileClassLoader extends ClassLoader {
 
     private String root;
 
+    /**
+     * Constructor de la clase
+     * @param rootDir Direccion fisica del archivo a cargar.
+     */
     public FileClassLoader(String rootDir) {
         if (rootDir == null) {
             throw new IllegalArgumentException("Null root directory");
@@ -29,6 +34,13 @@ public class FileClassLoader extends ClassLoader {
         root = rootDir;
     }
 
+    /**
+     * Metodo que permite cargar el archivo .class
+     * @param name Archivo que se recibe.
+     * @param resolve Bandera
+     * @return Retorn la clase cargada.
+     * @throws ClassNotFoundException 
+     */
     public Class loadClass1(File name, boolean resolve)
             throws ClassNotFoundException {
         Class c = findLoadedClass("Preguntas." + name.getName().substring(0,
@@ -65,6 +77,12 @@ public class FileClassLoader extends ClassLoader {
         return c;
     }
 
+    /**
+     * 
+     * @param filename Archivo que se recibe
+     * @return Retorna un arreglo de bytes con la informacion correspondiente a la clase cargada
+     * @throws IOException 
+     */
     private byte[] loadClassData(/*Strin*/File filename)
             throws IOException {
         // Create a file object relative to directory provided 

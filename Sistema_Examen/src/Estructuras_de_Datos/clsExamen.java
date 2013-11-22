@@ -8,8 +8,14 @@ import Preguntas.Pregunta;
 import java.util.ArrayList;
 
 /**
- *
- * @author GeOrge
+ * Clase Examen, la cual tiene toda la informacion correspondiente a un examen.
+ * @author Daniel Berocal.
+ * @author Jorge Rojas.
+ * @param sNombre Nombre del Examen.
+ * @param sDescripcion Descripcion correspondiente al examen, instrucciones y demas.
+ * @param sProfesor Nombre del profesor que aplica el examen.
+ * @param iNumeroExamen Numero del examen.
+ * @param alSecciones Lista de secciones.
  */
 public class clsExamen {
     
@@ -39,18 +45,22 @@ public class clsExamen {
         return iNumeroExamen;
     }
     
-    public double[] getNota() {
+    /**
+     * Metodo que obtiene los puntos totales obtenidos
+     * @return Puntos totales
+     */
+    public double getNota() {
         int iPuntos = 0;
-        int iPreguntas = 0;
+        
         
         for(int i=0; i < alSecciones.size(); i++) {
             ArrayList<Pregunta> alPreguntas = alSecciones.get(i).getAlPreguntas();
             for(int j=0; j < alPreguntas.size(); j++) {
-                iPreguntas++;
+                
                 iPuntos += alPreguntas.get(j).getScore();
             }
         }
-        return new double[]{iPreguntas, iPuntos};
+        return iPuntos;
     }
     
     public void setsProfesor(String sProfesor) {

@@ -8,6 +8,7 @@ package GUI;
 import Estructuras_de_Datos.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
@@ -22,6 +23,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
     JLabel lblBarraEstado;
     clsPreguntas insPregunta;
     private boolean bBandera;
+    private frmPrincipal principal;
     
     /**
      * Creates new form frmListaExamen
@@ -33,6 +35,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         lblBarraEstado = (JLabel)args[2];
         insPregunta = (clsPreguntas)args[3];
         bBandera = (boolean)args[4];
+        principal = (frmPrincipal)args[5];
     }
 
     /**
@@ -127,7 +130,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         JInternalFrame frame = null;
         clsExamen insExamen = insExamenes.getExamenes().get(lstExamenes.getSelectedIndex());
         if(bBandera){
-            frame = new frmExamen(new Object[]{insExamen, dskPanel});
+            frame = new frmExamen(new Object[]{insExamen, dskPanel, principal});
             frame.setTitle(insExamen.getiNumeroExamen()+"° Examen de "+insExamen.getsNombre());
         } else {
             frame = new frmCrearExamen(insExamen, new Object[]{dskPanel, lblBarraEstado, insPregunta});

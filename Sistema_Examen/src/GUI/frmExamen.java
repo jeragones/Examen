@@ -11,6 +11,7 @@ import Estructuras_de_Datos.clsSeccion;
 import Preguntas.Pregunta;
 import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
@@ -19,9 +20,10 @@ import javax.swing.JInternalFrame;
  */
 public class frmExamen extends javax.swing.JInternalFrame {
 
-    DefaultListModel modelo = new DefaultListModel();
-    clsExamen exa = new clsExamen();
-    JDesktopPane dskPanel;
+    private DefaultListModel modelo = new DefaultListModel();
+    private clsExamen exa = new clsExamen();
+    private JDesktopPane dskPanel;
+    private frmPrincipal principal;
     
     /**
      * Creates new form frmExamen
@@ -30,6 +32,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
         initComponents();
         exa = (clsExamen)args[0];
         dskPanel = (JDesktopPane)args[1];
+        principal = (frmPrincipal)args[2];
     }
 
     /**
@@ -95,19 +98,21 @@ public class frmExamen extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelEstudiante)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombre)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelProfesor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblProfesor)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblExamen)
-                        .addGap(10, 325, Short.MAX_VALUE))))
+                        .addGap(10, 325, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelEstudiante)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNombre))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelProfesor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblProfesor)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,6 +159,11 @@ public class frmExamen extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Secciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
         lstSecciones.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lstSeccionesMouseReleased(evt);
+            }
+        });
         lstSecciones.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstSeccionesValueChanged(evt);
@@ -270,9 +280,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void lstSeccionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstSeccionesValueChanged
-        clsSeccion seccion = exa.getAlSecciones().get(lstSecciones.getSelectedIndex());
-        txtDescripSeccion.setText(seccion.getsDescripcion());
-        lblPreguntas.setText(String.valueOf(seccion.getPreguntas()));
+        
     }//GEN-LAST:event_lstSeccionesValueChanged
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -280,26 +288,48 @@ public class frmExamen extends javax.swing.JInternalFrame {
         
 //        Thread hilo = new Thread(runnable);
         
-        for (int x = 0; x < exa.getAlSecciones().size(); x++) {
-            clsSeccion sec = exa.getAlSecciones().get(x);
-            int y = -1;
-            while(y < sec.getPreguntas()) {
-                if (dskPanel.getComponentCount() == 0)
-                    y++;
-                JInternalFrame frame = (JInternalFrame)sec.getAlPreguntas().get(y);
-                dskPanel.add(frame);
-                frame.show();
-            }
-        }
-        double[] nota = exa.getNota();
-        JInternalFrame frame = new frmNota(nota);
-        dskPanel.add(frame);
-        frame.show();
+        
+        //Runnable runner = 
+//        Thread thrd = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (dskPanel.getComponentCount() != 0) {
+//                    this.stop();
+//                }
+//            }
+//        });
+//        
+//        
+//        for (int x = 0; x < exa.getAlSecciones().size(); x++) {
+//            clsSeccion sec = exa.getAlSecciones().get(x);
+//            int y = 0;
+//            while (y < sec.getPreguntas()) {
+//                
+//                if (dskPanel.getComponentCount() != 0) {
+//                    thrd.start();
+//                } else {
+//                    
+//                    JInternalFrame frame = (JInternalFrame) sec.getAlPreguntas().get(y);
+//                    dskPanel.add(frame);
+//                    frame.show();
+//                }
+//            }
+//        }
+        
+        
+        
+        principal.setContestar(true, exa);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseEntered
         
     }//GEN-LAST:event_txtNombreMouseEntered
+
+    private void lstSeccionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstSeccionesMouseReleased
+        clsSeccion seccion = exa.getAlSecciones().get(lstSecciones.getSelectedIndex());
+        txtDescripSeccion.setText(seccion.getsDescripcion());
+        lblPreguntas.setText(String.valueOf(seccion.getPreguntas()));
+    }//GEN-LAST:event_lstSeccionesMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

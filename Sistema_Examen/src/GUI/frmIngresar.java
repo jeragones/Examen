@@ -102,6 +102,7 @@ public class frmIngresar extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario =jComboUsuario.getSelectedItem().toString();
         frmPrincipal inicio = new frmPrincipal(new Object[]{usuario, insExamen, insPregunta, this});
+        inicio.setFrame(inicio);
         inicio.show();
         this.setVisible(false);
         

@@ -7,11 +7,15 @@ package GUI;
  * and open the template in the editor.
  */
 
+import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
 import Estructuras_de_Datos.clsPreguntas;
+import Estructuras_de_Datos.clsSeccion;
+import Preguntas.Pregunta;
 import examen.Main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.DesktopManager;
 import javax.swing.JComponent;
@@ -31,8 +35,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     
     private String sUsuario;
     private clsExamenes insExamenes;
+    private clsExamen insExamen;
     private clsPreguntas insPregunta;
     private JFrame inicio;
+    private int iPregunta;
+    private int iSeccion;
+    private boolean bContestar;
     
     public frmPrincipal(Object[] args) {
         initComponents();
@@ -47,6 +55,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         insExamenes = (clsExamenes)args[1];
         insPregunta = (clsPreguntas)args[2];
         inicio = (JFrame)args[3];
+        iSeccion = 0;
+        iPregunta = 0;
+        bContestar = false;
     }
 
     /**
@@ -286,6 +297,26 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void dskPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dskPanelMouseEntered
         lblBarraEstado.setText("");
+        if(bContestar) {
+            if(dskPanel.getComponentCount() <= 1) {
+                ArrayList<clsSeccion> secciones = insExamen.getAlSecciones();
+                if(iSeccion < secciones.size()) {
+                    ArrayList<Pregunta> preguntas = secciones.get(iSeccion).getAlPreguntas();
+                    if(iPregunta < preguntas.size()) {
+                        JInternalFrame frame = (JInternalFrame)preguntas.get(iPregunta);
+                        dskPanel.add(frame);
+                        ((Pregunta)frame).desplegarPregunta();
+                    } else
+                        iSeccion++;
+                } else {
+                    mnbMenu.setEnabled(true);
+                    double[] nota = insExamen.getNota();
+                    JInternalFrame frame = new frmNota(nota);
+                    dskPanel.add(frame);
+                    frame.show();
+                }   
+            }
+        }
     }//GEN-LAST:event_dskPanelMouseEntered
 
     private void mnuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCrearActionPerformed
@@ -330,7 +361,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         boolean bTemp = true;
         if(mnuLista.getText().equals("Modificar"))
             bTemp = false;
-        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes, lblBarraEstado, insPregunta, bTemp});
+        JInternalFrame frame = new frmListaExamen(new Object[]{dskPanel, insExamenes, lblBarraEstado, insPregunta, bTemp, ventana});
         frame.setVisible(true);
         dskPanel.add(frame);
     }//GEN-LAST:event_mnuListaActionPerformed
@@ -412,6 +443,16 @@ public class frmPrincipal extends javax.swing.JFrame {
                 
             }
         });
+    }
+    
+    public void setContestar(boolean contestar, clsExamen examen) {
+        mnbMenu.setEnabled(false);
+        bContestar = contestar;
+        insExamen = examen;
+    }
+    private frmPrincipal ventana;
+    public void setFrame(frmPrincipal frame) {
+        ventana = frame;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -93,8 +93,8 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
         exa1.setsNombre("Investigacion de Operaciones");
         
         exa1.setsDescripcion("Todas estas preguntas tienen sus respuestas en el manual entregado de ejercicios. Lo mínimo que deben hacer es buscar en dicho documento la respuesta adecuada. Simplemente marquen en el mismo texto la respuesta y me envían el archivo en formato PDF al correo gerardo.brenes@gbsys.com con el asunto: Examen 2 y su nombre. O me envían un correo con solo las respuestas. Es INDIVIDUAL. Fecha/hora límite para el correo: Viernes 8/11/2013:12MD");
-        exa1.setdFecha("03/10/2013");
-        exa1.setiTotalPuntos(60);
+//        exa1.setdFecha("03/10/2013");
+//        exa1.setiTotalPuntos(60);
         exa1.setsProfesor("Oscar Viquez");
         clsSeccion sec1= new clsSeccion("Seleccion Unica","Selecione la respuesta correcta");
         sec1.setiTotalPuntos(10);

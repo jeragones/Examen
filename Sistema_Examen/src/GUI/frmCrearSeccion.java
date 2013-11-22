@@ -31,8 +31,8 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     
     private JDesktopPane dskPanel;
     private JLabel lblBarraEstado;
-    //JList lstSecciones;
-//    private clsExamen insExamen;
+    private JList lstSecciones;
+    private clsExamen insExamen;
     private clsPreguntas insPregunta;
     private clsSeccion insSeccion;
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
@@ -41,9 +41,29 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         initComponents();
         dskPanel = (JDesktopPane)args[0];
         lblBarraEstado = (JLabel)args[1];
-//        lstSecciones = (JList)args[2];
-//        insExamen = (clsExamen)args[3];
-        insPregunta = (clsPreguntas)args[2]; //(clsPreguntas)args[4];
+        lstSecciones = (JList)args[2];
+        insExamen = (clsExamen)args[3];
+        insPregunta = (clsPreguntas)args[4];
+    }
+    
+    public frmCrearSeccion(clsSeccion seccion, Object[] args) {
+        initComponents();
+        txtNombre.setText(seccion.getsNombre());
+        txtDescripcion.setText(seccion.getsDescripcion());
+        preguntas = seccion.getAlPreguntas();
+        dskPanel = (JDesktopPane)args[0];
+        lblBarraEstado = (JLabel)args[1];
+        insPregunta = (clsPreguntas)args[2];
+        
+        DefaultListModel model = new DefaultListModel();
+        for(int i=0; i < preguntas.size(); i++)
+            model.addElement("Pregunta");
+        lstPreguntas.setModel(model);
+        btnGuardar.setEnabled(true);
+    }
+    
+    public clsSeccion getSeccion() {
+        return insSeccion;
     }
 
     /**
@@ -152,9 +172,6 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
 
         lstPreguntas.setComponentPopupMenu(popMenu);
         lstPreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstPreguntasMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lstPreguntasMouseEntered(evt);
             }
@@ -271,11 +288,17 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        insSeccion = new clsSeccion(txtNombre.getText(), txtDescripcion.getText());
-        insSeccion.setAlPreguntas(preguntas);
-//        insExamen.addSeccion();
-//        clsVentana insVentana = new clsVentana();
-//        lstSecciones.setModel(insVentana.setItems(insExamen.getAlSecciones().toArray()));
+        if(insExamen != null) {
+            insSeccion = new clsSeccion(txtNombre.getText(), txtDescripcion.getText());
+            insSeccion.setAlPreguntas(preguntas);
+            insExamen.addSeccion(insSeccion);
+
+            DefaultListModel model = new DefaultListModel();
+            for(int i=0; i < lstSecciones.getModel().getSize() ; i++)
+                model.addElement(lstSecciones.getModel().getElementAt(i));
+            model.addElement(txtNombre.getText());
+            lstSecciones.setModel(model);
+        }
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -343,7 +366,6 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
             frame.setTitle(frame.getTitle() + " Nueva Pregunta");
             frame.pack();
             preguntas.add((Pregunta)frame);
-            
             DefaultListModel model = new DefaultListModel();
             for(int i=0; i < lstPreguntas.getModel().getSize() ; i++)
                 model.addElement(lstPreguntas.getModel().getElementAt(i));
@@ -355,7 +377,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_mnuAgregarActionPerformed
 
     private void lstPreguntasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseEntered
-        lblBarraEstado.setText("Click derecho para agregar una sección");
+        lblBarraEstado.setText("Click derecho para mas opciones");
     }//GEN-LAST:event_lstPreguntasMouseEntered
 
     private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
@@ -365,28 +387,15 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         frame.pack();
     }//GEN-LAST:event_mnuModificarActionPerformed
 
-    private void lstPreguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPreguntasMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lstPreguntasMouseClicked
-
     private void mnuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarActionPerformed
         DefaultListModel model = (DefaultListModel) lstPreguntas.getModel();
         int selectedIndex = lstPreguntas.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < model.getSize()) 
             model.remove(selectedIndex);
         preguntas.remove(selectedIndex);
-        
-//        if(lstPreguntas.getSelectedIndex()-2 > -1)
-//            lstPreguntas.remove(lstPreguntas.getSelectedIndex()-2);
-//        
-//        DefaultListModel model = (DefaultListModel)lstPreguntas.getModel();
-//        model.removeElementAt(lstPreguntas.getSelectedIndex()-2);
-//        lstPreguntas.setModel(model);  
     }//GEN-LAST:event_mnuEliminarActionPerformed
 
-    public clsSeccion getInsSeccion() {
-        return insSeccion;
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

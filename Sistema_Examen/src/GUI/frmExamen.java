@@ -252,9 +252,9 @@ public class frmExamen extends javax.swing.JInternalFrame {
         
         this.setLocation(500, 20);
         jLabelNombreExamen.setText(exa.getsNombre());
-        jLabelFecha.setText(jLabelFecha.getText()+" "+exa.getdFecha());
+//        jLabelFecha.setText(jLabelFecha.getText()+" "+exa.getdFecha());
         jLabelProfesor.setText("Profesor: "+exa.getsProfesor());
-        jLabelPuntos.setText(jLabelPuntos.getText()+" " +exa.getiTotalPuntos());
+//        jLabelPuntos.setText(jLabelPuntos.getText()+" " +exa.getiTotalPuntos());
         
         jTextAreaDescripcion.setText(exa.getsDescripcion());
         for(clsSeccion sec:exa.getAlSecciones()){

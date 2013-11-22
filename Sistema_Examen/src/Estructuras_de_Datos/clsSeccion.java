@@ -17,19 +17,10 @@ public class clsSeccion {
     private String sDescripcion;
     private String tipo;
     private static ArrayList<Pregunta> alPreguntas = new ArrayList<>();
-    private int iTotalPuntos;
 
     public clsSeccion(String sNombre, String sDescripcion) {
         this.sNombre = sNombre;
         this.sDescripcion = sDescripcion;
-    }
-
-    public int getiTotalPuntos() {
-        return iTotalPuntos;
-    }
-
-    public void setiTotalPuntos(int iTotalPuntos) {
-        this.iTotalPuntos = iTotalPuntos;
     }
 
     public void setsNombre(String sNombre) {
@@ -54,5 +45,9 @@ public class clsSeccion {
 
     public ArrayList<Pregunta> getAlPreguntas() {
         return alPreguntas;
+    }
+    
+    public int getPreguntas() {
+        return alPreguntas.size();
     }
 }

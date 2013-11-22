@@ -156,7 +156,7 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
         });
         pnlDescScrollCrear.setViewportView(txtDescripcion);
 
-        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preguntas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
+        pnlListaCrear.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preguntas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         pnlListaCrear.setMaximumSize(new java.awt.Dimension(270, 184));
         pnlListaCrear.setMinimumSize(new java.awt.Dimension(270, 184));
         pnlListaCrear.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -317,16 +317,16 @@ public class frmCrearSeccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
-        clsVentana ventana = new clsVentana();
-        if(ventana.activarBoton(new String[]{txtNombre.getText(), txtDescripcion.getText()}))
+        if(!txtNombre.getText().equals("") && 
+           !txtDescripcion.getText().equals(""))
             btnGuardar.setEnabled(true);
         else
             btnGuardar.setEnabled(false);
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
-        clsVentana ventana = new clsVentana();
-        if(ventana.activarBoton(new String[]{txtNombre.getText(), txtDescripcion.getText()}))
+        if(!txtNombre.getText().equals("") && 
+           !txtDescripcion.getText().equals(""))
             btnGuardar.setEnabled(true);
         else
             btnGuardar.setEnabled(false);

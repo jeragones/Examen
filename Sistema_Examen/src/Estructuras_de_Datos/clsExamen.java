@@ -4,6 +4,7 @@
  */
 package Estructuras_de_Datos;
 
+import Preguntas.Pregunta;
 import java.util.ArrayList;
 
 /**
@@ -38,21 +39,19 @@ public class clsExamen {
         return iNumeroExamen;
     }
     
-//    public float getNota() {
-//        int iPuntos = 0;
-//        float iNota = 0;
-//        
-//        for(int i=0; i < alSecciones.size(); i++) {
-//            ArrayList<Pregunta> alPreguntas = alSecciones.get(i).getAlPreguntas();
-//            for(int j=0; j < alPreguntas.size(); j++) {
-//                iTotalPuntos += alPreguntas.get(j).getValor();
-//                if(alPreguntas.get(j).evaluarPregunta())
-//                    iPuntos += alPreguntas.get(j).getValor();
-//            }
-//        }
-//        iNota = ( iPuntos / iTotalPuntos ) * 100;
-//        return iNota;
-//    }
+    public double[] getNota() {
+        int iPuntos = 0;
+        int iPreguntas = 0;
+        
+        for(int i=0; i < alSecciones.size(); i++) {
+            ArrayList<Pregunta> alPreguntas = alSecciones.get(i).getAlPreguntas();
+            for(int j=0; j < alPreguntas.size(); j++) {
+                iPreguntas++;
+                iPuntos += alPreguntas.get(j).getScore();
+            }
+        }
+        return new double[]{iPreguntas, iPuntos};
+    }
     
     public void setsProfesor(String sProfesor) {
         this.sProfesor = sProfesor;

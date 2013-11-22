@@ -9,6 +9,10 @@ package GUI;
 import Estructuras_de_Datos.clsExamen;
 import Estructuras_de_Datos.clsExamenes;
 import Estructuras_de_Datos.clsPreguntas;
+import Estructuras_de_Datos.clsSeccion;
+import Preguntas.Pregunta;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -28,6 +32,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     clsExamenes insExamenes;
     clsExamen insExamen = new clsExamen();
     clsPreguntas insPregunta;
+    ArrayList<clsSeccion> secciones = new ArrayList<>();
     
     public frmCrearExamen(Object[] args) {
         initComponents();
@@ -74,10 +79,20 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         popMenu.add(mnuAgregar);
 
         mnuModificar.setText("Modificar");
+        mnuModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModificarActionPerformed(evt);
+            }
+        });
         popMenu.add(mnuModificar);
         mnuModificar.getAccessibleContext().setAccessibleParent(popMenu);
 
         mnuEliminar.setText("Eliminar");
+        mnuEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEliminarActionPerformed(evt);
+            }
+        });
         popMenu.add(mnuEliminar);
 
         setClosable(true);
@@ -153,11 +168,6 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
             }
         });
 
-        lstSecciones.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "", "" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         lstSecciones.setComponentPopupMenu(popMenu);
         lstSecciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -171,7 +181,7 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
         pnlListaCrearLayout.setHorizontalGroup(
             pnlListaCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
                 .addGap(10, 10, 10))
             .addGroup(pnlListaCrearLayout.createSequentialGroup()
@@ -267,6 +277,27 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if(insExamen != null) {
+//            insSeccion = new clsSeccion(txtNombre.getText(), txtDescripcion.getText());
+//            insSeccion.setAlPreguntas(preguntas);
+//            insExamen.addSeccion(insSeccion);
+
+            
+        }
+        this.dispose();
+        
+        
+        
+        
+        insExamen.setsNombre(txtNombre.getText());
+        insExamen.setsProfesor(txtProfesor.getText());
+        insExamen.setiNumeroExamen(cmbExamen.getSelectedIndex());
+        insExamen.setsDescripcion(txtDescripcion.getText());
+        
+        for(int i=0; i < secciones.size(); i++)
+            insExamen.addSeccion(secciones.get(i));
+
+        insExamen.addSeccion(null);
         insExamenes.addExamen(insExamen);
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -276,9 +307,10 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, /*lstSecciones, insExamen,*/ insPregunta});
+        JInternalFrame insFrame = new frmCrearSeccion(new Object[]{dskPanel, lblBarraEstado, lstSecciones, insExamen, insPregunta});
         dskPanel.add(insFrame);
         insFrame.show();
+        secciones.add(((frmCrearSeccion)insFrame).getSeccion());
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void mnuAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarActionPerformed
@@ -327,6 +359,20 @@ public class frmCrearExamen extends javax.swing.JInternalFrame {
     private void pnlListaCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlListaCrearMouseEntered
         lblBarraEstado.setText("");
     }//GEN-LAST:event_pnlListaCrearMouseEntered
+
+    private void mnuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarActionPerformed
+        DefaultListModel model = (DefaultListModel) lstSecciones.getModel();
+        int selectedIndex = lstSecciones.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < model.getSize()) 
+            model.remove(selectedIndex);
+        insExamen.getAlSecciones().remove(selectedIndex);
+    }//GEN-LAST:event_mnuEliminarActionPerformed
+
+    private void mnuModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModificarActionPerformed
+        JInternalFrame frame = new frmCrearSeccion(insExamen.getAlSecciones().get(lstSecciones.getSelectedIndex()), new Object[]{dskPanel, lblBarraEstado, insPregunta});
+        dskPanel.add(frame);
+        frame.show();
+    }//GEN-LAST:event_mnuModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

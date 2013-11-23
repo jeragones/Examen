@@ -114,6 +114,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
             }
         });
 
+        spnValor.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
         spnValor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 spnValorMouseReleased(evt);
@@ -314,7 +315,10 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         sEnunciado = txtEnunciado.getText();
-        iValor = (Integer)spnValor.getValue();
+        if((Integer)spnValor.getValue() < 0)
+            iValor = 0;
+        else
+            iValor = (Integer)spnValor.getValue();
         String[] asPalabras = txtEnunciado.getText().split(" ");
         for(int i=0; i < asPalabras.length; i++) {
             for(int j=0; j < lsPalabras.size(); j++) {

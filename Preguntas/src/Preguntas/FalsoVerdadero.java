@@ -61,6 +61,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setText("Puntos:");
 
+        spnValor.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
         spnValor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 spnValorMouseReleased(evt);
@@ -69,6 +70,13 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         spnValor.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spnValorStateChanged(evt);
+            }
+        });
+        spnValor.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                spnValorInputMethodTextChanged(evt);
             }
         });
 
@@ -246,7 +254,10 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         sPregunta = txtPregunta.getText();
-        iValor = (Integer)spnValor.getValue();
+        if((Integer)spnValor.getValue() < 0)
+            iValor = 0;
+        else
+            iValor = (Integer)spnValor.getValue();
         if(cmbRespuesta.getSelectedIndex() == 0)
             bRespuesta = true;
         else 
@@ -263,9 +274,13 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
     }//GEN-LAST:event_spnValorMouseReleased
 
     private void spnValorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValorStateChanged
+        
+    }//GEN-LAST:event_spnValorStateChanged
+
+    private void spnValorInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_spnValorInputMethodTextChanged
         if((Integer)spnValor.getValue() < 0)
             spnValor.setValue(0);
-    }//GEN-LAST:event_spnValorStateChanged
+    }//GEN-LAST:event_spnValorInputMethodTextChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -300,7 +315,6 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void evaluarPregunta() {
-
         if((rdbVerdadero.isSelected() && bRespuesta) ||
            (rdbFalso.isSelected() && !bRespuesta))
             this.iValor=iValor;
@@ -310,9 +324,9 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void desplegarPregunta() {
-        lblPregunta.setText(sPregunta);
-        pnlEvaluar.setVisible(true);
-        pnlInsertar.setVisible(false);
+//        lblPregunta.setText(sPregunta);
+        pnlEvaluar.setVisible(false);
+        pnlInsertar.setVisible(true);
         this.show();
     }
 

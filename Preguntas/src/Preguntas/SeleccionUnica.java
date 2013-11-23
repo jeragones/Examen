@@ -160,6 +160,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
 
+        txtPuntos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
         txtPuntos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 txtPuntosMouseReleased(evt);
@@ -347,7 +348,10 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         // TODO add your handling code here:
         this.enunciado=txtPregunta.getText();
         this.respuesta=txtRespuesta.getText();
-        this.puntos=(Integer)txtPuntos.getValue();
+        if((Integer)txtPuntos.getValue() < 0)
+            this.puntos = 0;
+        else
+            this.puntos = (Integer)txtPuntos.getValue();
         this.opciones=temp;
         this.dispose();
                 

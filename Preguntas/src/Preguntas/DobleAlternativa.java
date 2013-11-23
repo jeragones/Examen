@@ -6,7 +6,6 @@
 
 package Preguntas;
 
-import Preguntas.Pregunta;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -18,7 +17,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     private String sEnunciado;
     private String sRespuesta;
-    private String sTexto;
+    private String sRespuest;
     private int iValor;
     private ArrayList<String[]> lsPalabras = new ArrayList<String[]>();
     
@@ -334,7 +333,7 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnContestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContestarActionPerformed
-        sTexto = txtRespuesta.getText();
+        sRespuest = txtRespuesta.getText();
         this.dispose();
     }//GEN-LAST:event_btnContestarActionPerformed
 
@@ -411,19 +410,16 @@ public class DobleAlternativa extends javax.swing.JInternalFrame implements Preg
 
     @Override
     public void evaluarPregunta() {
-
-        if(sRespuesta.equalsIgnoreCase(sTexto))
-            this.iValor=iValor;
-        else
+        if(!sRespuesta.equalsIgnoreCase(sRespuest))
             this.iValor=0;
-
-        
     }
 
     @Override
     public void desplegarPregunta() {
+        lblEnunciado.setText(sEnunciado);
         pnlInsertar.setVisible(false);
         pnlEvaluar.setVisible(true);
+        this.setClosable(false);
         this.show();
     }
 

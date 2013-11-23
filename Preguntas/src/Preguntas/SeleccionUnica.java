@@ -413,7 +413,6 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         this.PanelCrear.setVisible(true);
         this.panelMostrar.setVisible(false);
         this.show();
-        
     }
 
     @Override
@@ -426,11 +425,8 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
 
     @Override
     public void evaluarPregunta() {
-        if (this.respuestaUsuario.equals(this.respuesta)) {
-            this.puntos = puntos;
-        } else {
+        if (!this.respuestaUsuario.equals(this.respuesta))
             this.puntos = 0;
-        }
     }
 
     @Override
@@ -438,16 +434,16 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         this.PanelCrear.setVisible(false);
         this.panelMostrar.setVisible(true);
         lblEnunciado.setText("¿"+this.enunciado+"?"+" "+this.puntos);
-//        labelPuntos.setText(this.puntos+" Puntos");
         op1.setText(opciones.get(0));
         op2.setText(opciones.get(1));
         op3.setText(opciones.get(2));
         op4.setText(opciones.get(3));
+        this.setClosable(false);
         this.show();
     }
 
     @Override
     public double getScore() {
         return this.puntos;
-        }
+    }
 }

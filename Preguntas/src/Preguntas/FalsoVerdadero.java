@@ -13,11 +13,12 @@ import javax.swing.JInternalFrame;
  * @author GeOrge
  */
 
-public class FalsoVerdadero extends JInternalFrame implements Pregunta{
+public class FalsoVerdadero extends JInternalFrame implements Pregunta {
 
-    String sPregunta;
-    boolean bRespuesta;
-    int iValor;
+    private String sPregunta;
+    private boolean bRespuesta;
+    private boolean bRespuest;
+    private int iValor;
     
     /**
      * Creates new form DobleAlternativa
@@ -48,7 +49,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         btnGuardar = new javax.swing.JButton();
         pnlEvaluar = new javax.swing.JPanel();
         lblPregunta = new javax.swing.JLabel();
-        btnSiguiente = new javax.swing.JButton();
+        btnContestar = new javax.swing.JButton();
         pnlOpciones = new javax.swing.JPanel();
         rdbVerdadero = new javax.swing.JRadioButton();
         rdbFalso = new javax.swing.JRadioButton();
@@ -166,12 +167,12 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         lblPregunta.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         lblPregunta.setText("Pregunta");
 
-        btnSiguiente.setBackground(new java.awt.Color(255, 255, 255));
-        btnSiguiente.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnSiguiente.setText("Contestar");
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        btnContestar.setBackground(new java.awt.Color(255, 255, 255));
+        btnContestar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnContestar.setText("Contestar");
+        btnContestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
+                btnContestarActionPerformed(evt);
             }
         });
 
@@ -219,7 +220,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                         .addGap(10, 10, 10))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEvaluarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSiguiente)
+                .addComponent(btnContestar)
                 .addGap(10, 10, 10))
         );
         pnlEvaluarLayout.setVerticalGroup(
@@ -230,7 +231,7 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
                 .addGap(10, 10, 10)
                 .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(btnSiguiente)
+                .addComponent(btnContestar)
                 .addGap(10, 10, 10))
         );
 
@@ -265,9 +266,15 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+    private void btnContestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContestarActionPerformed
+        if(rdbVerdadero.isSelected())
+            bRespuest = true;
+        else if(rdbFalso.isSelected())
+            bRespuest = false;
+        else
+            iValor = 0;
+        this.dispose();
+    }//GEN-LAST:event_btnContestarActionPerformed
 
     private void spnValorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spnValorMouseReleased
         
@@ -284,9 +291,9 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContestar;
     private javax.swing.ButtonGroup btnGrupo;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cmbRespuesta;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -315,23 +322,21 @@ public class FalsoVerdadero extends JInternalFrame implements Pregunta{
 
     @Override
     public void evaluarPregunta() {
-        if((rdbVerdadero.isSelected() && bRespuesta) ||
-           (rdbFalso.isSelected() && !bRespuesta))
-            this.iValor=iValor;
-        else 
+        if(bRespuest != bRespuesta) 
            this.iValor=0; 
-    }
-
-    @Override
-    public void desplegarPregunta() {
-//        lblPregunta.setText(sPregunta);
-        pnlEvaluar.setVisible(false);
-        pnlInsertar.setVisible(true);
-        this.show();
     }
 
     @Override
     public double getScore() {
         return iValor;
+    }
+
+    @Override
+    public void desplegarPregunta() {
+        lblPregunta.setText(sPregunta);
+        pnlEvaluar.setVisible(true);
+        pnlInsertar.setVisible(false);
+        this.setClosable(false);
+        this.show();
     }
 }

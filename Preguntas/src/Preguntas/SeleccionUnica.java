@@ -438,7 +438,7 @@ public class SeleccionUnica extends JInternalFrame implements Pregunta{
         op1.setText(opciones.get(0));
         op2.setText(opciones.get(1));
         op3.setText(opciones.get(2));
-        op4.setText(opciones.get(4));
+        op4.setText(opciones.get(3));
         this.show();
     }
 

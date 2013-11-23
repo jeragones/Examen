@@ -285,7 +285,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lstSeccionesValueChanged
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        this.dispose();
+        
         
 //        Thread hilo = new Thread(runnable);
         
@@ -320,6 +320,7 @@ public class frmExamen extends javax.swing.JInternalFrame {
         
         
         principal.setContestar(true, exa);
+        this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseEntered

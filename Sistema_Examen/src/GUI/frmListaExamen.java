@@ -104,8 +104,8 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
                 modelo.addElement(exa.getsNombre());            
             }
         }
-        catch(ListaFueraDeRangoException e){
-            new ListaFueraDeRangoException("Lista Fuera de Rango");
+        catch(Exception e){
+            System.err.println(new ListaFueraDeRangoException("No se han creado examenes aun"));
         }
         finally{
         lstExamenes.setModel(modelo);
@@ -114,17 +114,28 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         JInternalFrame frame = null;
-        
+        try{
         clsExamen insExamen = insExamenes.getExamenes().get(lstExamenes.getSelectedIndex());
         if(bBandera){
-            frame = new frmExamen(new Object[]{insExamen, dskPanel, principal});
-            frame.setTitle(insExamen.getiNumeroExamen()+"° Examen de "+insExamen.getsNombre());
+            
+                frame = new frmExamen(new Object[]{insExamen, dskPanel, principal});
+                frame.setTitle(insExamen.getiNumeroExamen()+"° Examen de "+insExamen.getsNombre());
+                
+            
+            
         } else {
             frame = new frmCrearExamen(insExamen, new Object[]{dskPanel, lblBarraEstado, insPregunta});
             frame.setTitle("Modificar Examen");
         }
         dskPanel.add(frame);
         frame.show();
+        }
+        catch(Exception e){
+            System.err.println(new ListaFueraDeRangoException("No se han creado examenes aun"));
+            }
+        
+        
+        
 // TODO add your handling code here:
 //        clsExamen insExamen = examenes.getExamenes().get(lstExamenes.getSelectedIndex());
 //        JInternalFrame frame = new frmExamen(new Object[]{insExamen, dskPanel});

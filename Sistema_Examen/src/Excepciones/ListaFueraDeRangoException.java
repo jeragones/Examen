@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
-public class ListaFueraDeRangoException extends ArrayIndexOutOfBoundsException{
+public class ListaFueraDeRangoException extends Exception{
     public ListaFueraDeRangoException(String mensaje){
         super(mensaje);
     }

@@ -15,8 +15,10 @@ import Estructuras_de_Datos.clsPreguntas;
 import javax.swing.JFrame;
 
 /**
- *
- * @author jdbr
+ * Interfaz que permite el acceso a los dos tipos de usuarios al sistema.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
+ * 
  */
 public class frmIngresar extends JFrame {
 

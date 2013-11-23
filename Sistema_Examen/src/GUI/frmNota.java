@@ -7,8 +7,9 @@
 package GUI;
 
 /**
- *
- * @author GeOrge
+ * Interfaz que le muestra al usuario estudiante los puntos obtenidos al finalizar el examen.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmNota extends javax.swing.JInternalFrame {
 

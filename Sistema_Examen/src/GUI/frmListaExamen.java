@@ -14,8 +14,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 /**
- *
- * @author jdbr
+ * Interfaz que le permite al usuario estudiante elegir cual examen desea contestar.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmListaExamen extends javax.swing.JInternalFrame {
 
@@ -113,6 +114,7 @@ public class frmListaExamen extends javax.swing.JInternalFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         JInternalFrame frame = null;
+        
         clsExamen insExamen = insExamenes.getExamenes().get(lstExamenes.getSelectedIndex());
         if(bBandera){
             frame = new frmExamen(new Object[]{insExamen, dskPanel, principal});

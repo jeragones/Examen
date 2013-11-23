@@ -15,8 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
- *
- * @author jdbr
+ * Interfaz que le permite al usuario estudiante responder un examen
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmExamen extends javax.swing.JInternalFrame {
 

@@ -24,8 +24,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
 
 /**
- *
- * @author GeOrge
+ * Interfaz principal de la aplicacion, sobre ella se muestran todas las ventanas internas donde se ejecutan todas las acciones.
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmPrincipal extends javax.swing.JFrame {
 
@@ -41,6 +42,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private int iPregunta;
     private int iSeccion;
     private boolean bContestar;
+    private frmPrincipal ventana;
     
     public frmPrincipal(Object[] args) {
         initComponents();
@@ -454,7 +456,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         bContestar = contestar;
         insExamen = examen;
     }
-    private frmPrincipal ventana;
+    
     public void setFrame(frmPrincipal frame) {
         ventana = frame;
     }

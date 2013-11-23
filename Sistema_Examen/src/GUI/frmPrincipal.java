@@ -301,7 +301,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void dskPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dskPanelMouseEntered
         lblBarraEstado.setText("");
         if(bContestar) {
-            int y = dskPanel.getAllFrames().length;
             if(framePregunta != null) {
                 if(!framePregunta.isVisible()) {
                     framePregunta = null;
@@ -319,8 +318,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                         framePregunta.setTitle("Pregunta "+String.valueOf(iPregunta+1));
                         framePregunta.pack();
                         iPregunta++;
-                    } else
+                    } else {
                         iSeccion++;
+                        iPregunta = 0;
+                    }
                 } else {
                     mnbMenu.setEnabled(true);
                     double nota = insExamen.getNota();

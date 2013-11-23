@@ -80,6 +80,8 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel2.setText("Puntos:");
 
+        spnValor.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
+
         javax.swing.GroupLayout pnlPreguntaLayout = new javax.swing.GroupLayout(pnlPregunta);
         pnlPregunta.setLayout(pnlPreguntaLayout);
         pnlPreguntaLayout.setHorizontalGroup(
@@ -267,7 +269,10 @@ public class Complete extends javax.swing.JInternalFrame implements Pregunta {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         iTipo = cmbEstructura.getSelectedIndex();
-        iValor = (Integer)spnValor.getValue();
+        if((Integer)spnValor.getValue() < 0)
+            iValor = 0;
+        else
+            iValor = (Integer)spnValor.getValue();
         if(iTipo == 1)
             asPregunta[1] = pregunta2.getText();
         asPregunta[0] = pregunta1.getText();

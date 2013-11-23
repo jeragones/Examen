@@ -305,9 +305,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 if(iSeccion < secciones.size()) {
                     ArrayList<Pregunta> preguntas = secciones.get(iSeccion).getAlPreguntas();
                     if(iPregunta < preguntas.size()) {
-                        JInternalFrame frame = (JInternalFrame)preguntas.get(iPregunta);
+                        Pregunta pregunta = preguntas.get(iPregunta);
+                        pregunta.insertarInfo();
+                        
+                        JInternalFrame frame = (JInternalFrame)pregunta;
                         dskPanel.add(frame);
-                        ((Pregunta)frame).desplegarPregunta();
+                        frame.setTitle("Pregunta "+String.valueOf(iPregunta+1));
+//                        frame.pack();
                     } else
                         iSeccion++;
                 } else {

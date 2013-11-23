@@ -41,6 +41,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private JFrame inicio;
     private int iPregunta;
     private int iSeccion;
+    private JInternalFrame framePregunta = null;
     private boolean bContestar;
     private frmPrincipal ventana;
     
@@ -300,17 +301,23 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void dskPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dskPanelMouseEntered
         lblBarraEstado.setText("");
         if(bContestar) {
-            if(dskPanel.getComponentCount() <= 1) {
+            int y = dskPanel.getAllFrames().length;
+            if(framePregunta != null) {
+                if(!framePregunta.isVisible()) {
+                    framePregunta = null;
+                }
+            }
+            if(framePregunta == null) {
                 ArrayList<clsSeccion> secciones = insExamen.getAlSecciones();
                 if(iSeccion < secciones.size()) {
                     ArrayList<Pregunta> preguntas = secciones.get(iSeccion).getAlPreguntas();
                     if(iPregunta < preguntas.size()) {
                         Pregunta pregunta = preguntas.get(iPregunta);
                         pregunta.desplegarPregunta();
-                        JInternalFrame frame = (JInternalFrame)pregunta;
-                        dskPanel.add(frame);
-                        frame.setTitle("Pregunta "+String.valueOf(iPregunta+1));
-                        frame.pack();
+                        framePregunta = (JInternalFrame)pregunta;
+                        dskPanel.add(framePregunta);
+                        framePregunta.setTitle("Pregunta "+String.valueOf(iPregunta+1));
+                        framePregunta.pack();
                         iPregunta++;
                     } else
                         iSeccion++;
@@ -320,6 +327,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     JInternalFrame frame = new frmNota(nota);
                     dskPanel.add(frame);
                     frame.show();
+                    bContestar = false;
                 }   
             }
         }
